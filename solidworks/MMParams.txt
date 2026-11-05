@@ -1,0 +1,1 @@
+﻿"Layer Thickness"= 3mm'Defines the thickness of the laser cut layers
