@@ -1,0 +1,35 @@
+{
+  "assembly": "solidworks/MM-Minimal.SLDASM",
+  "solidworks_api_dir": "C:\\Program Files\\SOLIDWORKS Corp\\SOLIDWORKS\\api\\redist",
+  "fix_component_name_option": true,
+
+  "expected_components": [
+    "front_left_wheel-7",
+    "front_right_wheel-6",
+    "rear_left_wheel-5",
+    "rear_right_wheel-10",
+    "arm-1",
+    "arm-1/arm_base_plate-1",
+    "arm-1/shoulder_pan-1",
+    "arm-1/shoulder_servo-1",
+    "arm-1/shoulder_lift-3",
+    "arm-1/elbow_servo-2",
+    "arm-1/elbow-4",
+    "arm-1/wrist_horn-2",
+    "arm-1/wrist-5"
+  ],
+
+  "pose_mates": [
+    "arm_assembly.SLDASM:Angle2",
+    "arm_assembly.SLDASM:Angle3",
+    "arm_assembly.SLDASM:Angle4",
+    "arm_assembly.SLDASM:Angle5"
+  ],
+  "pose_tolerance_deg": 0.1,
+
+  "allowed_suppressed_mates": [],
+
+  "allowed_suppressed_components": [],
+
+  "allowed_unmated_components": []
+}

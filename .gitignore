@@ -1,2 +1,4 @@
 # Solidworks temporary workfiles
 **/~$*
+# Local build output (model check reports, exports)
+build/
