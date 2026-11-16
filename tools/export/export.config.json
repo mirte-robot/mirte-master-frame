@@ -1,0 +1,27 @@
+{
+  "assembly": "solidworks/MM-Minimal.SLDASM",
+  "solidworks_api_dir": "C:\\Program Files\\SOLIDWORKS Corp\\SOLIDWORKS\\api\\redist",
+
+  "property_name": "Export",
+
+  "groups": {
+    "arm": ["solidworks/Arm/arm_assembly.SLDASM"],
+    "gripper": ["solidworks/Gripper/underactuated_girpper_assembly.SLDASM"]
+  },
+  "default_group": "base",
+  "group_overrides": {},
+
+  "purchased_folders": [
+    "solidworks/Misc Parts"
+  ],
+
+  "exclude_files": [
+    "solidworks/Arm/Ring bearing.SLDPRT"
+  ],
+
+  "laser_files": [
+    "solidworks/Frame/Plate v01.SLDPRT"
+  ],
+
+  "print_files": []
+}
