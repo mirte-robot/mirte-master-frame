@@ -27,6 +27,11 @@ edited by hand. Otherwise it publishes `exports/` as the `parts` artifact, and i
 after changing the CAD (geometry *or* colours, since the check compares file hashes), run the export again before you
 push.
 
+Check before pushing, on exactly what GitHub gets (the committed files, without line-ending conversion):
+`python tools/check_before_push.py` (last commit), `--staged` (what is staged), or `--install-hook` to run it
+automatically on every `git push`. `.gitattributes` keeps `exports/` byte for byte (`-text`), so the STEP / DXF hashes
+match on GitHub.
+
 | Folder | Contents |
 |---|---|
 | `step/` | STEP (AP214) of every exported part, printed and laser cut |

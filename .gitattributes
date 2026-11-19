@@ -1,0 +1,2 @@
+# Exports are checked by SHA-256 (tools/export/check_exports.py): store them byte for byte, no line-ending conversion.
+exports/** -text
