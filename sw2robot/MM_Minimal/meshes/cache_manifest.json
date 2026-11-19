@@ -1,0 +1,232 @@
+{
+ "Battery_Module_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Frame\\Battery-Module.SLDPRT",
+  "textures": {}
+ },
+ "Cable_funnel_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Internal mounting parts\\Cable-funnel.SLDPRT",
+  "textures": {}
+ },
+ "Camera_Module_1.3dxml": {
+  "config": "AstraMiniPro",
+  "source": "solidworks\\Frame\\Camera-Module.SLDPRT",
+  "textures": {}
+ },
+ "Camera_Mount_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Arm\\Camera-Mount.SLDPRT",
+  "textures": {}
+ },
+ "Hiwonder_LX_225_Assembly__Hiwonder_LX_225_servo_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Misc Parts\\Hiwonder LX-225 servo.SLDPRT",
+  "textures": {}
+ },
+ "Hiwonder_LX_225_Assembly__Servo_horn_non_driven_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Misc Parts\\Servo-horn (non-driven).SLDPRT",
+  "textures": {}
+ },
+ "Left_Sidepanel_Module_1.3dxml": {
+  "config": "Left-Sidepanel-OPI3Bv2.1",
+  "source": "solidworks\\Frame\\Left-Sidepanel-Module.SLDPRT",
+  "textures": {}
+ },
+ "Left_Sonar_Module_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Frame\\Left-Sonar-Module.SLDPRT",
+  "textures": {}
+ },
+ "Lidar_Mount_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Internal mounting parts\\Lidar-Mount.SLDPRT",
+  "textures": {}
+ },
+ "Mecanum_Wheel_dia_100_left_5.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Misc Parts\\Mecanum Wheel (dia 100) left.SLDPRT",
+  "textures": {}
+ },
+ "Mecanum_Wheel_dia_100_right_10.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Misc Parts\\Mecanum Wheel (dia 100) right.SLDPRT",
+  "textures": {}
+ },
+ "Plate_v01_1.3dxml": {
+  "config": "Bottom Plate",
+  "source": "solidworks\\Frame\\Plate v01.SLDPRT",
+  "textures": {}
+ },
+ "Plate_v01_2.3dxml": {
+  "config": "Top Plate",
+  "source": "solidworks\\Frame\\Plate v01.SLDPRT",
+  "textures": {}
+ },
+ "Plate_v01_3.3dxml": {
+  "config": "Arm Plate",
+  "source": "solidworks\\Frame\\Plate v01.SLDPRT",
+  "textures": {}
+ },
+ "RP_Lidar_C1_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Misc Parts\\RP Lidar C1.SLDPRT",
+  "textures": {}
+ },
+ "Right_Sidepanel_Module_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Frame\\Right-Sidepanel-Module.SLDPRT",
+  "textures": {}
+ },
+ "Right_Sonar_Module_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Frame\\Right-Sonar-Module.SLDPRT",
+  "textures": {}
+ },
+ "arm_assembly_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Arm\\arm_assembly.SLDASM",
+  "textures": {}
+ },
+ "arm_assembly__Arm_servo_mount_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Arm\\Arm servo mount.SLDPRT",
+  "textures": {}
+ },
+ "arm_assembly__Hiwonder_HX_12H_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Misc Parts\\Hiwonder HX-12H.SLDPRT",
+  "textures": {}
+ },
+ "arm_assembly__Hiwonder_LX_225_Assembly_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Misc Parts\\Hiwonder LX-225 Assembly.SLDASM",
+  "textures": {}
+ },
+ "arm_assembly__Large_bottom_plate_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Arm\\Large bottom plate.SLDPRT",
+  "textures": {}
+ },
+ "arm_assembly__Large_top_plate_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Arm\\Large top plate.SLDPRT",
+  "textures": {}
+ },
+ "arm_assembly__Ring_bearing_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Arm\\Ring bearing.SLDPRT",
+  "textures": {}
+ },
+ "arm_assembly__Servo_horn_driven_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Misc Parts\\Servo-horn (driven).SLDPRT",
+  "textures": {}
+ },
+ "arm_assembly__Small_bottom_plate_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Arm\\Small bottom plate.SLDPRT",
+  "textures": {}
+ },
+ "arm_assembly__Small_top_plate_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Arm\\Small top plate.SLDPRT",
+  "textures": {}
+ },
+ "arm_assembly__linkages_1.3dxml": {
+  "config": "shoulder",
+  "source": "solidworks\\Arm\\linkages.SLDPRT",
+  "textures": {}
+ },
+ "arm_assembly__linkages_3.3dxml": {
+  "config": "upperarm",
+  "source": "solidworks\\Arm\\linkages.SLDPRT",
+  "textures": {}
+ },
+ "arm_assembly__linkages_4.3dxml": {
+  "config": "forearm",
+  "source": "solidworks\\Arm\\linkages.SLDPRT",
+  "textures": {}
+ },
+ "arm_assembly__linkages_5.3dxml": {
+  "config": "wrist",
+  "source": "solidworks\\Arm\\linkages.SLDPRT",
+  "textures": {}
+ },
+ "arm_assembly__standoff_M3_B_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Misc Parts\\standoff M3 B.SLDPRT",
+  "textures": {}
+ },
+ "battery_mount_V2_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Internal mounting parts\\battery_mount V2.SLDPRT",
+  "textures": {}
+ },
+ "c_4x20mm_f_f_standoff_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Misc Parts\\4x20mm f-f standoff.SLDPRT",
+  "textures": {}
+ },
+ "motor_module_v02_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Frame\\motor_module v02.SLDPRT",
+  "textures": {}
+ },
+ "underactuated_girpper_assembly_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Gripper\\underactuated_girpper_assembly.SLDASM",
+  "textures": {}
+ },
+ "underactuated_girpper_assembly__front_spacer_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Gripper\\front_spacer.SLDPRT",
+  "textures": {}
+ },
+ "underactuated_girpper_assembly__geared_actuated_link_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Gripper\\geared actuated link.SLDPRT",
+  "textures": {}
+ },
+ "underactuated_girpper_assembly__geared_actuator_link_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Gripper\\geared actuator link.SLDPRT",
+  "textures": {}
+ },
+ "underactuated_girpper_assembly__left_right_actuating_link_1.3dxml": {
+  "config": "left_actuation_link",
+  "source": "solidworks\\Gripper\\left_right actuating link.SLDPRT",
+  "textures": {}
+ },
+ "underactuated_girpper_assembly__left_right_actuating_link_2.3dxml": {
+  "config": "right_actualtion_link",
+  "source": "solidworks\\Gripper\\left_right actuating link.SLDPRT",
+  "textures": {}
+ },
+ "underactuated_girpper_assembly__left_right_tip_1.3dxml": {
+  "config": "left_tip",
+  "source": "solidworks\\Gripper\\left_right tip.SLDPRT",
+  "textures": {}
+ },
+ "underactuated_girpper_assembly__left_right_tip_2.3dxml": {
+  "config": "right_tip",
+  "source": "solidworks\\Gripper\\left_right tip.SLDPRT",
+  "textures": {}
+ },
+ "underactuated_girpper_assembly__link_1.3dxml": {
+  "config": "Default",
+  "source": "solidworks\\Gripper\\link.SLDPRT",
+  "textures": {}
+ },
+ "underactuated_girpper_assembly__top_bottom_plate_1.3dxml": {
+  "config": "bottom_plate",
+  "source": "solidworks\\Gripper\\top_bottom plate.SLDPRT",
+  "textures": {}
+ },
+ "underactuated_girpper_assembly__top_bottom_plate_2.3dxml": {
+  "config": "top_plate",
+  "source": "solidworks\\Gripper\\top_bottom plate.SLDPRT",
+  "textures": {}
+ }
+}

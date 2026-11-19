@@ -1,0 +1,15 @@
+{
+  "assembly": "solidworks/MM-Minimal.SLDASM",
+  "robot_name": "MM_Minimal",
+
+  "sw2robot_dir": "sw2robot",
+  "cad_dir": "solidworks",
+
+  "editor_exe": "%LOCALAPPDATA%\\sw2robot\\bin\\sw2robot-web.exe",
+
+  "merge_fixed": true,
+  "combine_meshes": true,
+  "dedupe_meshes": true,
+
+  "build_args": ["--collision", "hull"]
+}

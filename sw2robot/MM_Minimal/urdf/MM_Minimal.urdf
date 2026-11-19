@@ -1,0 +1,1655 @@
+<?xml version="1.0"?>
+<robot name="MM_Minimal">
+  <link name="c_4x20mm_f_f_standoff_1">
+    <!-- sw2robot appearance="metal/aluminum/polished aluminum" density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/c_4x20mm_f_f_standoff_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/c_4x20mm_f_f_standoff_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="1.40067645e-18 0.01 -6.919328293e-19" rpy="0 0 0"/>
+      <mass value="0.000597377"/>
+      <inertia ixx="2.25492e-08" ixy="-3.19255e-25" ixz="2.01948e-25" iyy="5.27325e-09" iyz="-1.33546e-25" izz="2.25492e-08"/>
+    </inertial>
+  </link>
+  <link name="c_4x20mm_f_f_standoff_2">
+    <!-- sw2robot appearance="metal/aluminum/polished aluminum" density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/c_4x20mm_f_f_standoff_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/c_4x20mm_f_f_standoff_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="1.40067645e-18 0.01 -6.919328293e-19" rpy="0 0 0"/>
+      <mass value="0.000597377"/>
+      <inertia ixx="2.25492e-08" ixy="-3.19255e-25" ixz="2.01948e-25" iyy="5.27325e-09" iyz="-1.33546e-25" izz="2.25492e-08"/>
+    </inertial>
+  </link>
+  <link name="Battery_Module_1">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Battery_Module_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Battery_Module_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-0.1500599699 -0.03425002848 -1.327993875e-05" rpy="0 0 0"/>
+      <mass value="0.111845"/>
+      <inertia ixx="0.000156022" ixy="2.74625e-12" ixz="1.07752e-08" iyy="0.000125598" iyz="-1.75689e-11" izz="4.03407e-05"/>
+    </inertial>
+  </link>
+  <link name="Cable_funnel_1">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Cable_funnel_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Cable_funnel_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.01403012641 -1.571093738e-18 0.01" rpy="0 0 0"/>
+      <mass value="0.00309319"/>
+      <inertia ixx="1.68307e-07" ixy="-1.48211e-24" ixz="1.22543e-23" iyy="4.13725e-07" iyz="-2.97308e-25" izz="3.62472e-07"/>
+    </inertial>
+  </link>
+  <link name="Cable_funnel_2">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Cable_funnel_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Cable_funnel_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.01403012641 -1.571093738e-18 0.01" rpy="0 0 0"/>
+      <mass value="0.00309319"/>
+      <inertia ixx="1.68307e-07" ixy="-1.48211e-24" ixz="1.22543e-23" iyy="4.13725e-07" iyz="-2.97308e-25" izz="3.62472e-07"/>
+    </inertial>
+  </link>
+  <link name="Camera_Module_1">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Camera_Module_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Camera_Module_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.1411096494 -0.03567980991 5.778218823e-06" rpy="0 0 0"/>
+      <mass value="0.176288"/>
+      <inertia ixx="0.000738265" ixy="-1.96554e-06" ixz="8.33985e-08" iyy="0.000698433" iyz="6.27546e-08" izz="8.88471e-05"/>
+    </inertial>
+  </link>
+  <link name="Camera_Mount_1">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Camera_Mount_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Camera_Mount_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-2.054174706e-18 0.014995361 0.0015" rpy="0 0 0"/>
+      <mass value="0.00705193"/>
+      <inertia ixx="5.55174e-06" ixy="-2.40158e-22" ixz="-3.72133e-25" iyy="4.45523e-07" iyz="-7.27014e-24" izz="5.98669e-06"/>
+    </inertial>
+  </link>
+  <link name="Left_Sidepanel_Module_1">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Left_Sidepanel_Module_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Left_Sidepanel_Module_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.0002254468417 -0.02959469513 -0.09509875318" rpy="0 0 0"/>
+      <mass value="0.133074"/>
+      <inertia ixx="5.5337e-05" ixy="4.58394e-07" ixz="-1.89846e-07" iyy="0.000581272" iyz="1.10544e-07" izz="0.000630593"/>
+    </inertial>
+  </link>
+  <link name="Left_Sonar_Module_1">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Left_Sonar_Module_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Left_Sonar_Module_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-0.1331753724 -0.03373376524 -0.07513465945" rpy="0 0 0"/>
+      <mass value="0.0397097"/>
+      <inertia ixx="2.15749e-05" ixy="1.52521e-07" ixz="-3.16167e-06" iyy="1.006e-05" iyz="-1.94577e-07" izz="1.754e-05"/>
+    </inertial>
+  </link>
+  <link name="Lidar_Mount_1">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Lidar_Mount_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Lidar_Mount_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-2.505042169e-15 0.006869449975 0.0005847229922" rpy="0 0 0"/>
+      <mass value="0.00950124"/>
+      <inertia ixx="6.02581e-06" ixy="-7.2129e-20" ixz="2.50235e-19" iyy="1.08297e-05" iyz="-2.98305e-08" izz="5.94537e-06"/>
+    </inertial>
+  </link>
+  <link name="Mecanum_Wheel_dia_100_left_5">
+    <!-- sw2robot appearance="metal/steel/brushed steel" density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0.04567555893 0.02989553386 -0.1470600291" rpy="0 0 1.729590139"/>
+      <geometry>
+        <mesh filename="../meshes/Mecanum_Wheel_dia_100_left_5.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.04567555893 0.02989553386 -0.1470600291" rpy="0 0 1.729590139"/>
+      <geometry>
+        <mesh filename="../meshes/Mecanum_Wheel_dia_100_left_5.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-3.400663987e-10 4.055534381e-11 -0.09004745165" rpy="0 0 0"/>
+      <mass value="0.266615"/>
+      <inertia ixx="0.000208031" ixy="6.78885e-16" ixz="-1.73853e-13" iyy="0.000208031" iyz="-1.42198e-12" izz="0.000317354"/>
+    </inertial>
+  </link>
+  <link name="Mecanum_Wheel_dia_100_left_6">
+    <!-- sw2robot appearance="metal/steel/brushed steel" density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0.02561617917 0.0482059228 -0.02705902909" rpy="0 0 2.232397128"/>
+      <geometry>
+        <mesh filename="../meshes/Mecanum_Wheel_dia_100_left_5.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.02561617917 0.0482059228 -0.02705902909" rpy="0 0 2.232397128"/>
+      <geometry>
+        <mesh filename="../meshes/Mecanum_Wheel_dia_100_left_5.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-3.17520555e-10 -1.283375281e-10 0.02995354835" rpy="0 0 0"/>
+      <mass value="0.266615"/>
+      <inertia ixx="0.000208031" ixy="8.44636e-16" ixz="5.329e-13" iyy="0.000208031" iyz="-1.32977e-12" izz="0.000317354"/>
+    </inertial>
+  </link>
+  <link name="Mecanum_Wheel_dia_100_right_10">
+    <!-- sw2robot appearance="metal/steel/brushed steel" density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="-0.04538931655 0.003974769558 -0.06502433324" rpy="0 0 -0.9364092044"/>
+      <geometry>
+        <mesh filename="../meshes/Mecanum_Wheel_dia_100_right_10.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.04538931655 0.003974769558 -0.06502433324" rpy="0 0 -0.9364092044"/>
+      <geometry>
+        <mesh filename="../meshes/Mecanum_Wheel_dia_100_right_10.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="9.641912962e-11 2.081981263e-10 -0.0250641072" rpy="0 0 0"/>
+      <mass value="0.266615"/>
+      <inertia ixx="0.000208101" ixy="1.12807e-15" ixz="-9.2302e-13" iyy="0.000208101" iyz="4.31782e-13" izz="0.000317377"/>
+    </inertial>
+  </link>
+  <link name="Mecanum_Wheel_dia_100_right_7">
+    <!-- sw2robot appearance="metal/steel/brushed steel" density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0.04471849144 -0.008731859679 -0.1300253332" rpy="0 0 2.099694745"/>
+      <geometry>
+        <mesh filename="../meshes/Mecanum_Wheel_dia_100_right_10.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.04471849144 -0.008731859679 -0.1300253332" rpy="0 0 2.099694745"/>
+      <geometry>
+        <mesh filename="../meshes/Mecanum_Wheel_dia_100_right_10.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-1.178048631e-10 -1.968885281e-10 -0.0900651072" rpy="0 0 0"/>
+      <mass value="0.266615"/>
+      <inertia ixx="0.000208101" ixy="2.26908e-16" ixz="8.72426e-13" iyy="0.000208101" iyz="-5.2657e-13" izz="0.000317377"/>
+    </inertial>
+  </link>
+  <link name="Plate_v01_1">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Plate_v01_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Plate_v01_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-0.000114513617 0.0015 -1.534687388e-05" rpy="0 0 0"/>
+      <mass value="0.120728"/>
+      <inertia ixx="0.00028519" ixy="4.53661e-23" ixz="4.20077e-08" iyy="0.00107933" iyz="-5.58377e-23" izz="0.000794323"/>
+    </inertial>
+  </link>
+  <link name="base_link">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="1.57079 -4.002830268e-11 -6.32679e-06"/>
+      <geometry>
+        <mesh filename="../meshes/Plate_v01_2.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.57079 -4.002830268e-11 -6.32679e-06"/>
+      <geometry>
+        <mesh filename="../meshes/Plate_v01_2.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-0.0005252863409 1.281356871e-08 0.0015" rpy="0 0 0"/>
+      <mass value="0.145688"/>
+      <inertia ixx="0.000419386" ixy="3.80997e-09" ixz="-2.41049e-14" iyy="0.00102158" iyz="2.65198e-09" izz="0.00144075"/>
+    </inertial>
+  </link>
+  <link name="Plate_v01_3">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Plate_v01_3.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Plate_v01_3.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-0.002105412747 0.0015 1.004251528e-17" rpy="0 0 0"/>
+      <mass value="0.123248"/>
+      <inertia ixx="0.000247035" ixy="4.53933e-22" ixz="1.52608e-20" iyy="0.000960604" iyz="-1.15538e-21" izz="0.000713753"/>
+    </inertial>
+  </link>
+  <link name="RP_Lidar_C1_1">
+    <!-- sw2robot appearance="color" density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/RP_Lidar_C1_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/RP_Lidar_C1_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-3.977498495e-10 0.01834616089 9.543860877e-05" rpy="0 0 0"/>
+      <mass value="0.100512"/>
+      <inertia ixx="3.39518e-05" ixy="-1.62111e-12" ixz="-2.92284e-13" iyy="4.19359e-05" iyz="-1.18156e-07" izz="3.44778e-05"/>
+    </inertial>
+  </link>
+  <link name="Right_Sidepanel_Module_1">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Right_Sidepanel_Module_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Right_Sidepanel_Module_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="2.369101886e-05 -0.03040216741 0.09533743625" rpy="0 0 0"/>
+      <mass value="0.157046"/>
+      <inertia ixx="6.12322e-05" ixy="-5.32825e-08" ixz="-5.34938e-09" iyy="0.000587402" iyz="2.20794e-07" izz="0.000641589"/>
+    </inertial>
+  </link>
+  <link name="Right_Sonar_Module_1">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Right_Sonar_Module_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Right_Sonar_Module_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-0.133164619 -0.03374258347 0.07515322025" rpy="0 0 0"/>
+      <mass value="0.0397405"/>
+      <inertia ixx="2.15917e-05" ixy="1.46565e-07" ixz="3.16992e-06" iyy="1.00774e-05" iyz="1.88909e-07" izz="1.7561e-05"/>
+    </inertial>
+  </link>
+  <link name="motor_module_v02_1">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/motor_module_v02_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/motor_module_v02_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="7.323745891e-08 -0.0002241582057 0.03122052108" rpy="0 0 0"/>
+      <mass value="0.044152"/>
+      <inertia ixx="2.36002e-05" ixy="2.12774e-11" ixz="3.49272e-11" iyy="2.87399e-05" iyz="-1.09758e-06" izz="2.14808e-05"/>
+    </inertial>
+  </link>
+  <link name="motor_module_v02_2">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/motor_module_v02_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/motor_module_v02_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="7.323745891e-08 -0.0002241582057 0.03122052108" rpy="0 0 0"/>
+      <mass value="0.044152"/>
+      <inertia ixx="2.36002e-05" ixy="2.12774e-11" ixz="3.49272e-11" iyy="2.87399e-05" iyz="-1.09758e-06" izz="2.14808e-05"/>
+    </inertial>
+  </link>
+  <link name="motor_module_v02_5">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/motor_module_v02_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/motor_module_v02_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="7.323745891e-08 -0.0002241582057 0.03122052108" rpy="0 0 0"/>
+      <mass value="0.044152"/>
+      <inertia ixx="2.36002e-05" ixy="2.12774e-11" ixz="3.49272e-11" iyy="2.87399e-05" iyz="-1.09758e-06" izz="2.14808e-05"/>
+    </inertial>
+  </link>
+  <link name="motor_module_v02_6">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/motor_module_v02_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/motor_module_v02_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="7.323745891e-08 -0.0002241582057 0.03122052108" rpy="0 0 0"/>
+      <mass value="0.044152"/>
+      <inertia ixx="2.36002e-05" ixy="2.12774e-11" ixz="3.49272e-11" iyy="2.87399e-05" iyz="-1.09758e-06" izz="2.14808e-05"/>
+    </inertial>
+  </link>
+  <link name="arm_assembly_1__Arm_servo_mount_1">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__Arm_servo_mount_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__Arm_servo_mount_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="7.626077115e-19 0.006977501776 0.004201277149" rpy="0 0 0"/>
+      <mass value="0.0127449"/>
+      <inertia ixx="4.56263e-06" ixy="-9.3382e-23" ixz="3.49577e-22" iyy="7.40694e-06" iyz="-2.6479e-07" izz="3.79074e-06"/>
+    </inertial>
+  </link>
+  <link name="arm_assembly_1__Hiwonder_HX_12H_1">
+    <!-- sw2robot appearance="color" density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__Hiwonder_HX_12H_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__Hiwonder_HX_12H_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-2.300278945e-11 0.01150450804 -2.51808903e-05" rpy="0 0 0"/>
+      <mass value="0.0232406"/>
+      <inertia ixx="3.62073e-06" ixy="-5.18743e-15" ixz="1.98039e-15" iyy="3.65209e-06" iyz="-4.61318e-09" izz="2.53827e-06"/>
+    </inertial>
+  </link>
+  <link name="arm_assembly_1__Hiwonder_HX_12H_2">
+    <!-- sw2robot appearance="color" density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__Hiwonder_HX_12H_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__Hiwonder_HX_12H_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-2.300278945e-11 0.01150450804 -2.51808903e-05" rpy="0 0 0"/>
+      <mass value="0.0232406"/>
+      <inertia ixx="3.62073e-06" ixy="-5.18743e-15" ixz="1.98039e-15" iyy="3.65209e-06" iyz="-4.61318e-09" izz="2.53827e-06"/>
+    </inertial>
+  </link>
+  <link name="arm_assembly_1__Large_bottom_plate_1">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__Large_bottom_plate_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__Large_bottom_plate_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="6.348178032e-19 -0.00075 -2.734599767e-18" rpy="0 0 0"/>
+      <mass value="0.00529352"/>
+      <inertia ixx="5.12571e-06" ixy="1.34422e-39" ixz="-1.44595e-22" iyy="1.02494e-05" iyz="3.02923e-26" izz="5.12571e-06"/>
+    </inertial>
+  </link>
+  <link name="arm_assembly_1__Large_top_plate_1">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__Large_top_plate_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__Large_top_plate_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="6.348178032e-19 -0.00075 -2.739482981e-18" rpy="0 0 0"/>
+      <mass value="0.00529352"/>
+      <inertia ixx="5.12571e-06" ixy="1.34422e-39" ixz="-1.44595e-22" iyy="1.02494e-05" iyz="3.02923e-26" izz="5.12571e-06"/>
+    </inertial>
+  </link>
+  <link name="arm_assembly_1__Ring_bearing_1">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="-3.141592654 -0.3476761283 3.141592654"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__Ring_bearing_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="-3.141592654 -0.3476761283 3.141592654"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__Ring_bearing_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-6.310995573e-19 0.005 -3.431105268e-18" rpy="0 0 0"/>
+      <mass value="0.0178729"/>
+      <inertia ixx="1.09701e-05" ixy="-8.23123e-22" ixz="3.81995e-21" iyy="2.16528e-05" iyz="-5.88134e-21" izz="1.09701e-05"/>
+    </inertial>
+  </link>
+  <link name="arm_assembly_1__Servo_horn_driven_1">
+    <!-- sw2robot appearance="color" density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__Servo_horn_driven_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__Servo_horn_driven_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-1.475855386e-18 0.002290248909 -3.290205181e-18" rpy="0 0 0"/>
+      <mass value="0.000937045"/>
+      <inertia ixx="2.55569e-08" ixy="1.43165e-24" ixz="8.00221e-24" iyy="4.78952e-08" iyz="3.80636e-24" izz="2.55569e-08"/>
+    </inertial>
+  </link>
+  <link name="arm_assembly_1__Servo_horn_driven_2">
+    <!-- sw2robot appearance="color" density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__Servo_horn_driven_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__Servo_horn_driven_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-1.475855386e-18 0.002290248909 -3.290205181e-18" rpy="0 0 0"/>
+      <mass value="0.000937045"/>
+      <inertia ixx="2.55569e-08" ixy="1.43165e-24" ixz="8.00221e-24" iyy="4.78952e-08" iyz="3.80636e-24" izz="2.55569e-08"/>
+    </inertial>
+  </link>
+  <link name="arm_assembly_1__Small_bottom_plate_1">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__Small_bottom_plate_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__Small_bottom_plate_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-5.081888613e-19 -0.00075 -0.0003661685073" rpy="0 0 0"/>
+      <mass value="0.00457156"/>
+      <inertia ixx="1.18461e-06" ixy="9.34736e-28" ixz="-6.4212e-23" iyy="2.40299e-06" iyz="-2.52603e-25" izz="1.22009e-06"/>
+    </inertial>
+  </link>
+  <link name="arm_assembly_1__Small_top_plate_1">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__Small_top_plate_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__Small_top_plate_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.0004348312508 -0.00075 1.624598679e-18" rpy="0 0 0"/>
+      <mass value="0.00466995"/>
+      <inertia ixx="1.21282e-06" ixy="-6.10932e-26" ixz="-3.70287e-24" iyy="2.38828e-06" iyz="-1.03145e-26" izz="1.1772e-06"/>
+    </inertial>
+  </link>
+  <link name="arm_assembly_1__linkages_1">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__linkages_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__linkages_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-8.576474857e-05 0.007661549199 -0.02617718892" rpy="0 0 0"/>
+      <mass value="0.0135345"/>
+      <inertia ixx="2.25614e-06" ixy="3.78577e-09" ixz="-1.2684e-08" iyy="5.84259e-06" iyz="3.2589e-07" izz="5.61916e-06"/>
+    </inertial>
+  </link>
+  <link name="arm_assembly_1__linkages_3">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="-0.014 -0.014 0.02665" rpy="-1.412737676 1.570796327 -2.983534002"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__linkages_3.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.014 -0.014 0.02665" rpy="-1.412737676 1.570796327 -2.983534002"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__linkages_3.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="1.899895623e-10 0.06469609876 0.02666982927" rpy="0 0 0"/>
+      <mass value="0.0678514"/>
+      <inertia ixx="0.000107304" ixy="4.81429e-13" ixz="8.64212e-12" iyy="2.47502e-05" iyz="8.53887e-08" izz="9.17887e-05"/>
+    </inertial>
+  </link>
+  <link name="arm_assembly_1__linkages_4">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="-0.014 -0.014 0.02665" rpy="-1.412737676 1.570796327 -2.983534002"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__linkages_4.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.014 -0.014 0.02665" rpy="-1.412737676 1.570796327 -2.983534002"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__linkages_4.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-5.328364989e-10 0.05818884923 0.02664999916" rpy="0 0 0"/>
+      <mass value="0.0660069"/>
+      <inertia ixx="9.61974e-05" ixy="-1.35043e-12" ixz="3.22575e-12" iyy="1.83462e-05" iyz="-2.25885e-12" izz="8.68844e-05"/>
+    </inertial>
+  </link>
+  <link name="arm_assembly_1__linkages_5">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="-0.009050252532 -0.009050252532 -0.0191" rpy="-1.412737676 1.570796327 -2.983534002"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__linkages_5.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.009050252532 -0.009050252532 -0.0191" rpy="-1.412737676 1.570796327 -2.983534002"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__linkages_5.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.004817818419 0.01830694879 -0.01910000024" rpy="0 0 0"/>
+      <mass value="0.0156037"/>
+      <inertia ixx="6.93948e-06" ixy="-1.87804e-08" ixz="2.82769e-14" iyy="6.21974e-06" iyz="-2.39762e-14" izz="3.13854e-06"/>
+    </inertial>
+  </link>
+  <link name="arm_assembly_1__standoff_M3_B_1">
+    <!-- sw2robot material="Cast Stainless Steel" appearance="metal/steel/polished steel" density="7700" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__standoff_M3_B_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__standoff_M3_B_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="5.518155013e-19 0.01890450471 -1.426033736e-18" rpy="0 0 0"/>
+      <mass value="0.00686449"/>
+      <inertia ixx="1.05023e-06" ixy="-1.63048e-23" ixz="-6.88818e-24" iyy="3.29465e-08" iyz="-1.68638e-23" izz="1.05023e-06"/>
+    </inertial>
+  </link>
+  <link name="arm_assembly_1__standoff_M3_B_2">
+    <!-- sw2robot material="Cast Stainless Steel" appearance="metal/steel/polished steel" density="7700" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__standoff_M3_B_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__standoff_M3_B_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="5.518155013e-19 0.01890450471 -1.426033736e-18" rpy="0 0 0"/>
+      <mass value="0.00686449"/>
+      <inertia ixx="1.05023e-06" ixy="-1.63048e-23" ixz="-6.88818e-24" iyy="3.29465e-08" iyz="-1.68638e-23" izz="1.05023e-06"/>
+    </inertial>
+  </link>
+  <link name="arm_assembly_1__standoff_M3_B_3">
+    <!-- sw2robot material="Cast Stainless Steel" appearance="metal/steel/polished steel" density="7700" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__standoff_M3_B_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__standoff_M3_B_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="5.518155013e-19 0.01890450471 -1.426033736e-18" rpy="0 0 0"/>
+      <mass value="0.00686449"/>
+      <inertia ixx="1.05023e-06" ixy="-1.63048e-23" ixz="-6.88818e-24" iyy="3.29465e-08" iyz="-1.68638e-23" izz="1.05023e-06"/>
+    </inertial>
+  </link>
+  <link name="underactuated_girpper_assembly_1__front_spacer_1">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/underactuated_girpper_assembly__front_spacer_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/underactuated_girpper_assembly__front_spacer_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-8.557450496e-20 -0.002481328973 5.553549429e-20" rpy="0 0 0"/>
+      <mass value="0.000193324"/>
+      <inertia ixx="1.37158e-09" ixy="4.61712e-27" ixz="-4.30823e-26" iyy="1.85917e-09" iyz="4.31563e-26" izz="1.37158e-09"/>
+    </inertial>
+  </link>
+  <link name="underactuated_girpper_assembly_1__front_spacer_2">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/underactuated_girpper_assembly__front_spacer_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/underactuated_girpper_assembly__front_spacer_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-8.557450496e-20 -0.002481328973 5.553549429e-20" rpy="0 0 0"/>
+      <mass value="0.000193324"/>
+      <inertia ixx="1.37158e-09" ixy="4.61712e-27" ixz="-4.30823e-26" iyy="1.85917e-09" iyz="4.31563e-26" izz="1.37158e-09"/>
+    </inertial>
+  </link>
+  <link name="underactuated_girpper_assembly_1__geared_actuated_link_1">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/underactuated_girpper_assembly__geared_actuated_link_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/underactuated_girpper_assembly__geared_actuated_link_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-5.451777552e-05 0.004018797515 -0.009876377941" rpy="0 0 0"/>
+      <mass value="0.00563513"/>
+      <inertia ixx="1.4622e-06" ixy="4.5567e-10" ixz="-3.24977e-10" iyy="1.55721e-06" iyz="7.76987e-08" izz="1.75997e-07"/>
+    </inertial>
+  </link>
+  <link name="underactuated_girpper_assembly_1__geared_actuator_link_1">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/underactuated_girpper_assembly__geared_actuator_link_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/underactuated_girpper_assembly__geared_actuator_link_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="1.118138667e-09 0.005908375829 -0.007720523198" rpy="0 0 0"/>
+      <mass value="0.00735126"/>
+      <inertia ixx="1.72708e-06" ixy="-1.20674e-13" ixz="-2.23011e-14" iyy="1.77787e-06" iyz="1.8022e-07" izz="3.16951e-07"/>
+    </inertial>
+  </link>
+  <link name="underactuated_girpper_assembly_1__left_right_actuating_link_1">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/underactuated_girpper_assembly__left_right_actuating_link_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/underactuated_girpper_assembly__left_right_actuating_link_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="4.263287666e-05 0.004635064031 -0.0275440068" rpy="0 0 0"/>
+      <mass value="0.00529239"/>
+      <inertia ixx="1.39316e-06" ixy="6.46414e-10" ixz="-1.85184e-09" iyy="1.39379e-06" iyz="-6.67246e-10" izz="8.68214e-08"/>
+    </inertial>
+  </link>
+  <link name="underactuated_girpper_assembly_1__left_right_actuating_link_2">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/underactuated_girpper_assembly__left_right_actuating_link_2.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/underactuated_girpper_assembly__left_right_actuating_link_2.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-4.263287666e-05 0.004635064031 -0.0275440068" rpy="0 0 0"/>
+      <mass value="0.00529239"/>
+      <inertia ixx="1.39316e-06" ixy="-6.46414e-10" ixz="1.85184e-09" iyy="1.39379e-06" iyz="-6.67246e-10" izz="8.68214e-08"/>
+    </inertial>
+  </link>
+  <link name="underactuated_girpper_assembly_1__left_right_tip_1">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/underactuated_girpper_assembly__left_right_tip_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/underactuated_girpper_assembly__left_right_tip_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.005358274538 0.004583654818 -0.01467395723" rpy="0 0 0"/>
+      <mass value="0.00529539"/>
+      <inertia ixx="6.52453e-07" ixy="-4.94279e-09" ixz="1.23224e-07" iyy="7.62913e-07" iyz="-3.33746e-08" izz="1.96323e-07"/>
+    </inertial>
+  </link>
+  <link name="underactuated_girpper_assembly_1__left_right_tip_2">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/underactuated_girpper_assembly__left_right_tip_2.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/underactuated_girpper_assembly__left_right_tip_2.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.005358274538 0.005416345182 -0.01467395723" rpy="0 0 0"/>
+      <mass value="0.00529539"/>
+      <inertia ixx="6.52453e-07" ixy="4.94279e-09" ixz="1.23224e-07" iyy="7.62913e-07" iyz="3.33746e-08" izz="1.96323e-07"/>
+    </inertial>
+  </link>
+  <link name="underactuated_girpper_assembly_1__link_1">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/underactuated_girpper_assembly__link_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/underactuated_girpper_assembly__link_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="6.172825034e-09 0.003295265617 -0.0156130535" rpy="0 0 0"/>
+      <mass value="0.00256436"/>
+      <inertia ixx="4.74402e-07" ixy="1.25021e-13" ixz="2.57387e-13" iyy="4.81752e-07" iyz="2.99988e-08" izz="3.39162e-08"/>
+    </inertial>
+  </link>
+  <link name="underactuated_girpper_assembly_1__link_2">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/underactuated_girpper_assembly__link_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/underactuated_girpper_assembly__link_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="6.172825034e-09 0.003295265617 -0.0156130535" rpy="0 0 0"/>
+      <mass value="0.00256436"/>
+      <inertia ixx="4.74402e-07" ixy="1.25021e-13" ixz="2.57387e-13" iyy="4.81752e-07" iyz="2.99988e-08" izz="3.39162e-08"/>
+    </inertial>
+  </link>
+  <link name="underactuated_girpper_assembly_1__top_bottom_plate_1">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/underactuated_girpper_assembly__top_bottom_plate_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/underactuated_girpper_assembly__top_bottom_plate_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.01200000032 0.002015940349 0.001694574057" rpy="0 0 0"/>
+      <mass value="0.0101477"/>
+      <inertia ixx="1.28059e-06" ixy="-1.42722e-14" ixz="4.56726e-15" iyy="3.39549e-06" iyz="-6.72047e-08" izz="2.21632e-06"/>
+    </inertial>
+  </link>
+  <link name="underactuated_girpper_assembly_1__top_bottom_plate_2">
+    <!-- sw2robot density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/underactuated_girpper_assembly__top_bottom_plate_2.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/underactuated_girpper_assembly__top_bottom_plate_2.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.00938578337 0.002089222894 0.002332478867" rpy="0 0 0"/>
+      <mass value="0.00565516"/>
+      <inertia ixx="9.98814e-07" ixy="-4.10019e-09" ixz="3.44837e-08" iyy="2.66986e-06" iyz="-4.83476e-08" izz="1.73193e-06"/>
+    </inertial>
+  </link>
+  <link name="arm_assembly_1__Hiwonder_LX_225_Assembly_1__Hiwonder_LX_225_servo_1">
+    <!-- sw2robot appearance="color" density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Hiwonder_LX_225_Assembly__Hiwonder_LX_225_servo_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Hiwonder_LX_225_Assembly__Hiwonder_LX_225_servo_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-0.01011860317 0.02024454813 5.819880909e-18" rpy="0 0 0"/>
+      <mass value="0.0328702"/>
+      <inertia ixx="5.70492e-06" ixy="-3.76902e-09" ixz="-3.8197e-13" iyy="5.47637e-06" iyz="9.70697e-22" izz="9.00788e-06"/>
+    </inertial>
+  </link>
+  <link name="arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_driven_1">
+    <!-- sw2robot appearance="color" density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__Servo_horn_driven_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__Servo_horn_driven_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-1.475855386e-18 0.002290248909 -3.290205181e-18" rpy="0 0 0"/>
+      <mass value="0.000937045"/>
+      <inertia ixx="2.55569e-08" ixy="1.43165e-24" ixz="8.00221e-24" iyy="4.78952e-08" iyz="3.80636e-24" izz="2.55569e-08"/>
+    </inertial>
+  </link>
+  <link name="arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_non_driven_1">
+    <!-- sw2robot appearance="color" density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Hiwonder_LX_225_Assembly__Servo_horn_non_driven_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Hiwonder_LX_225_Assembly__Servo_horn_non_driven_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-1.718987767e-19 0.00248435388 -9.891613765e-19" rpy="0 0 0"/>
+      <mass value="0.000666435"/>
+      <inertia ixx="2.10955e-08" ixy="4.7914e-26" ixz="5.14611e-25" iyy="3.99976e-08" iyz="4.88205e-25" izz="2.10955e-08"/>
+    </inertial>
+  </link>
+  <link name="arm_assembly_1__Hiwonder_LX_225_Assembly_2__Hiwonder_LX_225_servo_1">
+    <!-- sw2robot appearance="color" density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Hiwonder_LX_225_Assembly__Hiwonder_LX_225_servo_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Hiwonder_LX_225_Assembly__Hiwonder_LX_225_servo_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-0.01011860317 0.02024454813 5.819880909e-18" rpy="0 0 0"/>
+      <mass value="0.0328702"/>
+      <inertia ixx="5.70492e-06" ixy="-3.76902e-09" ixz="-3.8197e-13" iyy="5.47637e-06" iyz="9.70697e-22" izz="9.00788e-06"/>
+    </inertial>
+  </link>
+  <link name="arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_driven_1">
+    <!-- sw2robot appearance="color" density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__Servo_horn_driven_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/arm_assembly__Servo_horn_driven_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-1.475855386e-18 0.002290248909 -3.290205181e-18" rpy="0 0 0"/>
+      <mass value="0.000937045"/>
+      <inertia ixx="2.55569e-08" ixy="1.43165e-24" ixz="8.00221e-24" iyy="4.78952e-08" iyz="3.80636e-24" izz="2.55569e-08"/>
+    </inertial>
+  </link>
+  <link name="arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_non_driven_1">
+    <!-- sw2robot appearance="color" density="1000" inertia="solidworks" -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Hiwonder_LX_225_Assembly__Servo_horn_non_driven_1.3dxml"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/Hiwonder_LX_225_Assembly__Servo_horn_non_driven_1.3dxml"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-1.718987767e-19 0.00248435388 -9.891613765e-19" rpy="0 0 0"/>
+      <mass value="0.000666435"/>
+      <inertia ixx="2.10955e-08" ixy="4.7914e-26" ixz="5.14611e-25" iyy="3.99976e-08" iyz="4.88205e-25" izz="2.10955e-08"/>
+    </inertial>
+  </link>
+  <joint name="Plate_v01_1__motor_module_v02_1" type="fixed">
+    <origin xyz="-0.08025843545 0.00145 -0.0975" rpy="0 0 0"/>
+    <parent link="Plate_v01_1"/>
+    <child link="motor_module_v02_1"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT -->
+    <!-- sw2robot-note: geo: fully constrained -->
+  </joint>
+  <joint name="Right_Sidepanel_Module_1__Plate_v01_1" type="fixed">
+    <origin xyz="-4.578055118e-06 -0.0715 0" rpy="3.141592654 0 3.141592654"/>
+    <parent link="Right_Sidepanel_Module_1"/>
+    <child link="Plate_v01_1"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: COINCIDENT, COINCIDENT, CONCENTRIC, COINCIDENT, COINCIDENT, CONCENTRIC -->
+    <!-- sw2robot-note: geo: fully constrained -->
+  </joint>
+  <joint name="Plate_v01_1__Camera_Module_1" type="fixed">
+    <origin xyz="0 0.0715 0" rpy="0 0 0"/>
+    <parent link="Plate_v01_1"/>
+    <child link="Camera_Module_1"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC -->
+    <!-- sw2robot-note: geo: free rotation about mate axis (1 DOF); config sets fixed (inference said revolute) -->
+  </joint>
+  <joint name="Plate_v01_1__Left_Sidepanel_Module_1" type="fixed">
+    <origin xyz="0 0.0715 0" rpy="3.141592654 0 3.141592654"/>
+    <parent link="Plate_v01_1"/>
+    <child link="Left_Sidepanel_Module_1"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT -->
+    <!-- sw2robot-note: geo: fully constrained -->
+  </joint>
+  <joint name="Plate_v01_1__Left_Sonar_Module_1" type="fixed">
+    <origin xyz="0 0.0715 0" rpy="0 0 0"/>
+    <parent link="Plate_v01_1"/>
+    <child link="Left_Sonar_Module_1"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT -->
+    <!-- sw2robot-note: geo: fully constrained -->
+  </joint>
+  <joint name="Plate_v01_1__Right_Sonar_Module_1" type="fixed">
+    <origin xyz="0 0.0715 0" rpy="0 0 0"/>
+    <parent link="Plate_v01_1"/>
+    <child link="Right_Sonar_Module_1"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: COINCIDENT, COINCIDENT -->
+    <!-- sw2robot-note: geo: free rotation about mate axis (2 DOF); config sets fixed (inference said revolute) -->
+  </joint>
+  <joint name="Plate_v01_2__Right_Sidepanel_Module_1" type="fixed">
+    <origin xyz="1.142603683e-06 -7.229038943e-12 0" rpy="1.570802654 4.002830268e-11 3.141586327"/>
+    <parent link="base_link"/>
+    <child link="Right_Sidepanel_Module_1"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC -->
+    <!-- sw2robot-note: geo: fully constrained -->
+  </joint>
+  <joint name="Left_Sonar_Module_1__Battery_Module_1" type="fixed">
+    <origin xyz="4.267455064e-05 0 -0.0001" rpy="0 0 0"/>
+    <parent link="Left_Sonar_Module_1"/>
+    <child link="Battery_Module_1"/>
+    <axis xyz="0 0 1"/>
+    <!-- mates: CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT -->
+    <!-- sw2robot-note: geo: fully constrained -->
+  </joint>
+  <joint name="Plate_v01_2__Lidar_Mount_1" type="fixed">
+    <origin xyz="-2.888601206e-06 -1.454980069e-07 -0.023" rpy="1.570796327 6.326794897e-06 1.57079"/>
+    <parent link="base_link"/>
+    <child link="Lidar_Mount_1"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC -->
+    <!-- sw2robot-note: geo: fully constrained -->
+  </joint>
+  <joint name="Plate_v01_2__Cable_funnel_1" type="fixed">
+    <origin xyz="0.06717556921 0.06717486472 0.022999575" rpy="-3.14158818 -4.47369127e-06 -2.356200817"/>
+    <parent link="base_link"/>
+    <child link="Cable_funnel_1"/>
+    <axis xyz="0 0 -1"/>
+    <!-- mates: COINCIDENT, COINCIDENT, CONCENTRIC, COINCIDENT, COINCIDENT, CONCENTRIC -->
+    <!-- sw2robot-note: geo: fully constrained -->
+  </joint>
+  <joint name="Lidar_Mount_1__RP_Lidar_C1_1" type="fixed">
+    <origin xyz="0 0.003 0" rpy="3.141545949 1.570796327 3.141545949"/>
+    <parent link="Lidar_Mount_1"/>
+    <child link="RP_Lidar_C1_1"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT -->
+    <!-- sw2robot-note: geo: fully constrained -->
+  </joint>
+  <joint name="rear_left_wheel_joint" type="revolute">
+    <origin xyz="0 0.007 0.060001" rpy="0 0 0"/>
+    <parent link="motor_module_v02_1"/>
+    <child link="Mecanum_Wheel_dia_100_left_5"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="-3.14159" upper="3.14159" effort="10" velocity="3.14"/>
+    <!-- mates: CONCENTRIC, DISTANCE, CONCENTRIC, DISTANCE -->
+    <!-- sw2robot-note: geo: free rotation about mate axis (1 DOF) -->
+  </joint>
+  <joint name="Plate_v01_2__c_4x20mm_f_f_standoff_1" type="fixed">
+    <origin xyz="-0.07212443536 0.07212536698 0.002999543678" rpy="1.570793163 5.479145091e-06 1.047191224"/>
+    <parent link="base_link"/>
+    <child link="c_4x20mm_f_f_standoff_1"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: CONCENTRIC, CONCENTRIC -->
+    <!-- sw2robot-note: geo: free rotation about mate axis (2 DOF); config sets fixed (inference said revolute) -->
+  </joint>
+  <joint name="Plate_v01_2__c_4x20mm_f_f_standoff_2" type="fixed">
+    <origin xyz="-0.072125348 -0.07212441638 0.003000456316" rpy="1.570793163 -5.479185119e-06 -1.047203878"/>
+    <parent link="base_link"/>
+    <child link="c_4x20mm_f_f_standoff_2"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: CONCENTRIC, CONCENTRIC -->
+    <!-- sw2robot-note: geo: free rotation about mate axis (2 DOF); config sets fixed (inference said revolute) -->
+  </joint>
+  <joint name="c_4x20mm_f_f_standoff_2__Plate_v01_3" type="fixed">
+    <origin xyz="-0.0263995426 0.02 -0.09852443428" rpy="0 1.047197551 0"/>
+    <parent link="c_4x20mm_f_f_standoff_2"/>
+    <child link="Plate_v01_3"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC -->
+    <!-- sw2robot-note: geo: free rotation about mate axis (1 DOF); config sets fixed (inference said revolute) -->
+  </joint>
+  <joint name="Plate_v01_3__Cable_funnel_2" type="fixed">
+    <origin xyz="0.06717514421 -0.02 0.06717514421" rpy="1.570796327 0.7853981634 -3.141592654"/>
+    <parent link="Plate_v01_3"/>
+    <child link="Cable_funnel_2"/>
+    <axis xyz="0 0 -1"/>
+    <!-- mates: CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT -->
+    <!-- sw2robot-note: geo: fully constrained -->
+  </joint>
+  <joint name="Plate_v01_3__arm_assembly_1__standoff_M3_B_2" type="fixed">
+    <origin xyz="0.049 0.005 0" rpy="-3.141592654 1.543214974 -3.141592654"/>
+    <parent link="Plate_v01_3"/>
+    <child link="arm_assembly_1__standoff_M3_B_2"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: CONCENTRIC, CONCENTRIC -->
+    <!-- sw2robot-note: fastener welded fixed -->
+  </joint>
+  <joint name="Plate_v01_3__arm_assembly_1__standoff_M3_B_3" type="fixed">
+    <origin xyz="0.1105 0.005 0.03550704156" rpy="-3.141592654 1.543214974 -3.141592654"/>
+    <parent link="Plate_v01_3"/>
+    <child link="arm_assembly_1__standoff_M3_B_3"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: CONCENTRIC, CONCENTRIC -->
+    <!-- sw2robot-note: fastener welded fixed -->
+  </joint>
+  <joint name="arm_assembly_1__standoff_M3_B_2__arm_assembly_1__Large_bottom_plate_1" type="fixed">
+    <origin xyz="-0.001130692089 0.0415 0.040984406" rpy="0 -0.02758135268 0"/>
+    <parent link="arm_assembly_1__standoff_M3_B_2"/>
+    <child link="arm_assembly_1__Large_bottom_plate_1"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC -->
+    <!-- sw2robot-note: fastener welded fixed -->
+  </joint>
+  <joint name="arm_assembly_1__standoff_M3_B_2__arm_assembly_1__Arm_servo_mount_1" type="fixed">
+    <origin xyz="-0.0008954529784 -0.002 0.03245765031" rpy="0 -0.02758135268 0"/>
+    <parent link="arm_assembly_1__standoff_M3_B_2"/>
+    <child link="arm_assembly_1__Arm_servo_mount_1"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: CONCENTRIC, CONCENTRIC -->
+    <!-- sw2robot-note: fastener welded fixed -->
+  </joint>
+  <joint name="arm_assembly_1__Large_bottom_plate_1__arm_assembly_1__standoff_M3_B_1" type="fixed">
+    <origin xyz="0.03550704156 -0.0415 0.0205" rpy="0 0.02758135268 0"/>
+    <parent link="arm_assembly_1__Large_bottom_plate_1"/>
+    <child link="arm_assembly_1__standoff_M3_B_1"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC -->
+    <!-- sw2robot-note: fastener welded fixed -->
+  </joint>
+  <joint name="arm_assembly_1__Large_bottom_plate_1__arm_assembly_1__Large_top_plate_1" type="fixed">
+    <origin xyz="0 0.01 0" rpy="3.141592654 1.047197551 0"/>
+    <parent link="arm_assembly_1__Large_bottom_plate_1"/>
+    <child link="arm_assembly_1__Large_top_plate_1"/>
+    <axis xyz="0 -1 0"/>
+    <!-- mates: CONCENTRIC, CONCENTRIC -->
+    <!-- sw2robot-note: geo: free axis but r=1.6mm = fastener, not bearing -> fixed -->
+  </joint>
+  <joint name="arm_assembly_1__Arm_servo_mount_1__arm_assembly_1__Hiwonder_HX_12H_2" type="fixed">
+    <origin xyz="0.000125 0.01175 -0.000125" rpy="3.141592654 0 -3.141592654"/>
+    <parent link="arm_assembly_1__Arm_servo_mount_1"/>
+    <child link="arm_assembly_1__Hiwonder_HX_12H_2"/>
+    <axis xyz="0 -1 0"/>
+    <!-- mates: COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT -->
+    <!-- sw2robot-note: geo: fully constrained -->
+  </joint>
+  <joint name="shoulder_pan_joint" type="revolute">
+    <origin xyz="0 0 0" rpy="-3.125707466 -1.570796327 3.125707466"/>
+    <parent link="arm_assembly_1__Large_bottom_plate_1"/>
+    <child link="arm_assembly_1__Ring_bearing_1"/>
+    <axis xyz="0 -1 0"/>
+    <limit lower="-3.14159" upper="3.14159" effort="10" velocity="3.14"/>
+    <!-- mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC -->
+    <!-- sw2robot-note: geo: free rotation about mate axis (1 DOF) -->
+  </joint>
+  <joint name="arm_assembly_1__Ring_bearing_1__arm_assembly_1__Small_bottom_plate_1" type="fixed">
+    <origin xyz="0 -0.0015 0" rpy="3.095253781 1.570796327 -0.04633887282"/>
+    <parent link="arm_assembly_1__Ring_bearing_1"/>
+    <child link="arm_assembly_1__Small_bottom_plate_1"/>
+    <axis xyz="0 -1 0"/>
+    <!-- mates: CONCENTRIC, COINCIDENT, CONCENTRIC, COINCIDENT -->
+    <!-- sw2robot-note: geo: free rotation about mate axis (1 DOF); config sets fixed (inference said revolute) -->
+  </joint>
+  <joint name="arm_assembly_1__Small_bottom_plate_1__arm_assembly_1__Small_top_plate_1" type="fixed">
+    <origin xyz="0 -0.013 0" rpy="3.095253781 1.570796327 -0.04633887282"/>
+    <parent link="arm_assembly_1__Small_bottom_plate_1"/>
+    <child link="arm_assembly_1__Small_top_plate_1"/>
+    <axis xyz="0 -1 0"/>
+    <!-- mates: CONCENTRIC, CONCENTRIC, CONCENTRIC, CONCENTRIC -->
+    <!-- sw2robot-note: geo: only axial slide along a fastener axis -->
+  </joint>
+  <joint name="arm_assembly_1__Small_top_plate_1__arm_assembly_1__linkages_1" type="fixed">
+    <origin xyz="-0.00355 0.0355 0" rpy="1.721671192 1.570796327 -2.990717789"/>
+    <parent link="arm_assembly_1__Small_top_plate_1"/>
+    <child link="arm_assembly_1__linkages_1"/>
+    <axis xyz="0 0 -1"/>
+    <!-- mates: COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC -->
+    <!-- sw2robot-note: geo: fully constrained -->
+  </joint>
+  <joint name="arm_assembly_1__linkages_1__arm_assembly_1__Hiwonder_LX_225_Assembly_1__Hiwonder_LX_225_servo_1" type="fixed">
+    <origin xyz="0.0202 -0.0092 -0.01525" rpy="-3.141592654 0 -1.570796327"/>
+    <parent link="arm_assembly_1__linkages_1"/>
+    <child link="arm_assembly_1__Hiwonder_LX_225_Assembly_1__Hiwonder_LX_225_servo_1"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC -->
+    <!-- sw2robot-note: geo: fully constrained -->
+  </joint>
+  <joint name="arm_assembly_1__Hiwonder_LX_225_Assembly_1__Hiwonder_LX_225_servo_1__arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_driven_1" type="fixed">
+    <origin xyz="0 0.04295 0" rpy="-3.141592654 0.7853981634 3.141592654"/>
+    <parent link="arm_assembly_1__Hiwonder_LX_225_Assembly_1__Hiwonder_LX_225_servo_1"/>
+    <child link="arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_driven_1"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: CONCENTRIC, COINCIDENT, CONCENTRIC, COINCIDENT -->
+    <!-- sw2robot-note: geo: free axis but r=2.5mm = fastener, not bearing -> fixed -->
+  </joint>
+  <joint name="arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_driven_1__arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_non_driven_1" type="fixed">
+    <origin xyz="0 -0.0446 0" rpy="-3.141592654 0.7853981634 0"/>
+    <parent link="arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_driven_1"/>
+    <child link="arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_non_driven_1"/>
+    <axis xyz="0 -1 0"/>
+    <!-- mates: CONCENTRIC, CONCENTRIC -->
+    <!-- sw2robot-note: geo: free axis but r=1.1mm = fastener, not bearing -> fixed -->
+  </joint>
+  <joint name="shoulder_lift_joint" type="revolute">
+    <origin xyz="0 0.00425 0" rpy="-1.570796327 0 -3.141592654"/>
+    <parent link="arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_non_driven_1"/>
+    <child link="arm_assembly_1__linkages_3"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="-1.5708" upper="1.5708" effort="10" velocity="3.14"/>
+    <!-- mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC -->
+    <!-- sw2robot-note: geo: free rotation about mate axis (1 DOF) -->
+  </joint>
+  <joint name="arm_assembly_1__linkages_3__arm_assembly_1__Hiwonder_LX_225_Assembly_2__Hiwonder_LX_225_servo_1" type="fixed">
+    <origin xyz="0 0.14178 0.00625" rpy="1.570796327 0 1.570796327"/>
+    <parent link="arm_assembly_1__linkages_3"/>
+    <child link="arm_assembly_1__Hiwonder_LX_225_Assembly_2__Hiwonder_LX_225_servo_1"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC -->
+    <!-- sw2robot-note: geo: fully constrained -->
+  </joint>
+  <joint name="arm_assembly_1__Hiwonder_LX_225_Assembly_2__Hiwonder_LX_225_servo_1__arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_driven_1" type="fixed">
+    <origin xyz="0 0.04295 0" rpy="-3.141592654 0.7853981634 -3.141592654"/>
+    <parent link="arm_assembly_1__Hiwonder_LX_225_Assembly_2__Hiwonder_LX_225_servo_1"/>
+    <child link="arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_driven_1"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: CONCENTRIC, COINCIDENT, CONCENTRIC, COINCIDENT -->
+    <!-- sw2robot-note: geo: free axis but r=2.5mm = fastener, not bearing -> fixed -->
+  </joint>
+  <joint name="arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_driven_1__arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_non_driven_1" type="fixed">
+    <origin xyz="0 -0.0446 0" rpy="3.141592654 0.7853981634 0"/>
+    <parent link="arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_driven_1"/>
+    <child link="arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_non_driven_1"/>
+    <axis xyz="0 -1 0"/>
+    <!-- mates: CONCENTRIC, CONCENTRIC -->
+    <!-- sw2robot-note: geo: free axis but r=1.1mm = fastener, not bearing -> fixed -->
+  </joint>
+  <joint name="elbow_joint" type="revolute">
+    <origin xyz="0 0.00425 0" rpy="-2.975524698 -1.570796327 -1.736864283"/>
+    <parent link="arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_non_driven_1"/>
+    <child link="arm_assembly_1__linkages_4"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="-1.5708" upper="1.5708" effort="10" velocity="3.14"/>
+    <!-- mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC -->
+    <!-- sw2robot-note: geo: free rotation about mate axis (1 DOF) -->
+  </joint>
+  <joint name="arm_assembly_1__linkages_4__arm_assembly_1__Hiwonder_HX_12H_1" type="fixed">
+    <origin xyz="0 0.134675 0.0149" rpy="1.570796327 0 0"/>
+    <parent link="arm_assembly_1__linkages_4"/>
+    <child link="arm_assembly_1__Hiwonder_HX_12H_1"/>
+    <axis xyz="0 -1 0"/>
+    <!-- mates: COINCIDENT, PARALLEL, CONCENTRIC, COINCIDENT, PARALLEL, CONCENTRIC -->
+    <!-- sw2robot-note: geo: fully constrained -->
+  </joint>
+  <joint name="arm_assembly_1__Hiwonder_HX_12H_1__arm_assembly_1__Servo_horn_driven_2" type="fixed">
+    <origin xyz="0 0.02585 -0.008525" rpy="0.04555209926 -1.570796327 -0.04555209926"/>
+    <parent link="arm_assembly_1__Hiwonder_HX_12H_1"/>
+    <child link="arm_assembly_1__Servo_horn_driven_2"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: CONCENTRIC, DISTANCE, CONCENTRIC, DISTANCE -->
+    <!-- sw2robot-note: geo: free axis but r=1.5mm = fastener, not bearing -> fixed -->
+  </joint>
+  <joint name="arm_assembly_1__Hiwonder_HX_12H_1__arm_assembly_1__Servo_horn_driven_1" type="fixed">
+    <origin xyz="0 -0.00385 -0.008525" rpy="-3.141592654 -0.7853981634 0"/>
+    <parent link="arm_assembly_1__Hiwonder_HX_12H_1"/>
+    <child link="arm_assembly_1__Servo_horn_driven_1"/>
+    <axis xyz="0 -1 0"/>
+    <!-- mates: CONCENTRIC, CONCENTRIC -->
+    <!-- sw2robot-note: geo: free axis but r=2.5mm = fastener, not bearing -> fixed -->
+  </joint>
+  <joint name="wrist_joint" type="revolute">
+    <origin xyz="0.004949747468 0.00425 0.004949747468" rpy="-1.23017414 1.570796327 0.3406221864"/>
+    <parent link="arm_assembly_1__Servo_horn_driven_2"/>
+    <child link="arm_assembly_1__linkages_5"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="-1.5708" upper="1.5708" effort="10" velocity="3.14"/>
+    <!-- mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC -->
+    <!-- sw2robot-note: geo: free axis but r=2.0mm = fastener, not bearing -> fixed; config sets revolute (inference said fixed) -->
+  </joint>
+  <joint name="arm_assembly_1__linkages_5__Camera_Mount_1" type="fixed">
+    <origin xyz="-0.01168110967 0.02994974747 -0.0191" rpy="1.407283897 1.570796327 2.978080224"/>
+    <parent link="arm_assembly_1__linkages_5"/>
+    <child link="Camera_Mount_1"/>
+    <axis xyz="0 0 -1"/>
+    <!-- mates: COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC -->
+    <!-- sw2robot-note: geo: fully constrained -->
+  </joint>
+  <joint name="arm_assembly_1__linkages_5__underactuated_girpper_assembly_1__top_bottom_plate_1" type="fixed">
+    <origin xyz="0.0183190348 0.05344974747 -0.03110023174" rpy="-1.570796328 -1.570761934 -3.141592652"/>
+    <parent link="arm_assembly_1__linkages_5"/>
+    <child link="underactuated_girpper_assembly_1__top_bottom_plate_1"/>
+    <axis xyz="0 0 1"/>
+    <!-- mates: CONCENTRIC, CONCENTRIC -->
+    <!-- sw2robot-note: geo: free rotation about mate axis (2 DOF); config sets fixed (inference said revolute) -->
+  </joint>
+  <joint name="Camera_Mount_1__underactuated_girpper_assembly_1__top_bottom_plate_2" type="fixed">
+    <origin xyz="-0.01199890843 -0.004999319062 0.0235" rpy="-3.141592654 0 -3.439284459e-05"/>
+    <parent link="Camera_Mount_1"/>
+    <child link="underactuated_girpper_assembly_1__top_bottom_plate_2"/>
+    <axis xyz="0 0 1"/>
+    <!-- mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC -->
+    <!-- sw2robot-note: geo: free rotation about mate axis (1 DOF); config sets fixed (inference said revolute) -->
+  </joint>
+  <joint name="underactuated_girpper_assembly_1__top_bottom_plate_1__underactuated_girpper_assembly_1__geared_actuator_link_1" type="fixed">
+    <origin xyz="0.024 0.005 0" rpy="3.141592654 -1.39943571 -3.141592654"/>
+    <parent link="underactuated_girpper_assembly_1__top_bottom_plate_1"/>
+    <child link="underactuated_girpper_assembly_1__geared_actuator_link_1"/>
+    <axis xyz="0 -1 0"/>
+    <!-- mates: CONCENTRIC, COINCIDENT, CONCENTRIC, COINCIDENT -->
+    <!-- sw2robot-note: geo: free axis but r=1.6mm = fastener, not bearing -> fixed -->
+  </joint>
+  <joint name="underactuated_girpper_assembly_1__top_bottom_plate_1__underactuated_girpper_assembly_1__link_1" type="fixed">
+    <origin xyz="-0.0085 0.015 -0.017" rpy="0 -0.5758885618 -3.141592654"/>
+    <parent link="underactuated_girpper_assembly_1__top_bottom_plate_1"/>
+    <child link="underactuated_girpper_assembly_1__link_1"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: CONCENTRIC, COINCIDENT, CONCENTRIC, COINCIDENT -->
+    <!-- sw2robot-note: geo: free axis but r=1.7mm = fastener, not bearing -> fixed -->
+  </joint>
+  <joint name="underactuated_girpper_assembly_1__top_bottom_plate_1__underactuated_girpper_assembly_1__link_2" type="fixed">
+    <origin xyz="0.0325 0.015 -0.017" rpy="0 0.592781307 -3.141592654"/>
+    <parent link="underactuated_girpper_assembly_1__top_bottom_plate_1"/>
+    <child link="underactuated_girpper_assembly_1__link_2"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC -->
+    <!-- sw2robot-note: geo: free axis but r=1.6mm = fastener, not bearing -> fixed -->
+  </joint>
+  <joint name="underactuated_girpper_assembly_1__top_bottom_plate_2__underactuated_girpper_assembly_1__front_spacer_1" type="fixed">
+    <origin xyz="0.0325 0.005 -0.017" rpy="0 0 -3.141592654"/>
+    <parent link="underactuated_girpper_assembly_1__top_bottom_plate_2"/>
+    <child link="underactuated_girpper_assembly_1__front_spacer_1"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC -->
+    <!-- sw2robot-note: geo: free axis but r=1.8mm = fastener, not bearing -> fixed -->
+  </joint>
+  <joint name="underactuated_girpper_assembly_1__top_bottom_plate_2__underactuated_girpper_assembly_1__front_spacer_2" type="fixed">
+    <origin xyz="-0.0085 0.005 -0.017" rpy="0 -0.3317005633 -3.141592654"/>
+    <parent link="underactuated_girpper_assembly_1__top_bottom_plate_2"/>
+    <child link="underactuated_girpper_assembly_1__front_spacer_2"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC -->
+    <!-- sw2robot-note: geo: free axis but r=1.8mm = fastener, not bearing -> fixed -->
+  </joint>
+  <joint name="underactuated_girpper_assembly_1__geared_actuator_link_1__underactuated_girpper_assembly_1__left_right_actuating_link_2" type="fixed">
+    <origin xyz="0 0.01 -0.045" rpy="-3.141592654 -1.396263402 0"/>
+    <parent link="underactuated_girpper_assembly_1__geared_actuator_link_1"/>
+    <child link="underactuated_girpper_assembly_1__left_right_actuating_link_2"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT -->
+    <!-- sw2robot-note: geo: fully constrained -->
+  </joint>
+  <joint name="underactuated_girpper_assembly_1__link_1__underactuated_girpper_assembly_1__left_right_tip_2" type="fixed">
+    <origin xyz="0 0 -0.037" rpy="0 0.5607380901 0"/>
+    <parent link="underactuated_girpper_assembly_1__link_1"/>
+    <child link="underactuated_girpper_assembly_1__left_right_tip_2"/>
+    <axis xyz="0 -1 0"/>
+    <!-- mates: CONCENTRIC, CONCENTRIC -->
+    <!-- sw2robot-note: geo: free axis but r=1.6mm = fastener, not bearing -> fixed -->
+  </joint>
+  <joint name="underactuated_girpper_assembly_1__link_2__underactuated_girpper_assembly_1__left_right_tip_1" type="fixed">
+    <origin xyz="0 0.01 -0.037" rpy="0 0.5686954718 3.141592654"/>
+    <parent link="underactuated_girpper_assembly_1__link_2"/>
+    <child link="underactuated_girpper_assembly_1__left_right_tip_1"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: CONCENTRIC, CONCENTRIC -->
+    <!-- sw2robot-note: geo: free axis but r=1.6mm = fastener, not bearing -> fixed -->
+  </joint>
+  <joint name="underactuated_girpper_assembly_1__left_right_tip_2__underactuated_girpper_assembly_1__left_right_actuating_link_1" type="fixed">
+    <origin xyz="0.01660727895 0 0.05497651002" rpy="0 0.02922741461 0"/>
+    <parent link="underactuated_girpper_assembly_1__left_right_tip_2"/>
+    <child link="underactuated_girpper_assembly_1__left_right_actuating_link_1"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC -->
+    <!-- sw2robot-note: geo: free axis but r=1.6mm = fastener, not bearing -> fixed -->
+  </joint>
+  <joint name="underactuated_girpper_assembly_1__left_right_actuating_link_1__underactuated_girpper_assembly_1__geared_actuated_link_1" type="fixed">
+    <origin xyz="-0.04431634889 0.01 -0.007814167995" rpy="3.141592654 1.396263402 0"/>
+    <parent link="underactuated_girpper_assembly_1__left_right_actuating_link_1"/>
+    <child link="underactuated_girpper_assembly_1__geared_actuated_link_1"/>
+    <axis xyz="0 -1 0"/>
+    <!-- mates: COINCIDENT, CONCENTRIC, PARALLEL, COINCIDENT, CONCENTRIC, PARALLEL -->
+    <!-- sw2robot-note: geo: fully constrained -->
+  </joint>
+  <joint name="Plate_v01_1__motor_module_v02_2" type="fixed">
+    <origin xyz="0.08025843545 0.00145 -0.0975" rpy="0 0 0"/>
+    <parent link="Plate_v01_1"/>
+    <child link="motor_module_v02_2"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: PARALLEL, PARALLEL -->
+    <!-- sw2robot-note: geo: under-constrained (4 DOF) -> fixed; verify -->
+  </joint>
+  <joint name="front_left_wheel_joint" type="revolute">
+    <origin xyz="0 0.007 0.060001" rpy="0 0 0"/>
+    <parent link="motor_module_v02_2"/>
+    <child link="Mecanum_Wheel_dia_100_right_7"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="-3.14159" upper="3.14159" effort="10" velocity="3.14"/>
+    <!-- mates: CONCENTRIC, DISTANCE, CONCENTRIC, DISTANCE -->
+    <!-- sw2robot-note: geo: free rotation about mate axis (1 DOF) -->
+  </joint>
+  <joint name="Plate_v01_1__motor_module_v02_5" type="fixed">
+    <origin xyz="-0.08025843545 0.00145 0.0975" rpy="3.141592654 0 3.141592654"/>
+    <parent link="Plate_v01_1"/>
+    <child link="motor_module_v02_5"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: PARALLEL, PARALLEL -->
+    <!-- sw2robot-note: geo: under-constrained (4 DOF) -> fixed; verify -->
+  </joint>
+  <joint name="rear_right_wheel_joint" type="revolute">
+    <origin xyz="0 0.007 -0.055" rpy="3.141592654 0 3.141592654"/>
+    <parent link="motor_module_v02_5"/>
+    <child link="Mecanum_Wheel_dia_100_right_10"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="-3.14159" upper="3.14159" effort="10" velocity="3.14"/>
+    <!-- mates: CONCENTRIC, DISTANCE, CONCENTRIC, DISTANCE -->
+    <!-- sw2robot-note: geo: free rotation about mate axis (1 DOF) -->
+  </joint>
+  <joint name="Plate_v01_1__motor_module_v02_6" type="fixed">
+    <origin xyz="0.08025843545 0.00145 0.0975" rpy="3.141592654 0 3.141592654"/>
+    <parent link="Plate_v01_1"/>
+    <child link="motor_module_v02_6"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: PARALLEL, PARALLEL -->
+    <!-- sw2robot-note: geo: under-constrained (4 DOF) -> fixed; verify -->
+  </joint>
+  <joint name="front_right_wheel_joint" type="revolute">
+    <origin xyz="0 0.007 0" rpy="3.141592654 0 3.141592654"/>
+    <parent link="motor_module_v02_6"/>
+    <child link="Mecanum_Wheel_dia_100_left_6"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="-3.14159" upper="3.14159" effort="10" velocity="3.14"/>
+    <!-- mates: DISTANCE, CONCENTRIC, DISTANCE, CONCENTRIC -->
+    <!-- sw2robot-note: geo: free rotation about mate axis (1 DOF) -->
+  </joint>
+</robot>

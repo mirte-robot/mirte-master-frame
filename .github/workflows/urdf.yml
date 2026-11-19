@@ -1,0 +1,66 @@
+# Builds the URDF + xacro of the MIRTE Master from the committed sw2robot extract (sw2robot/) on every push.
+# SolidWorks cannot run here: the extract is made locally with tools/urdf/Sync-Sw2Robot.ps1 (see tools/urdf/README.md).
+# Fails when the SolidWorks files changed after the extract, or when the joint config does not match the model.
+# A pushed tag v* also publishes the result as a GitHub release.
+name: URDF
+
+on:
+  push:
+    branches: ['**']
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  urdf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check the sw2robot extract matches the SolidWorks model
+        run: python tools/urdf/build_urdf.py --check-only
+
+      - name: Install sw2robot (the version that made the extract)
+        run: |
+          v="$(python tools/urdf/build_urdf.py --print-sw2robot-version)"
+          echo "sw2robot $v"
+          python -m pip install --upgrade pip
+          python -m pip install "sw2robot==$v" "xacro==2.1.1"
+
+      - name: Build URDF and xacro
+        run: python tools/urdf/build_urdf.py --out dist
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: urdf
+          path: dist/
+          if-no-files-found: error
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: urdf
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: urdf
+          path: dist
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          zip_name="mirte-master-frame-urdf-${GITHUB_REF_NAME}.zip"
+          (cd dist && zip -qr "../${zip_name}" .)
+          gh release create "$GITHUB_REF_NAME" "$zip_name" --repo "$GITHUB_REPOSITORY" \
+              --title "$GITHUB_REF_NAME" --generate-notes \
+            || gh release upload "$GITHUB_REF_NAME" "$zip_name" --repo "$GITHUB_REPOSITORY" --clobber

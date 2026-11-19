@@ -1,0 +1,338 @@
+joint_names:
+  arm_assembly_1__Large_bottom_plate_1__arm_assembly_1__Ring_bearing_1: shoulder_pan_joint
+  arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_non_driven_1__arm_assembly_1__linkages_3: shoulder_lift_joint
+  arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_non_driven_1__arm_assembly_1__linkages_4: elbow_joint
+  arm_assembly_1__Servo_horn_driven_2__arm_assembly_1__linkages_5: wrist_joint
+  motor_module_v02_2__Mecanum_Wheel_dia_100_right_7: front_left_wheel_joint
+  motor_module_v02_1__Mecanum_Wheel_dia_100_left_5: rear_left_wheel_joint
+  motor_module_v02_5__Mecanum_Wheel_dia_100_right_10: rear_right_wheel_joint
+  motor_module_v02_6__Mecanum_Wheel_dia_100_left_6: front_right_wheel_joint
+root_xyz: [0, 0, 0]
+root_rpy: [-1.57079, 6.32679e-06, 0]
+exclude:
+- battery_mount V2-1
+# Joint config -- this IS the kinematic tree.  Edit parent/child to
+# re-wire the chain and 'type' per edge, then re-run:
+#   uv run python -m sw2robot.exporter.export <asm> --config this_file.yaml
+# type: fixed | revolute | prismatic | continuous
+# Sub-assemblies with moving internals expand automatically;
+# override with  expand: [name-substr]  /  no_expand: [name-substr]
+# Embedded SW2URDF CoordSys/RefAxis config auto-applies when present;
+# set sw2urdf_config: off | require  to disable or enforce it, or
+#   sw2urdf_config: sw2urdf_compat  to migrate the add-in's OWN output --
+#   authored axis signs and its mass/inertia, instead of re-deriving
+# A CAD-only part (a dummy axis) can stay in the tree but export as a
+# bare frame -- no visual, no collision, no inertial:
+#   frame_only: [<part or link name>, ...]   (editor: the row checkbox)
+# Named SolidWorks coordinate systems become frame-only links (an
+# empty dummy_link on a fixed joint -- no visual/collision/inertial),
+# on the part/sub-assembly they were drawn in.  Turn off or pick:
+#   coordinate_system_links: off | all | [<CoordSys name>, ...]
+# Model only half a symmetric robot and generate the rest -- links,
+# joints, inertials and meshes reflected through a base_link plane
+# (same q on both sides = mirror pose; limits carry over unchanged):
+#   mirror_limbs:
+#     - {root: right_arm_0, plane: xz, rename: {right: left}}
+# A CAD reference axis can define ONE joint the mates do not show:
+#   axis_joints: [{axis: <RefAxis name>, parent: <part>, child: <part>}]
+#   (the pair may have no mate at all -- a forgotten constraint)
+# Optional per-joint actuator/physics (movable joints only):
+#   effort: 5   velocity: 2   dynamics: {damping: 0.1, friction: 0.0}
+#   safety_controller: {soft_lower_limit: -1, soft_upper_limit: 1, k_position: 100, k_velocity: 10}   calibration: {rising: 0.0}
+base: Plate_v01_2
+joints:
+  - parent: Plate_v01_1
+    child:  motor_module_v02_1
+    type:   fixed # mates: CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT | geo: fully constrained
+  - parent: Right_Sidepanel_Module_1
+    child:  Plate_v01_1
+    type:   fixed # mates: COINCIDENT, COINCIDENT, CONCENTRIC, COINCIDENT, COINCIDENT, CONCENTRIC | geo: fully constrained
+  - parent: Plate_v01_1
+    child:  Camera_Module_1
+    type:   fixed # mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC | geo: free rotation about mate axis (1 DOF); globally locked (pairwise free, but no assembly-wide motion moves this pair -- matches the SolidWorks drag solve)
+  - parent: Plate_v01_1
+    child:  Left_Sidepanel_Module_1
+    type:   fixed # mates: COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT | geo: fully constrained
+  - parent: Plate_v01_1
+    child:  Left_Sonar_Module_1
+    type:   fixed # mates: COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT | geo: fully constrained
+  - parent: Plate_v01_1
+    child:  Right_Sonar_Module_1
+    type:   fixed # mates: COINCIDENT, COINCIDENT | geo: free rotation about mate axis (2 DOF); globally locked (pairwise free, but no assembly-wide motion moves this pair -- matches the SolidWorks drag solve)
+  - parent: Plate_v01_2
+    child:  Right_Sidepanel_Module_1
+    type:   fixed # mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC | geo: fully constrained
+    lower: -3.14159
+    upper: 3.14159
+  - parent: Left_Sonar_Module_1
+    child:  Battery_Module_1
+    type:   fixed # mates: CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT | geo: fully constrained
+  - parent: Plate_v01_2
+    child:  Lidar_Mount_1
+    type:   fixed # mates: COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC | geo: fully constrained
+  - parent: Plate_v01_2
+    child:  Cable_funnel_1
+    type:   fixed # mates: COINCIDENT, COINCIDENT, CONCENTRIC, COINCIDENT, COINCIDENT, CONCENTRIC | geo: fully constrained
+  - parent: Lidar_Mount_1
+    child:  RP_Lidar_C1_1
+    type:   fixed # mates: CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT | geo: fully constrained
+  - parent: motor_module_v02_1
+    child:  Mecanum_Wheel_dia_100_left_5
+    type:   revolute # mates: CONCENTRIC, DISTANCE, CONCENTRIC, DISTANCE | geo: free rotation about mate axis (1 DOF)
+    lower: -3.14159
+    upper: 3.14159
+  - parent: Plate_v01_2
+    child:  c_4x20mm_f_f_standoff_1
+    type:   fixed # mates: CONCENTRIC, CONCENTRIC | geo: free rotation about mate axis (2 DOF)
+    lower: -3.14159
+    upper: 3.14159
+  - parent: Plate_v01_2
+    child:  c_4x20mm_f_f_standoff_2
+    type:   fixed # mates: CONCENTRIC, CONCENTRIC | geo: free rotation about mate axis (2 DOF)
+    lower: -3.14159
+    upper: 3.14159
+  - parent: c_4x20mm_f_f_standoff_2
+    child:  Plate_v01_3
+    type:   fixed # mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC | geo: free rotation about mate axis (1 DOF)
+    lower: -3.14159
+    upper: 3.14159
+  - parent: Plate_v01_3
+    child:  Cable_funnel_2
+    type:   fixed # mates: CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT | geo: fully constrained
+  - parent: Plate_v01_3
+    child:  arm_assembly_1__standoff_M3_B_2
+    type:   fixed # mates: CONCENTRIC, CONCENTRIC | fastener welded fixed
+  - parent: Plate_v01_3
+    child:  arm_assembly_1__standoff_M3_B_3
+    type:   fixed # mates: CONCENTRIC, CONCENTRIC | fastener welded fixed
+  - parent: arm_assembly_1__standoff_M3_B_2
+    child:  arm_assembly_1__Large_bottom_plate_1
+    type:   fixed # mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC | fastener welded fixed
+  - parent: arm_assembly_1__standoff_M3_B_2
+    child:  arm_assembly_1__Arm_servo_mount_1
+    type:   fixed # mates: CONCENTRIC, CONCENTRIC | fastener welded fixed
+  - parent: arm_assembly_1__Large_bottom_plate_1
+    child:  arm_assembly_1__standoff_M3_B_1
+    type:   fixed # mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC | fastener welded fixed
+  - parent: arm_assembly_1__Large_bottom_plate_1
+    child:  arm_assembly_1__Large_top_plate_1
+    type:   fixed # mates: CONCENTRIC, CONCENTRIC | geo: free axis but r=1.6mm = fastener, not bearing -> fixed
+  - parent: arm_assembly_1__Arm_servo_mount_1
+    child:  arm_assembly_1__Hiwonder_HX_12H_2
+    type:   fixed # mates: COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT | geo: fully constrained
+  - parent: arm_assembly_1__Large_bottom_plate_1
+    child:  arm_assembly_1__Ring_bearing_1
+    type:   revolute # mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC | geo: free rotation about mate axis (1 DOF)
+    lower: -3.14159
+    upper: 3.14159
+    flip_axis: true
+  - parent: arm_assembly_1__Ring_bearing_1
+    child:  arm_assembly_1__Small_bottom_plate_1
+    type:   fixed # mates: CONCENTRIC, COINCIDENT, CONCENTRIC, COINCIDENT | geo: free rotation about mate axis (1 DOF); coaxial support bearing of an existing joint -> fixed
+  - parent: arm_assembly_1__Small_bottom_plate_1
+    child:  arm_assembly_1__Small_top_plate_1
+    type:   fixed # mates: CONCENTRIC, CONCENTRIC, CONCENTRIC, CONCENTRIC | geo: only axial slide along a fastener axis
+  - parent: arm_assembly_1__Small_top_plate_1
+    child:  arm_assembly_1__linkages_1
+    type:   fixed # mates: COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC | geo: fully constrained
+    lower: -3.14159
+    upper: 3.14159
+  - parent: arm_assembly_1__linkages_1
+    child:  arm_assembly_1__Hiwonder_LX_225_Assembly_1__Hiwonder_LX_225_servo_1
+    type:   fixed # mates: COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC | geo: fully constrained
+  - parent: arm_assembly_1__Hiwonder_LX_225_Assembly_1__Hiwonder_LX_225_servo_1
+    child:  arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_driven_1
+    type:   fixed # mates: CONCENTRIC, COINCIDENT, CONCENTRIC, COINCIDENT | geo: free axis but r=2.5mm = fastener, not bearing -> fixed
+  - parent: arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_driven_1
+    child:  arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_non_driven_1
+    type:   fixed # mates: CONCENTRIC, CONCENTRIC | geo: free axis but r=1.1mm = fastener, not bearing -> fixed
+  - parent: arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_non_driven_1
+    child:  arm_assembly_1__linkages_3
+    type:   revolute # mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC | geo: free rotation about mate axis (1 DOF)
+    lower: -1.57080
+    upper: 1.57080
+    flip_axis: true
+  - parent: arm_assembly_1__linkages_3
+    child:  arm_assembly_1__Hiwonder_LX_225_Assembly_2__Hiwonder_LX_225_servo_1
+    type:   fixed # mates: COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC | geo: fully constrained
+  - parent: arm_assembly_1__Hiwonder_LX_225_Assembly_2__Hiwonder_LX_225_servo_1
+    child:  arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_driven_1
+    type:   fixed # mates: CONCENTRIC, COINCIDENT, CONCENTRIC, COINCIDENT | geo: free axis but r=2.5mm = fastener, not bearing -> fixed
+  - parent: arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_driven_1
+    child:  arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_non_driven_1
+    type:   fixed # mates: CONCENTRIC, CONCENTRIC | geo: free axis but r=1.1mm = fastener, not bearing -> fixed
+  - parent: arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_non_driven_1
+    child:  arm_assembly_1__linkages_4
+    type:   revolute # mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC | geo: free rotation about mate axis (1 DOF)
+    lower: -1.57080
+    upper: 1.57080
+    flip_axis: true
+  - parent: arm_assembly_1__linkages_4
+    child:  arm_assembly_1__Hiwonder_HX_12H_1
+    type:   fixed # mates: COINCIDENT, PARALLEL, CONCENTRIC, COINCIDENT, PARALLEL, CONCENTRIC | geo: fully constrained
+  - parent: arm_assembly_1__Hiwonder_HX_12H_1
+    child:  arm_assembly_1__Servo_horn_driven_2
+    type:   fixed # mates: CONCENTRIC, DISTANCE, CONCENTRIC, DISTANCE | geo: free axis but r=1.5mm = fastener, not bearing -> fixed
+  - parent: arm_assembly_1__Hiwonder_HX_12H_1
+    child:  arm_assembly_1__Servo_horn_driven_1
+    type:   fixed # mates: CONCENTRIC, CONCENTRIC | geo: free axis but r=2.5mm = fastener, not bearing -> fixed
+  - parent: arm_assembly_1__Servo_horn_driven_2
+    child:  arm_assembly_1__linkages_5
+    type:   revolute # mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC | geo: free axis but r=2.0mm = fastener, not bearing -> fixed
+    lower: -1.57080
+    upper: 1.57080
+    flip_axis: true
+  - parent: arm_assembly_1__linkages_5
+    child:  Camera_Mount_1
+    type:   fixed # mates: COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC | geo: fully constrained
+  - parent: arm_assembly_1__linkages_5
+    child:  underactuated_girpper_assembly_1__top_bottom_plate_1
+    type:   fixed # mates: CONCENTRIC, CONCENTRIC | geo: free rotation about mate axis (2 DOF); globally locked (pairwise free, but no assembly-wide motion moves this pair -- matches the SolidWorks drag solve)
+  - parent: Camera_Mount_1
+    child:  underactuated_girpper_assembly_1__top_bottom_plate_2
+    type:   fixed # mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC | geo: free rotation about mate axis (1 DOF); globally locked (pairwise free, but no assembly-wide motion moves this pair -- matches the SolidWorks drag solve)
+  - parent: underactuated_girpper_assembly_1__top_bottom_plate_1
+    child:  underactuated_girpper_assembly_1__geared_actuator_link_1
+    type:   fixed # mates: CONCENTRIC, COINCIDENT, CONCENTRIC, COINCIDENT | geo: free axis but r=1.6mm = fastener, not bearing -> fixed
+  - parent: underactuated_girpper_assembly_1__top_bottom_plate_1
+    child:  underactuated_girpper_assembly_1__link_1
+    type:   fixed # mates: CONCENTRIC, COINCIDENT, CONCENTRIC, COINCIDENT | geo: free axis but r=1.7mm = fastener, not bearing -> fixed
+  - parent: underactuated_girpper_assembly_1__top_bottom_plate_1
+    child:  underactuated_girpper_assembly_1__link_2
+    type:   fixed # mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC | geo: free axis but r=1.6mm = fastener, not bearing -> fixed
+  - parent: underactuated_girpper_assembly_1__top_bottom_plate_2
+    child:  underactuated_girpper_assembly_1__front_spacer_1
+    type:   fixed # mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC | geo: free axis but r=1.8mm = fastener, not bearing -> fixed
+  - parent: underactuated_girpper_assembly_1__top_bottom_plate_2
+    child:  underactuated_girpper_assembly_1__front_spacer_2
+    type:   fixed # mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC | geo: free axis but r=1.8mm = fastener, not bearing -> fixed
+  - parent: underactuated_girpper_assembly_1__geared_actuator_link_1
+    child:  underactuated_girpper_assembly_1__left_right_actuating_link_2
+    type:   fixed # mates: COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT | geo: fully constrained
+  - parent: underactuated_girpper_assembly_1__link_1
+    child:  underactuated_girpper_assembly_1__left_right_tip_2
+    type:   fixed # mates: CONCENTRIC, CONCENTRIC | geo: free axis but r=1.6mm = fastener, not bearing -> fixed
+  - parent: underactuated_girpper_assembly_1__link_2
+    child:  underactuated_girpper_assembly_1__left_right_tip_1
+    type:   fixed # mates: CONCENTRIC, CONCENTRIC | geo: free axis but r=1.6mm = fastener, not bearing -> fixed
+  - parent: underactuated_girpper_assembly_1__left_right_tip_2
+    child:  underactuated_girpper_assembly_1__left_right_actuating_link_1
+    type:   fixed # mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC | geo: free axis but r=1.6mm = fastener, not bearing -> fixed
+  - parent: underactuated_girpper_assembly_1__left_right_actuating_link_1
+    child:  underactuated_girpper_assembly_1__geared_actuated_link_1
+    type:   fixed # mates: COINCIDENT, CONCENTRIC, PARALLEL, COINCIDENT, CONCENTRIC, PARALLEL | geo: fully constrained
+  - parent: Plate_v01_1
+    child:  motor_module_v02_2
+    type:   fixed # mates: PARALLEL, PARALLEL | geo: under-constrained (4 DOF) -> fixed; verify
+  - parent: motor_module_v02_2
+    child:  Mecanum_Wheel_dia_100_right_7
+    type:   revolute # mates: CONCENTRIC, DISTANCE, CONCENTRIC, DISTANCE | geo: free rotation about mate axis (1 DOF)
+    lower: -3.14159
+    upper: 3.14159
+  - parent: Plate_v01_1
+    child:  motor_module_v02_5
+    type:   fixed # mates: PARALLEL, PARALLEL | geo: under-constrained (4 DOF) -> fixed; verify
+  - parent: motor_module_v02_5
+    child:  Mecanum_Wheel_dia_100_right_10
+    type:   revolute # mates: CONCENTRIC, DISTANCE, CONCENTRIC, DISTANCE | geo: free rotation about mate axis (1 DOF)
+    lower: -3.14159
+    upper: 3.14159
+  - parent: Plate_v01_1
+    child:  motor_module_v02_6
+    type:   fixed # mates: PARALLEL, PARALLEL | geo: under-constrained (4 DOF) -> fixed; verify
+  - parent: motor_module_v02_6
+    child:  Mecanum_Wheel_dia_100_left_6
+    type:   revolute # mates: DISTANCE, CONCENTRIC, DISTANCE, CONCENTRIC | geo: free rotation about mate axis (1 DOF)
+    lower: -3.14159
+    upper: 3.14159
+
+# --- robot-compiler module interface (optional) ---
+# root_link_name: base_link   # input port; '' keeps the part name
+# ports:                       # output connectors (-> dummy_link)
+#   - parent: <tip link>       # xyz/rpy in that link's frame,
+#     xyz: [0, 0, 0]           # +Z = outgoing connector axis
+#     rpy: [0, 0, 0]
+
+# --- all mate-connected pairs (for reference; re-wire above) ---
+#   Cable_funnel_1  <->  Plate_v01_2   (COINCIDENT, COINCIDENT, CONCENTRIC, COINCIDENT, COINCIDENT, CONCENTRIC)
+#   Cable_funnel_2  <->  Plate_v01_2   (CONCENTRIC, CONCENTRIC)
+#   Cable_funnel_2  <->  Plate_v01_3   (CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT)
+#   Camera_Module_1  <->  Left_Sidepanel_Module_1   (COINCIDENT, COINCIDENT)
+#   Camera_Module_1  <->  Plate_v01_1   (COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC)
+#   Camera_Mount_1  <->  arm_assembly_1__linkages_5   (COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC)
+#   Camera_Mount_1  <->  underactuated_girpper_assembly_1__top_bottom_plate_2   (COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC)
+#   Left_Sidepanel_Module_1  <->  Plate_v01_1   (COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT)
+#   Left_Sidepanel_Module_1  <->  Plate_v01_2   (COINCIDENT, COINCIDENT)
+#   Left_Sidepanel_Module_1  <->  Right_Sonar_Module_1   (COINCIDENT, COINCIDENT)
+#   Left_Sonar_Module_1  <->  Battery_Module_1   (CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT)
+#   Left_Sonar_Module_1  <->  Plate_v01_1   (COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT)
+#   Lidar_Mount_1  <->  Plate_v01_2   (COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC)
+#   Lidar_Mount_1  <->  RP_Lidar_C1_1   (CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT)
+#   Mecanum_Wheel_dia_100_left_6  <->  motor_module_v02_6   (DISTANCE, CONCENTRIC, DISTANCE, CONCENTRIC)
+#   Mecanum_Wheel_dia_100_right_10  <->  motor_module_v02_5   (CONCENTRIC, DISTANCE, CONCENTRIC, DISTANCE)
+#   Mecanum_Wheel_dia_100_right_7  <->  motor_module_v02_2   (CONCENTRIC, DISTANCE, CONCENTRIC, DISTANCE)
+#   Plate_v01_1  <->  motor_module_v02_5   (PARALLEL, PARALLEL)
+#   Plate_v01_2  <->  Right_Sidepanel_Module_1   (COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC)
+#   Plate_v01_2  <->  c_4x20mm_f_f_standoff_2   (CONCENTRIC, CONCENTRIC)
+#   Plate_v01_3  <->  arm_assembly_1__standoff_M3_B_2   (CONCENTRIC, CONCENTRIC)
+#   Plate_v01_3  <->  c_4x20mm_f_f_standoff_1   (COINCIDENT, COINCIDENT)
+#   Plate_v01_3  <->  c_4x20mm_f_f_standoff_2   (COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC)
+#   Right_Sidepanel_Module_1  <->  Plate_v01_1   (COINCIDENT, COINCIDENT, CONCENTRIC, COINCIDENT, COINCIDENT, CONCENTRIC)
+#   Right_Sonar_Module_1  <->  Plate_v01_1   (COINCIDENT, COINCIDENT)
+#   arm_assembly_1__Arm_servo_mount_1  <->  Plate_v01_3   (COINCIDENT, COINCIDENT)
+#   arm_assembly_1__Arm_servo_mount_1  <->  arm_assembly_1__Hiwonder_HX_12H_2   (COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT)
+#   arm_assembly_1__Arm_servo_mount_1  <->  arm_assembly_1__linkages_1   (ANGLE, ANGLE)
+#   arm_assembly_1__Arm_servo_mount_1  <->  arm_assembly_1__standoff_M3_B_1   (CONCENTRIC, COINCIDENT, CONCENTRIC, COINCIDENT)
+#   arm_assembly_1__Arm_servo_mount_1  <->  arm_assembly_1__standoff_M3_B_2   (CONCENTRIC, CONCENTRIC)
+#   arm_assembly_1__Hiwonder_HX_12H_1  <->  arm_assembly_1__Servo_horn_driven_1   (CONCENTRIC, CONCENTRIC)
+#   arm_assembly_1__Hiwonder_HX_12H_1  <->  arm_assembly_1__Servo_horn_driven_2   (CONCENTRIC, DISTANCE, CONCENTRIC, DISTANCE)
+#   arm_assembly_1__Hiwonder_HX_12H_1  <->  arm_assembly_1__linkages_5   (CONCENTRIC, CONCENTRIC)
+#   arm_assembly_1__Hiwonder_LX_225_Assembly_1__Hiwonder_LX_225_servo_1  <->  arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_driven_1   (CONCENTRIC, COINCIDENT, CONCENTRIC, COINCIDENT)
+#   arm_assembly_1__Hiwonder_LX_225_Assembly_1__Hiwonder_LX_225_servo_1  <->  arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_non_driven_1   (CONCENTRIC, COINCIDENT, CONCENTRIC, COINCIDENT)
+#   arm_assembly_1__Hiwonder_LX_225_Assembly_1__Hiwonder_LX_225_servo_1  <->  arm_assembly_1__linkages_1   (COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC)
+#   arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_driven_1  <->  arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_non_driven_1   (CONCENTRIC, CONCENTRIC)
+#   arm_assembly_1__Hiwonder_LX_225_Assembly_2__Hiwonder_LX_225_servo_1  <->  arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_driven_1   (CONCENTRIC, COINCIDENT, CONCENTRIC, COINCIDENT)
+#   arm_assembly_1__Hiwonder_LX_225_Assembly_2__Hiwonder_LX_225_servo_1  <->  arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_non_driven_1   (CONCENTRIC, COINCIDENT, CONCENTRIC, COINCIDENT)
+#   arm_assembly_1__Hiwonder_LX_225_Assembly_2__Hiwonder_LX_225_servo_1  <->  arm_assembly_1__linkages_3   (COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC)
+#   arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_driven_1  <->  arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_non_driven_1   (CONCENTRIC, CONCENTRIC)
+#   arm_assembly_1__Large_bottom_plate_1  <->  arm_assembly_1__Large_top_plate_1   (CONCENTRIC, CONCENTRIC)
+#   arm_assembly_1__Large_bottom_plate_1  <->  arm_assembly_1__Ring_bearing_1   (COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC)
+#   arm_assembly_1__Large_bottom_plate_1  <->  arm_assembly_1__standoff_M3_B_1   (COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC)
+#   arm_assembly_1__Large_bottom_plate_1  <->  arm_assembly_1__standoff_M3_B_2   (COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC)
+#   arm_assembly_1__Large_top_plate_1  <->  arm_assembly_1__Ring_bearing_1   (COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC)
+#   arm_assembly_1__Servo_horn_driven_1  <->  arm_assembly_1__linkages_5   (COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC)
+#   arm_assembly_1__Servo_horn_driven_2  <->  arm_assembly_1__linkages_5   (COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC)
+#   arm_assembly_1__Small_bottom_plate_1  <->  arm_assembly_1__Ring_bearing_1   (CONCENTRIC, COINCIDENT, CONCENTRIC, COINCIDENT)
+#   arm_assembly_1__Small_top_plate_1  <->  arm_assembly_1__Ring_bearing_1   (COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC)
+#   arm_assembly_1__Small_top_plate_1  <->  arm_assembly_1__Small_bottom_plate_1   (CONCENTRIC, CONCENTRIC, CONCENTRIC, CONCENTRIC)
+#   arm_assembly_1__Small_top_plate_1  <->  arm_assembly_1__linkages_1   (COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC)
+#   arm_assembly_1__linkages_1  <->  arm_assembly_1__linkages_3   (ANGLE, ANGLE)
+#   arm_assembly_1__linkages_3  <->  arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_non_driven_1   (COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC)
+#   arm_assembly_1__linkages_4  <->  arm_assembly_1__Hiwonder_HX_12H_1   (COINCIDENT, PARALLEL, CONCENTRIC, COINCIDENT, PARALLEL, CONCENTRIC)
+#   arm_assembly_1__linkages_4  <->  arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_non_driven_1   (COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC)
+#   arm_assembly_1__linkages_4  <->  arm_assembly_1__linkages_3   (ANGLE, ANGLE)
+#   arm_assembly_1__linkages_4  <->  arm_assembly_1__linkages_5   (ANGLE, ANGLE)
+#   arm_assembly_1__standoff_M3_B_3  <->  Plate_v01_3   (CONCENTRIC, CONCENTRIC)
+#   arm_assembly_1__standoff_M3_B_3  <->  arm_assembly_1__Large_bottom_plate_1   (COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC)
+#   battery_mount_V2_1  <->  Plate_v01_1   (COINCIDENT, COINCIDENT)
+#   c_4x20mm_f_f_standoff_1  <->  Plate_v01_2   (CONCENTRIC, CONCENTRIC)
+#   motor_module_v02_1  <->  Mecanum_Wheel_dia_100_left_5   (CONCENTRIC, DISTANCE, CONCENTRIC, DISTANCE)
+#   motor_module_v02_1  <->  Plate_v01_1   (CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT)
+#   motor_module_v02_2  <->  Plate_v01_1   (PARALLEL, PARALLEL)
+#   motor_module_v02_6  <->  Plate_v01_1   (PARALLEL, PARALLEL)
+#   underactuated_girpper_assembly_1__front_spacer_1  <->  underactuated_girpper_assembly_1__link_1   (COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC)
+#   underactuated_girpper_assembly_1__front_spacer_1  <->  underactuated_girpper_assembly_1__top_bottom_plate_2   (COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC)
+#   underactuated_girpper_assembly_1__front_spacer_2  <->  underactuated_girpper_assembly_1__top_bottom_plate_2   (COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC)
+#   underactuated_girpper_assembly_1__geared_actuated_link_1  <->  underactuated_girpper_assembly_1__geared_actuator_link_1   (GEAR, GEAR)
+#   underactuated_girpper_assembly_1__geared_actuated_link_1  <->  underactuated_girpper_assembly_1__left_right_actuating_link_1   (COINCIDENT, CONCENTRIC, PARALLEL, COINCIDENT, CONCENTRIC, PARALLEL)
+#   underactuated_girpper_assembly_1__geared_actuated_link_1  <->  underactuated_girpper_assembly_1__top_bottom_plate_1   (COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT)
+#   underactuated_girpper_assembly_1__geared_actuator_link_1  <->  underactuated_girpper_assembly_1__top_bottom_plate_1   (CONCENTRIC, COINCIDENT, CONCENTRIC, COINCIDENT)
+#   underactuated_girpper_assembly_1__left_right_actuating_link_2  <->  underactuated_girpper_assembly_1__geared_actuator_link_1   (COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT)
+#   underactuated_girpper_assembly_1__left_right_tip_1  <->  underactuated_girpper_assembly_1__left_right_actuating_link_2   (COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC)
+#   underactuated_girpper_assembly_1__left_right_tip_1  <->  underactuated_girpper_assembly_1__link_2   (CONCENTRIC, CONCENTRIC)
+#   underactuated_girpper_assembly_1__left_right_tip_2  <->  underactuated_girpper_assembly_1__left_right_actuating_link_1   (COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC)
+#   underactuated_girpper_assembly_1__left_right_tip_2  <->  underactuated_girpper_assembly_1__link_1   (CONCENTRIC, CONCENTRIC)
+#   underactuated_girpper_assembly_1__link_1  <->  underactuated_girpper_assembly_1__top_bottom_plate_1   (CONCENTRIC, COINCIDENT, CONCENTRIC, COINCIDENT)
+#   underactuated_girpper_assembly_1__link_2  <->  underactuated_girpper_assembly_1__front_spacer_2   (CONCENTRIC, CONCENTRIC)
+#   underactuated_girpper_assembly_1__link_2  <->  underactuated_girpper_assembly_1__top_bottom_plate_1   (COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC)
+#   underactuated_girpper_assembly_1__top_bottom_plate_1  <->  arm_assembly_1__linkages_5   (CONCENTRIC, CONCENTRIC)
