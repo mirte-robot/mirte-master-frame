@@ -4,3 +4,5 @@
 build/
 # sw2robot import staging folder (tools/urdf/Sync-Sw2Robot.ps1)
 sw2robot/*.import/
+# sw2robot editor mesh cache (local only, not needed for the URDF build)
+sw2robot/*/meshes/.mesh_cache/

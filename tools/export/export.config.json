@@ -1,5 +1,6 @@
 {
   "assembly": "solidworks/MM-Minimal.SLDASM",
+  "out_dir": "exports",
   "solidworks_api_dir": "C:\\Program Files\\SOLIDWORKS Corp\\SOLIDWORKS\\api\\redist",
 
   "property_name": "Export",

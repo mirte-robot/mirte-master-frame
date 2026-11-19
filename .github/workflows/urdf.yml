@@ -1,8 +1,11 @@
-# Builds the URDF + xacro of the MIRTE Master from the committed sw2robot extract (sw2robot/) on every push.
-# SolidWorks cannot run here: the extract is made locally with tools/urdf/Sync-Sw2Robot.ps1 (see tools/urdf/README.md).
-# Fails when the SolidWorks files changed after the extract, or when the joint config does not match the model.
-# A pushed tag v* also publishes the result as a GitHub release.
-name: URDF
+# On every push:
+#  - urdf:  builds the URDF + xacro of the MIRTE Master from the committed sw2robot extract (sw2robot/).
+#           The extract is made locally with tools/urdf/Sync-Sw2Robot.ps1 (see tools/urdf/README.md).
+#  - parts: checks and publishes the committed STEP / STL / DXF part exports (exports/), made locally with
+#           tools/export/Export-Parts.ps1 (see tools/export/README.md).
+# SolidWorks cannot run here, so both fail when the SolidWorks files changed after the local extract / export.
+# A pushed tag v* also publishes both as a GitHub release.
+name: URDF and part exports
 
 on:
   push:
@@ -43,9 +46,27 @@ jobs:
           path: dist/
           if-no-files-found: error
 
+  parts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check the part exports match the SolidWorks model
+        run: python tools/export/check_exports.py --out parts
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: parts
+          path: parts/
+          if-no-files-found: error
+
   release:
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: urdf
+    needs: [urdf, parts]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -55,12 +76,19 @@ jobs:
           name: urdf
           path: dist
 
+      - uses: actions/download-artifact@v4
+        with:
+          name: parts
+          path: parts
+
       - name: Publish release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          zip_name="mirte-master-frame-urdf-${GITHUB_REF_NAME}.zip"
-          (cd dist && zip -qr "../${zip_name}" .)
-          gh release create "$GITHUB_REF_NAME" "$zip_name" --repo "$GITHUB_REPOSITORY" \
+          urdf_zip="mirte-master-frame-urdf-${GITHUB_REF_NAME}.zip"
+          parts_zip="mirte-master-frame-parts-${GITHUB_REF_NAME}.zip"
+          (cd dist && zip -qr "../${urdf_zip}" .)
+          (cd parts && zip -qr "../${parts_zip}" .)
+          gh release create "$GITHUB_REF_NAME" "$urdf_zip" "$parts_zip" --repo "$GITHUB_REPOSITORY" \
               --title "$GITHUB_REF_NAME" --generate-notes \
-            || gh release upload "$GITHUB_REF_NAME" "$zip_name" --repo "$GITHUB_REPOSITORY" --clobber
+            || gh release upload "$GITHUB_REF_NAME" "$urdf_zip" "$parts_zip" --repo "$GITHUB_REPOSITORY" --clobber

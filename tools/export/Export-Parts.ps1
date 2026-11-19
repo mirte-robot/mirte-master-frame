@@ -14,13 +14,20 @@
   the sub-assembly the part sits in.
 
   Writes to -OutDir: stl/, step/, dxf/, export_report.txt and export_manifest.json (with SHA-256 of every source
-  part and output file). Exit code: 0 = all exported, 1 = some exports failed, 2 = the export could not run.
+  part, every assembly and every output file). The output is committed (exports/), so the GitHub Action can check it
+  against the SolidWorks files and publish it (tools/export/check_exports.py).
+  Parts whose source file did not change keep their previous output files byte for byte (STEP / STL headers carry a
+  timestamp), so a re-export only changes the files of parts that really changed. -Force re-exports everything.
+  Exit code: 0 = all exported, 1 = some exports failed, 2 = the export could not run.
 
 .PARAMETER Config
   Config file (default: export.config.json next to this script).
 
 .PARAMETER OutDir
-  Output folder (default: <repo>/build/export). Old STL/STEP/DXF files in it are removed first.
+  Output folder (default: out_dir in the config, i.e. <repo>/exports). Old STL/STEP/DXF files in it are removed first.
+
+.PARAMETER Force
+  Write every output file fresh, also for parts whose source did not change.
 
 .PARAMETER ListOnly
   Only show which parts would be exported and how; export nothing.
@@ -28,7 +35,8 @@
 param(
   [string]$Config,
   [string]$OutDir,
-  [switch]$ListOnly
+  [switch]$ListOnly,
+  [switch]$Force
 )
 
 $ErrorActionPreference = 'Stop'
@@ -48,11 +56,13 @@ if ($PSVersionTable.PSEdition -eq 'Core') {
 $here = $PSScriptRoot
 $repo = (Resolve-Path (Join-Path $here '..\..')).Path
 if (-not $Config) { $Config = Join-Path $here 'export.config.json' }
-if (-not $OutDir) { $OutDir = Join-Path $repo 'build\export' }
-$OutDir = [System.IO.Path]::GetFullPath($OutDir)
+$OutDir0 = $OutDir
+$OutDir = $null
 
 try {
   $cfg = Get-Content $Config -Raw | ConvertFrom-Json
+  if ($OutDir0) { $OutDir = $OutDir0 } else { $OutDir = Join-Path $repo $(if ($cfg.out_dir) { $cfg.out_dir } else { 'exports' }) }
+  $OutDir = [System.IO.Path]::GetFullPath($OutDir)
 
   $swDir = $cfg.solidworks_api_dir
   if (-not $swDir) { $swDir = 'C:\Program Files\SOLIDWORKS Corp\SOLIDWORKS\api\redist' }
@@ -89,6 +99,26 @@ try {
   $opt.GroupOverrideFiles = [string[]]$oFiles
   $opt.GroupOverrideNames = [string[]]$oNames
 
+  # Keep the previous run's files, to reuse them for parts that did not change.
+  $prevManifest = $null; $prevDir = $null
+  $prevPath = Join-Path $OutDir 'export_manifest.json'
+  if (-not $ListOnly -and -not $Force -and (Test-Path $prevPath)) {
+    try { $prevManifest = Get-Content $prevPath -Raw | ConvertFrom-Json } catch { $prevManifest = $null }
+    if ($prevManifest) {
+      $prevDir = Join-Path ([System.IO.Path]::GetTempPath()) ("mirte-export-prev-" + [guid]::NewGuid().ToString('N'))
+      foreach ($pp in @($prevManifest.parts)) {
+        foreach ($o in @($pp.outputs)) {
+          $src = Join-Path $repo $o.path
+          if (Test-Path -LiteralPath $src) {
+            $dst = Join-Path $prevDir $o.path
+            New-Item -ItemType Directory -Force (Split-Path $dst) | Out-Null
+            Copy-Item -LiteralPath $src -Destination $dst -Force
+          }
+        }
+      }
+    }
+  }
+
   if (-not $ListOnly -and (Test-Path $OutDir)) {
     # Remove stale exports (in every group folder) so the output only holds files from this run.
     Get-ChildItem $OutDir -Recurse -File | Where-Object { $_.Extension -in '.stl', '.step', '.dxf' } | Remove-Item -Force
@@ -117,6 +147,38 @@ function Get-Sha256([string]$path) {
   } finally { $fs.Dispose() }
 }
 
+# SolidWorks files as git sees them (tracked + untracked-not-ignored), so the check in the Action sees the same set.
+function Get-CadFiles([string]$ext) {
+  $cad = 'solidworks'
+  $rel = $null
+  try {
+    $rel = & git -C $repo -c core.quotepath=off ls-files --cached --others --exclude-standard -- $cad 2>$null
+    if ($LASTEXITCODE -ne 0) { $rel = $null }
+  } catch { $rel = $null }
+  if ($null -eq $rel) { $rel = Get-ChildItem (Join-Path $repo $cad) -Recurse -File | ForEach-Object { $_.FullName.Substring($repo.Length + 1) } }
+  $rel | ForEach-Object { $_.Replace('\', '/') } |
+    Where-Object { $_ -like "*.$ext" -and (Split-Path $_ -Leaf) -notlike '~$*' -and (Test-Path -LiteralPath (Join-Path $repo $_)) } |
+    Sort-Object -Unique
+}
+
+# Reuse the previous output of parts whose source, configuration, kind and SolidWorks version did not change.
+$reused = 0
+if ($prevManifest -and $prevDir -and "$($prevManifest.solidworks_revision)" -eq "$($res.SolidWorksRevision)") {
+  foreach ($it in @($res.Items | Where-Object { $_.Kind -ne 'none' -and $_.Errors.Count -eq 0 -and $_.Outputs.Count -gt 0 })) {
+    $sha = Get-Sha256 $it.Path
+    $old = @($prevManifest.parts | Where-Object { $_.source -eq $it.RelPath -and $_.configuration -eq $it.Config -and
+      $_.kind -eq $it.Kind -and $_.source_sha256 -eq $sha }) | Select-Object -First 1
+    if (-not $old) { continue }
+    $oldPaths = @($old.outputs | ForEach-Object { $_.path } | Sort-Object)
+    $newPaths = @($it.Outputs | Sort-Object)
+    if (($oldPaths -join '|') -ne ($newPaths -join '|')) { continue }
+    if (@($oldPaths | Where-Object { -not (Test-Path -LiteralPath (Join-Path $prevDir $_)) }).Count) { continue }
+    foreach ($o in $oldPaths) { Copy-Item -LiteralPath (Join-Path $prevDir $o) -Destination (Join-Path $repo $o) -Force }
+    $reused++
+  }
+}
+if ($prevDir -and (Test-Path $prevDir)) { Remove-Item -LiteralPath $prevDir -Recurse -Force }
+
 $groupOrder = @{}; $gi = 0
 foreach ($g in @($opt.DefaultGroup) + @($opt.GroupNames)) { if (-not $groupOrder.ContainsKey($g)) { $groupOrder[$g] = $gi++ } }
 $items = @($res.Items | Sort-Object @{ e = { @{ laser = 0; print = 1; none = 2 }[$_.Kind] } }, @{ e = { $groupOrder[$_.Group] } }, RelPath, Config)
@@ -144,6 +206,8 @@ if (-not $ListOnly) {
     solidworks_revision = $res.SolidWorksRevision
     git_commit = "$(try { & git -C $repo rev-parse HEAD 2>$null } catch { '' })"
     passed = ($failed.Count -eq 0)
+    note = 'Made by tools/export/Export-Parts.ps1. The GitHub Action (tools/export/check_exports.py) fails when an exported part or any assembly changed after this export.'
+    assemblies = $($h = [ordered]@{}; foreach ($a in (Get-CadFiles 'sldasm')) { $h[$a] = Get-Sha256 (Join-Path $repo $a) }; $h)
     parts = @($items | ForEach-Object {
       [ordered]@{
         source = $_.RelPath
@@ -168,5 +232,9 @@ foreach ($l in $lines) {
   if ($l -like '*! *') { $color = 'Red' } elseif ($l -like '`[LASER*') { $color = 'Cyan' } elseif ($l -like '`[PRINT*') { $color = 'Green' } elseif ($l -like 'Result*') { $color = $(if ($failed.Count) { 'Red' } else { 'Green' }) }
   Write-Host $l -ForegroundColor $color
 }
-if (-not $ListOnly) { Write-Host "`nOutput: $OutDir" }
+if (-not $ListOnly) {
+  if ($reused) { Write-Host "`n$reused unchanged parts kept their previous files (use -Force to re-export them)." }
+  Write-Host "`nOutput: $OutDir"
+  Write-Host "Commit it: git add `"$((Resolve-Path -LiteralPath $OutDir).Path.Substring($repo.Length + 1))`"; the GitHub Action checks and publishes it."
+}
 if ($failed.Count -gt 0 -and -not $ListOnly) { exit 1 } else { exit 0 }

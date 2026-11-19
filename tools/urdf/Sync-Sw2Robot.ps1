@@ -220,6 +220,9 @@ $skip = @('CMakeLists.txt', 'package.xml', 'launch', 'config')
 Get-ChildItem -LiteralPath $PackageDir -Force | Where-Object {
   $skip -notcontains $_.Name -and $_.Name -notlike '*.joints.yaml*' -and $_.Name -notlike '*.bak'
 } | ForEach-Object { Copy-Item -LiteralPath $_.FullName -Destination $stage -Recurse }
+# the editor's mesh cache is local only (git-ignored); the build does not need it
+$meshCache = Join-Path $stage 'meshes\.mesh_cache'
+if (Test-Path -LiteralPath $meshCache) { Remove-Item -LiteralPath $meshCache -Recurse -Force }
 
 # Absolute paths -> repository-relative (the repository is public; the Action does not need them).
 $jsonRepo = [regex]::Escape(($repo.TrimEnd('\') + '\').Replace('\', '\\'))

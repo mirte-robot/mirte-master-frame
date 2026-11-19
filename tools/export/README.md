@@ -17,7 +17,15 @@ Windows PowerShell 5.1 (the script relaunches itself when started from PowerShel
 .\tools\export\Export-Parts.ps1            # export
 ```
 
-Output in `build/export/` (old STL/STEP/DXF files there are removed first):
+Output in `exports/` (old STL/STEP/DXF files there are removed first). Parts whose SolidWorks file did not change
+keep their previous files byte for byte, so git only sees the parts that really changed; `-Force` re-exports all.
+
+**Commit `exports/` and push.** SolidWorks can't run on GitHub, so the GitHub Action
+(`.github/workflows/urdf.yml`, job `parts`) does not export; it runs `tools/export/check_exports.py`. That
+check fails when an exported part, or any assembly, changed after the export, or when an output file is missing or was
+edited by hand. Otherwise it publishes `exports/` as the `parts` artifact, and in the release zip for a `v*` tag. So:
+after changing the CAD (geometry *or* colours, since the check compares file hashes), run the export again before you
+push.
 
 | Folder | Contents |
 |---|---|
@@ -25,7 +33,7 @@ Output in `build/export/` (old STL/STEP/DXF files there are removed first):
 | `stl/`  | Binary STL (mm, fine quality, part coordinates) of every 3D-printed part |
 | `dxf/`  | DXF (mm) of every laser-cut plate |
 | `export_report.txt` | Which part went where, and why |
-| `export_manifest.json` | Same, plus the SHA-256 of every source part and output file |
+| `export_manifest.json` | Same, plus the SHA-256 of every source part, assembly and output file |
 
 One file per part **configuration** that the assembly uses, named `<group>_<file>`, or `<group>_<file>-<configuration>`
 when several configurations of one part file are used, e.g. `arm_linkages-forearm.STEP`, `base_Lidar-Mount.STL`,
@@ -71,6 +79,7 @@ When you add a new part, run with `-ListOnly` and check it lands in the right gr
 | Key | Meaning |
 |---|---|
 | `assembly` | Assembly to export from, relative to the repository root. |
+| `out_dir` | Output folder, relative to the repository root (default `exports`; committed, checked by the Action). |
 | `solidworks_api_dir` | Folder with `SolidWorks.Interop.sldworks.dll` / `swconst.dll`. |
 | `property_name` | Name of the override custom property (default `Export`). |
 | `groups` | Group (file-name prefix) → sub-assemblies whose parts get that prefix. |
