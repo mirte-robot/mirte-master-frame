@@ -1,6 +1,7 @@
 # Part export (STL / STEP / DXF)
 
 Exports the manufacturing files for the custom parts of the MIRTE Master assembly, straight from SolidWorks.
+For the URDF see [`tools/urdf`](../urdf/README.md).
 
 ## Requirements
 

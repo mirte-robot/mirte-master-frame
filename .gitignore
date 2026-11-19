@@ -2,3 +2,5 @@
 **/~$*
 # Local build output (model check reports, exports)
 build/
+# sw2robot import staging folder (tools/urdf/Sync-Sw2Robot.ps1)
+sw2robot/*.import/
