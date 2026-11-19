@@ -1,4 +1,5 @@
 joint_names:
+  underactuated_girpper_assembly_1__top_bottom_plate_1__underactuated_girpper_assembly_1__geared_actuator_link_1: gripper_joint
   arm_assembly_1__Large_bottom_plate_1__arm_assembly_1__Ring_bearing_1: shoulder_pan_joint
   arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_non_driven_1__arm_assembly_1__linkages_3: shoulder_lift_joint
   arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_non_driven_1__arm_assembly_1__linkages_4: elbow_joint
@@ -193,34 +194,71 @@ joints:
     type:   fixed # mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC | geo: free rotation about mate axis (1 DOF); globally locked (pairwise free, but no assembly-wide motion moves this pair -- matches the SolidWorks drag solve)
   - parent: underactuated_girpper_assembly_1__top_bottom_plate_1
     child:  underactuated_girpper_assembly_1__geared_actuator_link_1
-    type:   fixed # mates: CONCENTRIC, COINCIDENT, CONCENTRIC, COINCIDENT | geo: free axis but r=1.6mm = fastener, not bearing -> fixed
+    type:   revolute # gripper: driver (servo)
+    lower: -0.38397
+    upper: 0.34907
   - parent: underactuated_girpper_assembly_1__top_bottom_plate_1
-    child:  underactuated_girpper_assembly_1__link_1
-    type:   fixed # mates: CONCENTRIC, COINCIDENT, CONCENTRIC, COINCIDENT | geo: free axis but r=1.7mm = fastener, not bearing -> fixed
+    child:  underactuated_girpper_assembly_1__geared_actuated_link_1
+    type:   revolute # gripper: four-bar / gear follower (gear)
+    lower: -0.34907
+    upper: 0.38397
+    mimic:
+      joint: gripper_joint
+      multiplier: -1
+      offset: 0
+      poly: [-0.0, 0.0, -1.0, 0.0]
   - parent: underactuated_girpper_assembly_1__top_bottom_plate_1
     child:  underactuated_girpper_assembly_1__link_2
-    type:   fixed # mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC | geo: free axis but r=1.6mm = fastener, not bearing -> fixed
+    type:   revolute # gripper: four-bar / gear follower (rocker_r)
+    lower: -0.56100
+    upper: 0.59185
+    mimic:
+      joint: gripper_joint
+      multiplier: 1.55319
+      offset: 0
+      poly: [0.22719744, 0.31179377, 1.54998318, -0.00111733]
+  - parent: underactuated_girpper_assembly_1__top_bottom_plate_1
+    child:  underactuated_girpper_assembly_1__link_1
+    type:   revolute # gripper: four-bar / gear follower (rocker_l)
+    lower: -0.58686
+    upper: 0.55884
+    mimic:
+      joint: gripper_joint
+      multiplier: -1.5459
+      offset: 0
+      poly: [-0.1913788, -0.30076005, -1.54516578, 0.00100853]
+  - parent: underactuated_girpper_assembly_1__geared_actuator_link_1
+    child:  underactuated_girpper_assembly_1__left_right_actuating_link_2
+    type:   fixed # gripper: rigid
+  - parent: underactuated_girpper_assembly_1__geared_actuated_link_1
+    child:  underactuated_girpper_assembly_1__left_right_actuating_link_1
+    type:   fixed # gripper: rigid
+  - parent: underactuated_girpper_assembly_1__left_right_actuating_link_2
+    child:  underactuated_girpper_assembly_1__left_right_tip_1
+    type:   revolute # gripper: four-bar / gear follower (tip_r)
+    lower: -0.00804
+    upper: 0.26822
+    mimic:
+      joint: gripper_joint
+      multiplier: 0.182471
+      offset: 0
+      poly: [0.76441584, 1.34132735, 0.18755906, -0.0020976]
+  - parent: underactuated_girpper_assembly_1__left_right_actuating_link_1
+    child:  underactuated_girpper_assembly_1__left_right_tip_2
+    type:   revolute # gripper: four-bar / gear follower (tip_l)
+    lower: -0.00606
+    upper: 0.25139
+    mimic:
+      joint: gripper_joint
+      multiplier: 0.153046
+      offset: 0
+      poly: [0.69417617, 1.30852239, 0.16240814, -0.0018319]
   - parent: underactuated_girpper_assembly_1__top_bottom_plate_2
     child:  underactuated_girpper_assembly_1__front_spacer_1
     type:   fixed # mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC | geo: free axis but r=1.8mm = fastener, not bearing -> fixed
   - parent: underactuated_girpper_assembly_1__top_bottom_plate_2
     child:  underactuated_girpper_assembly_1__front_spacer_2
     type:   fixed # mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC | geo: free axis but r=1.8mm = fastener, not bearing -> fixed
-  - parent: underactuated_girpper_assembly_1__geared_actuator_link_1
-    child:  underactuated_girpper_assembly_1__left_right_actuating_link_2
-    type:   fixed # mates: COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT | geo: fully constrained
-  - parent: underactuated_girpper_assembly_1__link_1
-    child:  underactuated_girpper_assembly_1__left_right_tip_2
-    type:   fixed # mates: CONCENTRIC, CONCENTRIC | geo: free axis but r=1.6mm = fastener, not bearing -> fixed
-  - parent: underactuated_girpper_assembly_1__link_2
-    child:  underactuated_girpper_assembly_1__left_right_tip_1
-    type:   fixed # mates: CONCENTRIC, CONCENTRIC | geo: free axis but r=1.6mm = fastener, not bearing -> fixed
-  - parent: underactuated_girpper_assembly_1__left_right_tip_2
-    child:  underactuated_girpper_assembly_1__left_right_actuating_link_1
-    type:   fixed # mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC | geo: free axis but r=1.6mm = fastener, not bearing -> fixed
-  - parent: underactuated_girpper_assembly_1__left_right_actuating_link_1
-    child:  underactuated_girpper_assembly_1__geared_actuated_link_1
-    type:   fixed # mates: COINCIDENT, CONCENTRIC, PARALLEL, COINCIDENT, CONCENTRIC, PARALLEL | geo: fully constrained
   - parent: Plate_v01_1
     child:  motor_module_v02_2
     type:   fixed # mates: PARALLEL, PARALLEL | geo: under-constrained (4 DOF) -> fixed; verify

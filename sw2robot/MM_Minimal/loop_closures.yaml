@@ -1,14 +1,17 @@
 # Closed-loop closures for loop_closure_relay (runtime IK).
 closures:
-- link_a: arm_assembly_1__Hiwonder_HX_12H_1
-  link_b: arm_assembly_1__linkages_5
+- link_a: arm_assembly_1__linkages_5
+  link_b: arm_assembly_1__Hiwonder_HX_12H_1
   point: [0.09564992, -0.01205816, 0.38623008]
   axis: [-6.33e-06, -1.0, 6.33e-06]
-- link_a: arm_assembly_1__Ring_bearing_1
-  link_b: arm_assembly_1__Large_top_plate_1
+- link_a: arm_assembly_1__Large_top_plate_1
+  link_b: arm_assembly_1__Ring_bearing_1
   point: [0.09, -6.0e-08, 0.081]
   axis: [-0.0, -6.33e-06, -1.0]
 dependent: []
-independent: [shoulder_lift_joint, elbow_joint, shoulder_pan_joint, arm_assembly_1__Servo_horn_driven_2__arm_assembly_1__linkages_5,
-  motor_module_v02_1__Mecanum_Wheel_dia_100_left_5, motor_module_v02_2__Mecanum_Wheel_dia_100_right_7,
-  motor_module_v02_5__Mecanum_Wheel_dia_100_right_10, motor_module_v02_6__Mecanum_Wheel_dia_100_left_6]
+independent: [shoulder_lift_joint, elbow_joint, shoulder_pan_joint, wrist_joint, rear_left_wheel_joint,
+  front_left_wheel_joint, rear_right_wheel_joint, front_right_wheel_joint, underactuated_girpper_assembly_1__left_right_actuating_link_1__underactuated_girpper_assembly_1__left_right_tip_2,
+  underactuated_girpper_assembly_1__left_right_actuating_link_2__underactuated_girpper_assembly_1__left_right_tip_1,
+  underactuated_girpper_assembly_1__top_bottom_plate_1__underactuated_girpper_assembly_1__geared_actuated_link_1,
+  gripper_joint, underactuated_girpper_assembly_1__top_bottom_plate_1__underactuated_girpper_assembly_1__link_1,
+  underactuated_girpper_assembly_1__top_bottom_plate_1__underactuated_girpper_assembly_1__link_2]

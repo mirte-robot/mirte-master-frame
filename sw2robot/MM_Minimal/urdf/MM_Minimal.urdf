@@ -863,41 +863,41 @@
   <link name="underactuated_girpper_assembly_1__geared_actuated_link_1">
     <!-- sw2robot density="1000" inertia="solidworks" -->
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="-3.484038556e-05 0.1604559822 1.57079076"/>
       <geometry>
         <mesh filename="../meshes/underactuated_girpper_assembly__geared_actuated_link_1.3dxml"/>
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="-3.484038556e-05 0.1604559822 1.57079076"/>
       <geometry>
         <mesh filename="../meshes/underactuated_girpper_assembly__geared_actuated_link_1.3dxml"/>
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-5.451777552e-05 0.004018797515 -0.009876377941" rpy="0 0 0"/>
+      <origin xyz="-0.004018462499 -0.001631750059 -0.009740939266" rpy="0 0 0"/>
       <mass value="0.00563513"/>
-      <inertia ixx="1.4622e-06" ixy="4.5567e-10" ixz="-3.24977e-10" iyy="1.55721e-06" iyz="7.76987e-08" izz="1.75997e-07"/>
+      <inertia ixx="1.55721e-06" ixy="-1.28566e-08" ixz="-7.65815e-08" iyy="1.42926e-06" iyz="-2.03163e-07" izz="2.08926e-07"/>
     </inertial>
   </link>
   <link name="underactuated_girpper_assembly_1__geared_actuator_link_1">
     <!-- sw2robot density="1000" inertia="solidworks" -->
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="-3.14155775 0.1713606162 -1.570790375"/>
       <geometry>
         <mesh filename="../meshes/underactuated_girpper_assembly__geared_actuator_link_1.3dxml"/>
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="-3.14155775 0.1713606162 -1.570790375"/>
       <geometry>
         <mesh filename="../meshes/underactuated_girpper_assembly__geared_actuator_link_1.3dxml"/>
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="1.118138667e-09 0.005908375829 -0.007720523198" rpy="0 0 0"/>
+      <origin xyz="-0.005908637468 -0.001316529383 0.007607242408" rpy="0 0 0"/>
       <mass value="0.00735126"/>
-      <inertia ixx="1.72708e-06" ixy="-1.20674e-13" ixz="-2.23011e-14" iyy="1.77787e-06" iyz="1.8022e-07" izz="3.16951e-07"/>
+      <inertia ixx="1.77786e-06" ixy="-3.074e-08" ixz="1.77629e-07" iyy="1.68608e-06" iyz="2.36937e-07" izz="3.57968e-07"/>
     </inertial>
   </link>
   <link name="underactuated_girpper_assembly_1__left_right_actuating_link_1">
@@ -943,81 +943,81 @@
   <link name="underactuated_girpper_assembly_1__left_right_tip_1">
     <!-- sw2robot density="1000" inertia="solidworks" -->
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0.00500051574 0.0003612525966 -0.01499547728" rpy="-3.140164588 -1.546710467 -1.572223978"/>
       <geometry>
         <mesh filename="../meshes/underactuated_girpper_assembly__left_right_tip_1.3dxml"/>
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0.00500051574 0.0003612525966 -0.01499547728" rpy="-3.140164588 -1.546710467 -1.572223978"/>
       <geometry>
         <mesh filename="../meshes/underactuated_girpper_assembly__left_right_tip_1.3dxml"/>
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="0.005358274538 0.004583654818 -0.01467395723" rpy="0 0 0"/>
+      <origin xyz="0.0004166645371 0.01490190761 -0.009285514215" rpy="0 0 0"/>
       <mass value="0.00529539"/>
-      <inertia ixx="6.52453e-07" ixy="-4.94279e-09" ixz="1.23224e-07" iyy="7.62913e-07" iyz="-3.33746e-08" izz="1.96323e-07"/>
+      <inertia ixx="7.62913e-07" ixy="-3.34793e-08" ixz="4.14159e-09" iyy="2.02521e-07" iyz="-1.34064e-07" izz="6.46255e-07"/>
     </inertial>
   </link>
   <link name="underactuated_girpper_assembly_1__left_right_tip_2">
     <!-- sw2robot density="1000" inertia="solidworks" -->
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="-0.005000515831 0.0002272483818 0.01499810653" rpy="0.002270167025 1.555645816 -1.56852642"/>
       <geometry>
         <mesh filename="../meshes/underactuated_girpper_assembly__left_right_tip_2.3dxml"/>
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="-0.005000515831 0.0002272483818 0.01499810653" rpy="0.002270167025 1.555645816 -1.56852642"/>
       <geometry>
         <mesh filename="../meshes/underactuated_girpper_assembly__left_right_tip_2.3dxml"/>
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="0.005358274538 0.005416345182 -0.01467395723" rpy="0 0 0"/>
+      <origin xyz="0.0004160212589 0.01481834425 0.009418324363" rpy="0 0 0"/>
       <mass value="0.00529539"/>
-      <inertia ixx="6.52453e-07" ixy="4.94279e-09" ixz="1.23224e-07" iyy="7.62913e-07" iyz="3.33746e-08" izz="1.96323e-07"/>
+      <inertia ixx="7.62913e-07" ixy="-3.34501e-08" ixz="-4.43267e-09" iyy="2.00161e-07" iyz="1.30076e-07" izz="6.48614e-07"/>
     </inertial>
   </link>
   <link name="underactuated_girpper_assembly_1__link_1">
     <!-- sw2robot density="1000" inertia="solidworks" -->
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="-0.009999999994 0 -3.439284459e-07" rpy="6.315477756e-05 0.9949077641 -1.570743358"/>
       <geometry>
         <mesh filename="../meshes/underactuated_girpper_assembly__link_1.3dxml"/>
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="-0.009999999994 0 -3.439284459e-07" rpy="6.315477756e-05 0.9949077641 -1.570743358"/>
       <geometry>
         <mesh filename="../meshes/underactuated_girpper_assembly__link_1.3dxml"/>
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="6.172825034e-09 0.003295265617 -0.0156130535" rpy="0 0 0"/>
+      <origin xyz="-0.006704441952 0.01309480107 -0.008502796345" rpy="0 0 0"/>
       <mass value="0.00256436"/>
-      <inertia ixx="4.74402e-07" ixy="1.25021e-13" ixz="2.57387e-13" iyy="4.81752e-07" iyz="2.99988e-08" izz="3.39162e-08"/>
+      <inertia ixx="4.81751e-07" ixy="-2.51672e-08" ixz="1.63414e-08" iyy="1.6455e-07" iyz="2.01189e-07" izz="3.43769e-07"/>
     </inertial>
   </link>
   <link name="underactuated_girpper_assembly_1__link_2">
     <!-- sw2robot density="1000" inertia="solidworks" -->
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="-0.009999999994 0 -3.439284466e-07" rpy="3.141531092 0.9780150189 1.570745268"/>
       <geometry>
         <mesh filename="../meshes/underactuated_girpper_assembly__link_1.3dxml"/>
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="-0.009999999994 0 -3.439284466e-07" rpy="3.141531092 0.9780150189 1.570745268"/>
       <geometry>
         <mesh filename="../meshes/underactuated_girpper_assembly__link_1.3dxml"/>
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="6.172825034e-09 0.003295265617 -0.0156130535" rpy="0 0 0"/>
+      <origin xyz="-0.006705034372 0.01294931477 0.008722308395" rpy="0 0 0"/>
       <mass value="0.00256436"/>
-      <inertia ixx="4.74402e-07" ixy="1.25021e-13" ixz="2.57387e-13" iyy="4.81752e-07" iyz="2.99988e-08" izz="3.39162e-08"/>
+      <inertia ixx="4.81754e-07" ixy="-2.48736e-08" ixz="-1.67545e-08" iyy="1.71397e-07" iyz="-2.04102e-07" izz="3.3692e-07"/>
     </inertial>
   </link>
   <link name="underactuated_girpper_assembly_1__top_bottom_plate_1">
@@ -1521,29 +1521,80 @@
     <!-- mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC -->
     <!-- sw2robot-note: geo: free rotation about mate axis (1 DOF); config sets fixed (inference said revolute) -->
   </joint>
-  <joint name="underactuated_girpper_assembly_1__top_bottom_plate_1__underactuated_girpper_assembly_1__geared_actuator_link_1" type="fixed">
-    <origin xyz="0.024 0.005 0" rpy="3.141592654 -1.39943571 -3.141592654"/>
+  <joint name="gripper_joint" type="revolute">
+    <origin xyz="0.024 0.005 0" rpy="-1.570796327 0 -1.57083072"/>
     <parent link="underactuated_girpper_assembly_1__top_bottom_plate_1"/>
     <child link="underactuated_girpper_assembly_1__geared_actuator_link_1"/>
-    <axis xyz="0 -1 0"/>
+    <axis xyz="1 0 3.439e-05"/>
+    <limit lower="-0.38397" upper="0.34907" effort="10" velocity="3.14"/>
     <!-- mates: CONCENTRIC, COINCIDENT, CONCENTRIC, COINCIDENT -->
-    <!-- sw2robot-note: geo: free axis but r=1.6mm = fastener, not bearing -> fixed -->
+    <!-- sw2robot-note: geo: free axis but r=1.6mm = fastener, not bearing -> fixed; config sets revolute (inference said fixed) -->
   </joint>
-  <joint name="underactuated_girpper_assembly_1__top_bottom_plate_1__underactuated_girpper_assembly_1__link_1" type="fixed">
-    <origin xyz="-0.0085 0.015 -0.017" rpy="0 -0.5758885618 -3.141592654"/>
+  <joint name="underactuated_girpper_assembly_1__top_bottom_plate_1__underactuated_girpper_assembly_1__geared_actuated_link_1" type="revolute">
+    <origin xyz="0 0.005 0" rpy="-1.570796327 0 -1.57083072"/>
     <parent link="underactuated_girpper_assembly_1__top_bottom_plate_1"/>
-    <child link="underactuated_girpper_assembly_1__link_1"/>
-    <axis xyz="0 1 0"/>
-    <!-- mates: CONCENTRIC, COINCIDENT, CONCENTRIC, COINCIDENT -->
-    <!-- sw2robot-note: geo: free axis but r=1.7mm = fastener, not bearing -> fixed -->
+    <child link="underactuated_girpper_assembly_1__geared_actuated_link_1"/>
+    <axis xyz="1 0 3.439e-05"/>
+    <limit lower="-0.34907" upper="0.38397" effort="10" velocity="3.14"/>
+    <mimic joint="gripper_joint" multiplier="-1" offset="0"/>
+    <!-- mates: COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT -->
+    <!-- sw2robot-note: geo: free rotation about mate axis (1 DOF) -->
   </joint>
-  <joint name="underactuated_girpper_assembly_1__top_bottom_plate_1__underactuated_girpper_assembly_1__link_2" type="fixed">
-    <origin xyz="0.0325 0.015 -0.017" rpy="0 0.592781307 -3.141592654"/>
+  <joint name="underactuated_girpper_assembly_1__top_bottom_plate_1__underactuated_girpper_assembly_1__link_2" type="revolute">
+    <origin xyz="0.0325 0.005 -0.017" rpy="-1.570796327 0 -1.57083072"/>
     <parent link="underactuated_girpper_assembly_1__top_bottom_plate_1"/>
     <child link="underactuated_girpper_assembly_1__link_2"/>
-    <axis xyz="0 1 0"/>
+    <axis xyz="1 0 3.439e-05"/>
+    <limit lower="-0.561" upper="0.59185" effort="10" velocity="3.14"/>
+    <mimic joint="gripper_joint" multiplier="1.55319" offset="0"/>
     <!-- mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC -->
-    <!-- sw2robot-note: geo: free axis but r=1.6mm = fastener, not bearing -> fixed -->
+    <!-- sw2robot-note: geo: free axis but r=1.6mm = fastener, not bearing -> fixed; config sets revolute (inference said fixed) -->
+  </joint>
+  <joint name="underactuated_girpper_assembly_1__top_bottom_plate_1__underactuated_girpper_assembly_1__link_1" type="revolute">
+    <origin xyz="-0.0085 0.005 -0.017" rpy="-1.570796327 0 -1.57083072"/>
+    <parent link="underactuated_girpper_assembly_1__top_bottom_plate_1"/>
+    <child link="underactuated_girpper_assembly_1__link_1"/>
+    <axis xyz="1 0 3.439e-05"/>
+    <limit lower="-0.58686" upper="0.55884" effort="10" velocity="3.14"/>
+    <mimic joint="gripper_joint" multiplier="-1.5459" offset="0"/>
+    <!-- mates: CONCENTRIC, COINCIDENT, CONCENTRIC, COINCIDENT -->
+    <!-- sw2robot-note: geo: free axis but r=1.7mm = fastener, not bearing -> fixed; config sets revolute (inference said fixed) -->
+  </joint>
+  <joint name="underactuated_girpper_assembly_1__geared_actuator_link_1__underactuated_girpper_assembly_1__left_right_actuating_link_2" type="fixed">
+    <origin xyz="-0.010001525 -0.007673543765 0.04434057085" rpy="0.01084117474 1.567623831 -1.559955207"/>
+    <parent link="underactuated_girpper_assembly_1__geared_actuator_link_1"/>
+    <child link="underactuated_girpper_assembly_1__left_right_actuating_link_2"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT -->
+    <!-- sw2robot-note: geo: fully constrained -->
+  </joint>
+  <joint name="underactuated_girpper_assembly_1__geared_actuated_link_1__underactuated_girpper_assembly_1__left_right_actuating_link_1" type="fixed">
+    <origin xyz="-0.009998472197 -0.007189575669 -0.04442229795" rpy="3.139149374 1.556719342 1.568353289"/>
+    <parent link="underactuated_girpper_assembly_1__geared_actuated_link_1"/>
+    <child link="underactuated_girpper_assembly_1__left_right_actuating_link_1"/>
+    <axis xyz="0 1 0"/>
+    <!-- mates: COINCIDENT, CONCENTRIC, PARALLEL, COINCIDENT, CONCENTRIC, PARALLEL -->
+    <!-- sw2robot-note: geo: fully constrained -->
+  </joint>
+  <joint name="underactuated_girpper_assembly_1__left_right_actuating_link_2__underactuated_girpper_assembly_1__left_right_tip_1" type="revolute">
+    <origin xyz="0 0.005 -0.055" rpy="-1.567624018 1.091045407e-07 1.570761934"/>
+    <parent link="underactuated_girpper_assembly_1__left_right_actuating_link_2"/>
+    <child link="underactuated_girpper_assembly_1__left_right_tip_1"/>
+    <axis xyz="-1 0 -3.439e-05"/>
+    <limit lower="-0.00804" upper="0.26822" effort="10" velocity="3.14"/>
+    <mimic joint="gripper_joint" multiplier="0.182471" offset="0"/>
+    <!-- mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC -->
+    <!-- sw2robot-note: geo: free axis but r=1.6mm = fastener, not bearing -> fixed; config sets revolute (inference said fixed) -->
+  </joint>
+  <joint name="underactuated_girpper_assembly_1__left_right_actuating_link_1__underactuated_girpper_assembly_1__left_right_tip_2" type="revolute">
+    <origin xyz="0 0.005 -0.055" rpy="-1.58487327 -4.8413012e-07 1.570761937"/>
+    <parent link="underactuated_girpper_assembly_1__left_right_actuating_link_1"/>
+    <child link="underactuated_girpper_assembly_1__left_right_tip_2"/>
+    <axis xyz="1 0 3.439e-05"/>
+    <limit lower="-0.00606" upper="0.25139" effort="10" velocity="3.14"/>
+    <mimic joint="gripper_joint" multiplier="0.153046" offset="0"/>
+    <!-- mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC -->
+    <!-- sw2robot-note: geo: free axis but r=1.6mm = fastener, not bearing -> fixed; config sets revolute (inference said fixed) -->
   </joint>
   <joint name="underactuated_girpper_assembly_1__top_bottom_plate_2__underactuated_girpper_assembly_1__front_spacer_1" type="fixed">
     <origin xyz="0.0325 0.005 -0.017" rpy="0 0 -3.141592654"/>
@@ -1560,46 +1611,6 @@
     <axis xyz="0 1 0"/>
     <!-- mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC -->
     <!-- sw2robot-note: geo: free axis but r=1.8mm = fastener, not bearing -> fixed -->
-  </joint>
-  <joint name="underactuated_girpper_assembly_1__geared_actuator_link_1__underactuated_girpper_assembly_1__left_right_actuating_link_2" type="fixed">
-    <origin xyz="0 0.01 -0.045" rpy="-3.141592654 -1.396263402 0"/>
-    <parent link="underactuated_girpper_assembly_1__geared_actuator_link_1"/>
-    <child link="underactuated_girpper_assembly_1__left_right_actuating_link_2"/>
-    <axis xyz="0 1 0"/>
-    <!-- mates: COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT, COINCIDENT -->
-    <!-- sw2robot-note: geo: fully constrained -->
-  </joint>
-  <joint name="underactuated_girpper_assembly_1__link_1__underactuated_girpper_assembly_1__left_right_tip_2" type="fixed">
-    <origin xyz="0 0 -0.037" rpy="0 0.5607380901 0"/>
-    <parent link="underactuated_girpper_assembly_1__link_1"/>
-    <child link="underactuated_girpper_assembly_1__left_right_tip_2"/>
-    <axis xyz="0 -1 0"/>
-    <!-- mates: CONCENTRIC, CONCENTRIC -->
-    <!-- sw2robot-note: geo: free axis but r=1.6mm = fastener, not bearing -> fixed -->
-  </joint>
-  <joint name="underactuated_girpper_assembly_1__link_2__underactuated_girpper_assembly_1__left_right_tip_1" type="fixed">
-    <origin xyz="0 0.01 -0.037" rpy="0 0.5686954718 3.141592654"/>
-    <parent link="underactuated_girpper_assembly_1__link_2"/>
-    <child link="underactuated_girpper_assembly_1__left_right_tip_1"/>
-    <axis xyz="0 1 0"/>
-    <!-- mates: CONCENTRIC, CONCENTRIC -->
-    <!-- sw2robot-note: geo: free axis but r=1.6mm = fastener, not bearing -> fixed -->
-  </joint>
-  <joint name="underactuated_girpper_assembly_1__left_right_tip_2__underactuated_girpper_assembly_1__left_right_actuating_link_1" type="fixed">
-    <origin xyz="0.01660727895 0 0.05497651002" rpy="0 0.02922741461 0"/>
-    <parent link="underactuated_girpper_assembly_1__left_right_tip_2"/>
-    <child link="underactuated_girpper_assembly_1__left_right_actuating_link_1"/>
-    <axis xyz="0 1 0"/>
-    <!-- mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC -->
-    <!-- sw2robot-note: geo: free axis but r=1.6mm = fastener, not bearing -> fixed -->
-  </joint>
-  <joint name="underactuated_girpper_assembly_1__left_right_actuating_link_1__underactuated_girpper_assembly_1__geared_actuated_link_1" type="fixed">
-    <origin xyz="-0.04431634889 0.01 -0.007814167995" rpy="3.141592654 1.396263402 0"/>
-    <parent link="underactuated_girpper_assembly_1__left_right_actuating_link_1"/>
-    <child link="underactuated_girpper_assembly_1__geared_actuated_link_1"/>
-    <axis xyz="0 -1 0"/>
-    <!-- mates: COINCIDENT, CONCENTRIC, PARALLEL, COINCIDENT, CONCENTRIC, PARALLEL -->
-    <!-- sw2robot-note: geo: fully constrained -->
   </joint>
   <joint name="Plate_v01_1__motor_module_v02_2" type="fixed">
     <origin xyz="0.08025843545 0.00145 -0.0975" rpy="0 0 0"/>
