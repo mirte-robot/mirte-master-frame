@@ -155,16 +155,31 @@ def run_build(cfg, name, extract_dir, joints_yaml, work):
         fail(2, "sw2robot build failed", f"sw2robot exited with code {proc.returncode}:\n{tail}\n\n"
              "If the error is about missing meshes or names, the committed extract is probably incomplete.\n" +
              REGENERATE_HELP.format(assembly=cfg["assembly"]))
-    # sw2robot's warnings (e.g. geometry missing from the URDF); joint config mismatches are checked ourselves
+    # sw2robot's warnings (e.g. geometry missing from the URDF); joint config mismatches are checked ourselves.
+    # Its "geometry MISSING from the URDF" check also reports the components listed under `exclude:` in the joint
+    # config (it only exempts frame_only / mass_only links), so those are left out here: they are excluded on purpose.
+    import yaml  # sw2robot dependency
+    with open(joints_yaml, encoding="utf-8") as f:
+        excluded = {str(x) for x in ((yaml.safe_load(f) or {}).get("exclude") or [])}
     warns = []
     for i, l in enumerate(out_lines):
         if re.match(r"\s*WARN(ING)?:", l):
             w = l.strip()
+            items = []
             j = i + 1
             while j < len(out_lines) and re.match(r"\s+- ", out_lines[j]):
-                w += " " + out_lines[j].strip()
+                items.append(out_lines[j].strip()[2:].strip())
                 j += 1
-            warns.append(w)
+            if "MISSING from the URDF" in w:
+                kept = [x for x in items if x not in excluded]
+                if len(kept) < len(items):
+                    log(f"  (ignored for the warning, in exclude: of the joint config: "
+                        f"{', '.join(x for x in items if x in excluded)})")
+                if not kept:
+                    continue
+                w = re.sub(r"\d+ component\(s\)", f"{len(kept)} component(s)", w, count=1)
+                items = kept
+            warns.append(w + "".join(f" - {x}" for x in items))
     descs = [Path(p).parent.parent for p in glob.glob(str(work / "*_description" / "urdf" / "*.urdf"))]
     if len(descs) != 1:
         fail(2, "sw2robot build output not found", f"expected one <name>_description package in {work}, found {descs}")
