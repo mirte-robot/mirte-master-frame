@@ -1,11 +1,11 @@
 # Closed-loop closures for loop_closure_relay (runtime IK).
 closures:
-- link_a: arm_assembly_1__linkages_5
-  link_b: arm_assembly_1__Hiwonder_HX_12H_1
+- link_a: arm_assembly_1__Hiwonder_HX_12H_1
+  link_b: arm_assembly_1__linkages_5
   point: [0.09564992, -0.01205816, 0.38623008]
   axis: [-6.33e-06, -1.0, 6.33e-06]
-- link_a: arm_assembly_1__Large_top_plate_1
-  link_b: arm_assembly_1__Ring_bearing_1
+- link_a: arm_assembly_1__Ring_bearing_1
+  link_b: arm_assembly_1__Large_top_plate_1
   point: [0.09, -6.0e-08, 0.081]
   axis: [-0.0, -6.33e-06, -1.0]
 dependent: []

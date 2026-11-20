@@ -30,7 +30,7 @@
   "textures": {}
  },
  "Left_Sidepanel_Module_1.3dxml": {
-  "config": "Left-Sidepanel-OPI3Bv2.1",
+  "config": "OPI3Bv2.1",
   "source": "solidworks\\Frame\\Left-Sidepanel-Module.SLDPRT",
   "textures": {}
  },
@@ -75,7 +75,7 @@
   "textures": {}
  },
  "Right_Sidepanel_Module_1.3dxml": {
-  "config": "Default",
+  "config": "Ethernet Connector",
   "source": "solidworks\\Frame\\Right-Sidepanel-Module.SLDPRT",
   "textures": {}
  },

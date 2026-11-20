@@ -201,7 +201,7 @@
     </inertial>
   </link>
   <link name="Mecanum_Wheel_dia_100_left_5">
-    <!-- sw2robot appearance="metal/steel/brushed steel" density="1000" inertia="solidworks" -->
+    <!-- sw2robot appearance="metal/steel/satin finish stainless steel" density="1000" inertia="solidworks" -->
     <visual>
       <origin xyz="0.04567555893 0.02989553386 -0.1470600291" rpy="0 0 1.729590139"/>
       <geometry>
@@ -221,7 +221,7 @@
     </inertial>
   </link>
   <link name="Mecanum_Wheel_dia_100_left_6">
-    <!-- sw2robot appearance="metal/steel/brushed steel" density="1000" inertia="solidworks" -->
+    <!-- sw2robot appearance="metal/steel/satin finish stainless steel" density="1000" inertia="solidworks" -->
     <visual>
       <origin xyz="0.02561617917 0.0482059228 -0.02705902909" rpy="0 0 2.232397128"/>
       <geometry>
@@ -375,9 +375,9 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="2.369101886e-05 -0.03040216741 0.09533743625" rpy="0 0 0"/>
-      <mass value="0.157046"/>
-      <inertia ixx="6.12322e-05" ixy="-5.32825e-08" ixz="-5.34938e-09" iyy="0.000587402" iyz="2.20794e-07" izz="0.000641589"/>
+      <origin xyz="2.583374457e-05 -0.03142135867 0.09531507983" rpy="0 0 0"/>
+      <mass value="0.144022"/>
+      <inertia ixx="5.85193e-05" ixy="-4.94892e-08" ixz="-5.26691e-09" iyy="0.000585923" iyz="1.40865e-07" izz="0.000637472"/>
     </inertial>
   </link>
   <link name="Right_Sonar_Module_1">
@@ -515,7 +515,7 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-2.300278945e-11 0.01150450804 -2.51808903e-05" rpy="0 0 0"/>
+      <origin xyz="-2.300278951e-11 0.01150450804 -2.51808903e-05" rpy="0 0 0"/>
       <mass value="0.0232406"/>
       <inertia ixx="3.62073e-06" ixy="-5.18743e-15" ixz="1.98039e-15" iyy="3.65209e-06" iyz="-4.61318e-09" izz="2.53827e-06"/>
     </inertial>
@@ -535,7 +535,7 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-2.300278945e-11 0.01150450804 -2.51808903e-05" rpy="0 0 0"/>
+      <origin xyz="-2.300278951e-11 0.01150450804 -2.51808903e-05" rpy="0 0 0"/>
       <mass value="0.0232406"/>
       <inertia ixx="3.62073e-06" ixy="-5.18743e-15" ixz="1.98039e-15" iyy="3.65209e-06" iyz="-4.61318e-09" izz="2.53827e-06"/>
     </inertial>
@@ -615,9 +615,9 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-1.475855386e-18 0.002290248909 -3.290205181e-18" rpy="0 0 0"/>
+      <origin xyz="-1.448269304e-18 0.002290248909 -3.182933707e-18" rpy="0 0 0"/>
       <mass value="0.000937045"/>
-      <inertia ixx="2.55569e-08" ixy="1.43165e-24" ixz="8.00221e-24" iyy="4.78952e-08" iyz="3.80636e-24" izz="2.55569e-08"/>
+      <inertia ixx="2.55569e-08" ixy="1.40837e-24" ixz="8.10318e-24" iyy="4.78952e-08" iyz="3.80051e-24" izz="2.55569e-08"/>
     </inertial>
   </link>
   <link name="arm_assembly_1__Servo_horn_driven_2">
@@ -635,9 +635,9 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-1.475855386e-18 0.002290248909 -3.290205181e-18" rpy="0 0 0"/>
+      <origin xyz="-1.448269304e-18 0.002290248909 -3.182933707e-18" rpy="0 0 0"/>
       <mass value="0.000937045"/>
-      <inertia ixx="2.55569e-08" ixy="1.43165e-24" ixz="8.00221e-24" iyy="4.78952e-08" iyz="3.80636e-24" izz="2.55569e-08"/>
+      <inertia ixx="2.55569e-08" ixy="1.40837e-24" ixz="8.10318e-24" iyy="4.78952e-08" iyz="3.80051e-24" izz="2.55569e-08"/>
     </inertial>
   </link>
   <link name="arm_assembly_1__Small_bottom_plate_1">
@@ -735,7 +735,7 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-5.328364989e-10 0.05818884923 0.02664999916" rpy="0 0 0"/>
+      <origin xyz="-5.328364711e-10 0.05818884923 0.02664999916" rpy="0 0 0"/>
       <mass value="0.0660069"/>
       <inertia ixx="9.61974e-05" ixy="-1.35043e-12" ixz="3.22575e-12" iyy="1.83462e-05" iyz="-2.25885e-12" izz="8.68844e-05"/>
     </inertial>
@@ -775,9 +775,9 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="5.518155013e-19 0.01890450471 -1.426033736e-18" rpy="0 0 0"/>
+      <origin xyz="5.499466409e-19 0.01890450471 -1.438039748e-18" rpy="0 0 0"/>
       <mass value="0.00686449"/>
-      <inertia ixx="1.05023e-06" ixy="-1.63048e-23" ixz="-6.88818e-24" iyy="3.29465e-08" iyz="-1.68638e-23" izz="1.05023e-06"/>
+      <inertia ixx="1.05023e-06" ixy="-1.60921e-23" ixz="-6.92462e-24" iyy="3.29465e-08" iyz="-1.68404e-23" izz="1.05023e-06"/>
     </inertial>
   </link>
   <link name="arm_assembly_1__standoff_M3_B_2">
@@ -795,9 +795,9 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="5.518155013e-19 0.01890450471 -1.426033736e-18" rpy="0 0 0"/>
+      <origin xyz="5.499466409e-19 0.01890450471 -1.438039748e-18" rpy="0 0 0"/>
       <mass value="0.00686449"/>
-      <inertia ixx="1.05023e-06" ixy="-1.63048e-23" ixz="-6.88818e-24" iyy="3.29465e-08" iyz="-1.68638e-23" izz="1.05023e-06"/>
+      <inertia ixx="1.05023e-06" ixy="-1.60921e-23" ixz="-6.92462e-24" iyy="3.29465e-08" iyz="-1.68404e-23" izz="1.05023e-06"/>
     </inertial>
   </link>
   <link name="arm_assembly_1__standoff_M3_B_3">
@@ -815,9 +815,9 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="5.518155013e-19 0.01890450471 -1.426033736e-18" rpy="0 0 0"/>
+      <origin xyz="5.499466409e-19 0.01890450471 -1.438039748e-18" rpy="0 0 0"/>
       <mass value="0.00686449"/>
-      <inertia ixx="1.05023e-06" ixy="-1.63048e-23" ixz="-6.88818e-24" iyy="3.29465e-08" iyz="-1.68638e-23" izz="1.05023e-06"/>
+      <inertia ixx="1.05023e-06" ixy="-1.60921e-23" ixz="-6.92462e-24" iyy="3.29465e-08" iyz="-1.68404e-23" izz="1.05023e-06"/>
     </inertial>
   </link>
   <link name="underactuated_girpper_assembly_1__front_spacer_1">
@@ -1075,9 +1075,9 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-0.01011860317 0.02024454813 5.819880909e-18" rpy="0 0 0"/>
+      <origin xyz="-0.01011860317 0.02024454813 5.694055476e-18" rpy="0 0 0"/>
       <mass value="0.0328702"/>
-      <inertia ixx="5.70492e-06" ixy="-3.76902e-09" ixz="-3.8197e-13" iyy="5.47637e-06" iyz="9.70697e-22" izz="9.00788e-06"/>
+      <inertia ixx="5.70492e-06" ixy="-3.76902e-09" ixz="-3.8197e-13" iyy="5.47637e-06" iyz="1.05634e-21" izz="9.00788e-06"/>
     </inertial>
   </link>
   <link name="arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_driven_1">
@@ -1095,9 +1095,9 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-1.475855386e-18 0.002290248909 -3.290205181e-18" rpy="0 0 0"/>
+      <origin xyz="-1.448269304e-18 0.002290248909 -3.182933707e-18" rpy="0 0 0"/>
       <mass value="0.000937045"/>
-      <inertia ixx="2.55569e-08" ixy="1.43165e-24" ixz="8.00221e-24" iyy="4.78952e-08" iyz="3.80636e-24" izz="2.55569e-08"/>
+      <inertia ixx="2.55569e-08" ixy="1.40837e-24" ixz="8.10318e-24" iyy="4.78952e-08" iyz="3.80051e-24" izz="2.55569e-08"/>
     </inertial>
   </link>
   <link name="arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_non_driven_1">
@@ -1115,9 +1115,9 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-1.718987767e-19 0.00248435388 -9.891613765e-19" rpy="0 0 0"/>
+      <origin xyz="-1.331111904e-19 0.00248435388 -9.69689659e-19" rpy="0 0 0"/>
       <mass value="0.000666435"/>
-      <inertia ixx="2.10955e-08" ixy="4.7914e-26" ixz="5.14611e-25" iyy="3.99976e-08" iyz="4.88205e-25" izz="2.10955e-08"/>
+      <inertia ixx="2.10955e-08" ixy="3.8625e-26" ixz="6.54521e-25" iyy="3.99976e-08" iyz="4.6573e-25" izz="2.10955e-08"/>
     </inertial>
   </link>
   <link name="arm_assembly_1__Hiwonder_LX_225_Assembly_2__Hiwonder_LX_225_servo_1">
@@ -1135,9 +1135,9 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-0.01011860317 0.02024454813 5.819880909e-18" rpy="0 0 0"/>
+      <origin xyz="-0.01011860317 0.02024454813 5.694055476e-18" rpy="0 0 0"/>
       <mass value="0.0328702"/>
-      <inertia ixx="5.70492e-06" ixy="-3.76902e-09" ixz="-3.8197e-13" iyy="5.47637e-06" iyz="9.70697e-22" izz="9.00788e-06"/>
+      <inertia ixx="5.70492e-06" ixy="-3.76902e-09" ixz="-3.8197e-13" iyy="5.47637e-06" iyz="1.05634e-21" izz="9.00788e-06"/>
     </inertial>
   </link>
   <link name="arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_driven_1">
@@ -1155,9 +1155,9 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-1.475855386e-18 0.002290248909 -3.290205181e-18" rpy="0 0 0"/>
+      <origin xyz="-1.448269304e-18 0.002290248909 -3.182933707e-18" rpy="0 0 0"/>
       <mass value="0.000937045"/>
-      <inertia ixx="2.55569e-08" ixy="1.43165e-24" ixz="8.00221e-24" iyy="4.78952e-08" iyz="3.80636e-24" izz="2.55569e-08"/>
+      <inertia ixx="2.55569e-08" ixy="1.40837e-24" ixz="8.10318e-24" iyy="4.78952e-08" iyz="3.80051e-24" izz="2.55569e-08"/>
     </inertial>
   </link>
   <link name="arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_non_driven_1">
@@ -1175,9 +1175,9 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-1.718987767e-19 0.00248435388 -9.891613765e-19" rpy="0 0 0"/>
+      <origin xyz="-1.331111904e-19 0.00248435388 -9.69689659e-19" rpy="0 0 0"/>
       <mass value="0.000666435"/>
-      <inertia ixx="2.10955e-08" ixy="4.7914e-26" ixz="5.14611e-25" iyy="3.99976e-08" iyz="4.88205e-25" izz="2.10955e-08"/>
+      <inertia ixx="2.10955e-08" ixy="3.8625e-26" ixz="6.54521e-25" iyy="3.99976e-08" iyz="4.6573e-25" izz="2.10955e-08"/>
     </inertial>
   </link>
   <joint name="Plate_v01_1__motor_module_v02_1" type="fixed">

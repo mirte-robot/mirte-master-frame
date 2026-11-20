@@ -2,7 +2,7 @@
   "tool": "mirte-sw2robot-sync",
   "version": 1,
   "note": "SHA-256 of the SolidWorks files the sw2robot extract was made from. Written by tools/urdf/Sync-Sw2Robot.ps1.",
-  "extracted_utc": "2026-11-19T18:22:10.8694750Z",
+  "extracted_utc": "2026-11-20T08:39:41.6314218Z",
   "extractor": "sw2robot 0.4.13",
   "assembly": "solidworks/MM-Minimal.SLDASM",
   "files": {
@@ -18,14 +18,14 @@
     "solidworks/Arm/Small bottom plate.SLDPRT": "77ee5cbc1e09f812010b820cfdbb9bee3413242da31ab10f8571f711ed75765c",
     "solidworks/Arm/Small top plate.SLDPRT": "d20670f6cc33150a61216ef82ffe23c252845aa4a01c2a26854277933bfd321f",
     "solidworks/Frame/Battery-Module.SLDPRT": "aea0dbf2e12b0bf7a9e878085d1b96a9cdfa62e0500b7715befab02c0f887593",
-    "solidworks/Frame/Camera-Module.SLDPRT": "0b4cab1e264f6b0b609393126a011684025a77d0cb0e5c10beea7ab55028d1a9",
+    "solidworks/Frame/Camera-Module.SLDPRT": "7c0ebd17ea121f58cffb9b3d5130999792f6717ad915dd53513221dd1a22e97a",
     "solidworks/Frame/Frame Circ.SLDPRT": "f6846fff9451d1b85b54ccdbd76f10319d6b21afac5614d6846e26698f504419",
     "solidworks/Frame/Front-Module.SLDPRT": "18a64b86483111991351be1296be6b9a244b810fe85b87abb5441fee8f4dbe7f",
-    "solidworks/Frame/Left-Sidepanel-Module.SLDPRT": "3b64cc79604ce68d83a02e2e5330d369ca77dcea2ab368440fcdad6bf17a3795",
+    "solidworks/Frame/Left-Sidepanel-Module.SLDPRT": "79969190f2060da62edcd15e238aac3c7a52685a108797cc55eda3667781983b",
     "solidworks/Frame/Left-Sonar-Module.SLDPRT": "0e6b722d6a3b2bdad7a2aac86ff829dfb59dcb3d4ee124e79b93638353a79b37",
     "solidworks/Frame/motor_module v02.SLDPRT": "8725fdfdaff2726a9e3779be10c090960def915ebd0b88dd0535b77ae75f3809",
     "solidworks/Frame/Plate v01.SLDPRT": "f71e0c7ea3e2c673f6505e20f9d0add7bd595793afd30b1f6b4dd88172fc2f26",
-    "solidworks/Frame/Right-Sidepanel-Module.SLDPRT": "d16470aa3265ae26fb2638f5d04913f535d0fcd23219d77723adad7352860d53",
+    "solidworks/Frame/Right-Sidepanel-Module.SLDPRT": "e9643aef27283e756386afab91346eb5f12e5f92e9899fb1db1c2e1d8d17d012",
     "solidworks/Frame/Right-Sonar-Module.SLDPRT": "8d52f4c23d2590a17335a4dfaaac1377d5f6663ff02de6af9ef36fa691d6bc2a",
     "solidworks/Gripper/front_spacer.SLDPRT": "ee861fce9660d39e9a1aeee30dda3e82c674b73c1139006dbf344727bdb53cd5",
     "solidworks/Gripper/geared actuated link.SLDPRT": "989c19cc343f8b1b85127e8f4b3aba3117d117ac55cf9435fbc14c9acf01fbe0",
@@ -79,7 +79,7 @@
     "solidworks/Misc Parts/standoff M3 B.SLDPRT": "80cf1924ad8f75032bcacd882660453eb55a7e781d22431144ebe991d840fbd0",
     "solidworks/Misc Parts/USB C basic.SLDPRT": "586b26f5d5a31ce38e5429a88985adebcc2609a588335359f7657aaadb3ad22b",
     "solidworks/Misc Parts/usb.SLDPRT": "1111925d95aad28175948689a606e4af5dc4961bfc02b744759808d7f5545174",
-    "solidworks/MM-Frame-Only.SLDASM": "a55751c599a1b1d33f0266c2263cea3b2cc309ad15db2aa017024743c30b64b0",
-    "solidworks/MM-Minimal.SLDASM": "42f7670203d6caf747e116dc14b3fa379763c493a94d7b2ca0ad871b706cd5bd"
+    "solidworks/MM-Frame-Only.SLDASM": "b0e9421d2259a1f194d26d9efb2658ed9530ef211b7a291780c162faed492925",
+    "solidworks/MM-Minimal.SLDASM": "a89e707f6e159fb4b221aa6941f9bdb81747196e8f9fc83dc8f3ddab364b13ba"
   }
 }

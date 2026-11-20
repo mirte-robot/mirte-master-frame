@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
   Export STL, STEP and DXF manufacturing files for the custom parts of the MIRTE Master assembly.
 
@@ -58,6 +58,22 @@ $repo = (Resolve-Path (Join-Path $here '..\..')).Path
 if (-not $Config) { $Config = Join-Path $here 'export.config.json' }
 $OutDir0 = $OutDir
 $OutDir = $null
+$prevDir = $null
+
+# Put the previous run's output files back (used when the run stops before it exported anything).
+function Restore-Previous {
+  if (-not $prevDir -or -not (Test-Path $prevDir)) { return }
+  if (Test-Path $OutDir) {
+    Get-ChildItem $OutDir -Recurse -File | Where-Object { $_.Extension -in '.stl', '.step', '.dxf' } | Remove-Item -Force
+  }
+  foreach ($f in @(Get-ChildItem $prevDir -Recurse -File)) {
+    $dst = Join-Path $repo $f.FullName.Substring($prevDir.Length + 1)
+    New-Item -ItemType Directory -Force (Split-Path $dst) | Out-Null
+    Copy-Item -LiteralPath $f.FullName -Destination $dst -Force
+  }
+  Remove-Item -LiteralPath $prevDir -Recurse -Force
+  Write-Host "The previous export files were put back; $OutDir is unchanged."
+}
 
 try {
   $cfg = Get-Content $Config -Raw | ConvertFrom-Json
@@ -97,25 +113,22 @@ try {
     foreach ($p in $cfg.group_overrides.PSObject.Properties) { $oFiles += $p.Name; $oNames += $p.Value }
   }
   $opt.GroupOverrideFiles = [string[]]$oFiles
+  if ($cfg.variants) { $opt.Variants = [string[]]@($cfg.variants) }
   $opt.GroupOverrideNames = [string[]]$oNames
 
-  # Keep the previous run's files, to reuse them for parts that did not change.
+  # Keep a copy of the previous run's files: to reuse them for parts that did not change, and to put them back
+  # when this run stops early (otherwise an aborted run would leave exports/ empty).
   $prevManifest = $null; $prevDir = $null
   $prevPath = Join-Path $OutDir 'export_manifest.json'
-  if (-not $ListOnly -and -not $Force -and (Test-Path $prevPath)) {
-    try { $prevManifest = Get-Content $prevPath -Raw | ConvertFrom-Json } catch { $prevManifest = $null }
-    if ($prevManifest) {
-      $prevDir = Join-Path ([System.IO.Path]::GetTempPath()) ("mirte-export-prev-" + [guid]::NewGuid().ToString('N'))
-      foreach ($pp in @($prevManifest.parts)) {
-        foreach ($o in @($pp.outputs)) {
-          $src = Join-Path $repo $o.path
-          if (Test-Path -LiteralPath $src) {
-            $dst = Join-Path $prevDir $o.path
-            New-Item -ItemType Directory -Force (Split-Path $dst) | Out-Null
-            Copy-Item -LiteralPath $src -Destination $dst -Force
-          }
-        }
-      }
+  if (-not $ListOnly -and (Test-Path $OutDir)) {
+    if (-not $Force -and (Test-Path $prevPath)) {
+      try { $prevManifest = Get-Content $prevPath -Raw | ConvertFrom-Json } catch { $prevManifest = $null }
+    }
+    $prevDir = Join-Path ([System.IO.Path]::GetTempPath()) ("mirte-export-prev-" + [guid]::NewGuid().ToString('N'))
+    foreach ($f in @(Get-ChildItem $OutDir -Recurse -File | Where-Object { $_.Extension -in '.stl', '.step', '.dxf' })) {
+      $dst = Join-Path $prevDir $f.FullName.Substring($repo.Length + 1)
+      New-Item -ItemType Directory -Force (Split-Path $dst) | Out-Null
+      Copy-Item -LiteralPath $f.FullName -Destination $dst -Force
     }
   }
 
@@ -131,11 +144,13 @@ try {
 }
 catch {
   Write-Host "Export could not run: $($_.Exception.Message)" -ForegroundColor Red
+  Restore-Previous
   exit 2
 }
 
 if ($res.Errors.Count -gt 0) {
   foreach ($e in $res.Errors) { Write-Host "ERROR: $e" -ForegroundColor Red }
+  Restore-Previous
   exit 2
 }
 
@@ -215,6 +230,7 @@ if (-not $ListOnly) {
         configuration = $_.Config
         group = $_.Group
         kind = $_.Kind
+        variant = [bool]$_.Variant
         reason = $_.Reason
         components = @($_.Components)
         outputs = @($_.Outputs | ForEach-Object { [ordered]@{ path = $_; sha256 = (Get-Sha256 (Join-Path $repo $_)) } })

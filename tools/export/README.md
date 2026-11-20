@@ -36,6 +36,7 @@ match on GitHub.
 |---|---|
 | `step/` | STEP (AP214) of every exported part, printed and laser cut |
 | `stl/`  | Binary STL (mm, fine quality, part coordinates) of every 3D-printed part |
+| `step/variants/`, `stl/variants/` | Alternative versions of a part that the assembly does not use (see [Variants](#variants)) |
 | `dxf/`  | DXF (mm) of every laser-cut plate |
 | `export_report.txt` | Which part went where, and why |
 | `export_manifest.json` | Same, plus the SHA-256 of every source part, assembly and output file |
@@ -79,6 +80,23 @@ configurations) or `"solidworks/Frame/Plate v01.SLDPRT:Top Plate"` (one configur
 When you add a new part, run with `-ListOnly` and check it lands in the right group. If it doesn't, either add an
 `Export` custom property to the part (the setting then travels with the part) or add it to the config.
 
+## Variants
+
+Some parts have configurations for other hardware that replace the standard part, e.g. a left side panel for a
+Raspberry Pi 4B instead of the Orange Pi 3B, or a right side panel without the Ethernet port. The assembly uses one of
+them; the others are listed under `variants` in the config and exported too, always as STEP + STL, to `step/variants/`
+and `stl/variants/`, named `<group>_<file>-<configuration>`, e.g. `base_Left-Sidepanel-Module-RPI4B.STL`.
+
+An entry `"solidworks/Frame/Left-Sidepanel-Module.SLDPRT"` exports every configuration of that part that the assembly
+does not use, so a new configuration is picked up automatically; `"...SLDPRT:RPI4B"` exports only that one. The
+configuration names are the variant names in the file names, so keep them short (the hardware, not the part name).
+
+| Part | In the assembly | Variants |
+|---|---|---|
+| `Frame/Left-Sidepanel-Module` | OPI3Bv2.1 | RPI4B, OPI3Bv1.1 |
+| `Frame/Right-Sidepanel-Module` | Ethernet Connector | Empty |
+| `Frame/Camera-Module` | AstraMiniPro | AstraProPlus |
+
 ## Config (`export.config.json`)
 
 | Key | Meaning |
@@ -94,6 +112,7 @@ When you add a new part, run with `-ListOnly` and check it lands in the right gr
 | `exclude_files` | Parts (or part configurations) never exported. |
 | `laser_files` | Plates that are not sheet-metal parts but are laser cut. |
 | `print_files` | Parts that are 3D printed even though another rule would say otherwise. |
+| `variants` | Part configurations not used in the assembly that are exported too (STEP + STL, to `*/variants/`): `"path"` = all unused configurations, `"path:config"` = one. |
 
 ## What it changes
 

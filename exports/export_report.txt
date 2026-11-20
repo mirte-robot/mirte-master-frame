@@ -1,6 +1,6 @@
-﻿MIRTE part export - 2026-11-19T20:28:25.0080961Z
+﻿MIRTE part export - 2026-11-20T09:09:30.4151140Z
 Assembly : solidworks/MM-Minimal.SLDASM   SolidWorks 33.3.0
-Parts    : 26 print (STEP+STL), 7 laser (STEP+DXF), 10 not exported
+Parts    : 30 print (STEP+STL), 7 laser (STEP+DXF), 10 not exported
 Result   : OK
 
 [LASER] base     solidworks/Frame/Plate v01.SLDPRT                          Arm Plate                  -> base_Plate v01-Arm Plate                     (laser_files)
@@ -13,10 +13,14 @@ Result   : OK
 [PRINT] base     solidworks/Arm/Camera-Mount.SLDPRT                         Default                    -> base_Camera-Mount                            (custom part (default))
 [PRINT] base     solidworks/Frame/Battery-Module.SLDPRT                     Default                    -> base_Battery-Module                          (custom part (default))
 [PRINT] base     solidworks/Frame/Camera-Module.SLDPRT                      AstraMiniPro               -> base_Camera-Module                           (custom part (default))
-[PRINT] base     solidworks/Frame/Left-Sidepanel-Module.SLDPRT              Left-Sidepanel-OPI3Bv2.1   -> base_Left-Sidepanel-Module                   (custom part (default))
+[PRINT] base     solidworks/Frame/Camera-Module.SLDPRT                      AstraProPlus               -> base_Camera-Module-AstraProPlus              (variants: not used in the assembly)
+[PRINT] base     solidworks/Frame/Left-Sidepanel-Module.SLDPRT              OPI3Bv1.1                  -> base_Left-Sidepanel-Module-OPI3Bv1.1         (variants: not used in the assembly)
+[PRINT] base     solidworks/Frame/Left-Sidepanel-Module.SLDPRT              OPI3Bv2.1                  -> base_Left-Sidepanel-Module                   (custom part (default))
+[PRINT] base     solidworks/Frame/Left-Sidepanel-Module.SLDPRT              RPI4B                      -> base_Left-Sidepanel-Module-RPI4B             (variants: not used in the assembly)
 [PRINT] base     solidworks/Frame/Left-Sonar-Module.SLDPRT                  Default                    -> base_Left-Sonar-Module                       (custom part (default))
 [PRINT] base     solidworks/Frame/motor_module v02.SLDPRT                   Default                    -> base_motor_module v02                        (custom part (default))
-[PRINT] base     solidworks/Frame/Right-Sidepanel-Module.SLDPRT             Default                    -> base_Right-Sidepanel-Module                  (custom part (default))
+[PRINT] base     solidworks/Frame/Right-Sidepanel-Module.SLDPRT             Empty                      -> base_Right-Sidepanel-Module-Empty            (variants: not used in the assembly)
+[PRINT] base     solidworks/Frame/Right-Sidepanel-Module.SLDPRT             Ethernet Connector         -> base_Right-Sidepanel-Module                  (custom part (default))
 [PRINT] base     solidworks/Frame/Right-Sonar-Module.SLDPRT                 Default                    -> base_Right-Sonar-Module                      (custom part (default))
 [PRINT] base     solidworks/Internal mounting parts/battery_mount V2.SLDPRT Default                    -> base_battery_mount V2                        (custom part (default))
 [PRINT] base     solidworks/Internal mounting parts/Cable-funnel.SLDPRT     Default                    -> base_Cable-funnel                            (custom part (default))

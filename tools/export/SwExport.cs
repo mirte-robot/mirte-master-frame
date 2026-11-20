@@ -34,6 +34,9 @@ namespace MirteExport
         // Explicit group per part, overriding the sub-assembly rule: GroupOverrideFiles[i] ("path" or "path:config") -> GroupOverrideNames[i].
         public string[] GroupOverrideFiles = new string[0];
         public string[] GroupOverrideNames = new string[0];
+        // Variants: part configurations that are not used in the assembly but are exported too (always STEP + STL, to
+        // step/variants and stl/variants). "path" = every configuration of that part the assembly does not use, "path:config" = that one.
+        public string[] Variants = new string[0];
     }
 
     public class ExportItem
@@ -45,6 +48,7 @@ namespace MirteExport
         public string Kind;       // "print" | "laser" | "none"
         public string Reason;
         public bool SheetMetal;
+        public bool Variant;      // from the variants list, not used in the assembly
         public string BaseName;
         public List<string> Components = new List<string>();
         public List<string> Outputs = new List<string>();  // repo-relative output files
@@ -165,6 +169,7 @@ namespace MirteExport
             }
 
             Collect(top, opt, r);
+            AddVariants(sw, opt, r);
             if (opt.ListOnly || r.Errors.Count > 0) return r;
 
             bool changed = false;
@@ -235,6 +240,54 @@ namespace MirteExport
                 string u = b; int i = 2;
                 while (!used.Add(u)) u = b + "_" + (i++);
                 it.BaseName = u;
+            }
+        }
+
+        // Add the configurations listed under variants that the assembly does not use (read from the file, without opening it).
+        static void AddVariants(ISldWorks sw, ExportOptions opt, ExportResult r)
+        {
+            var used = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            var groupOf = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            foreach (ExportItem it in r.Items) { used.Add(it.RelPath + ":" + it.Config); if (!groupOf.ContainsKey(it.RelPath)) groupOf[it.RelPath] = it.Group; }
+            var names = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            foreach (ExportItem it in r.Items) if (it.BaseName != null) names.Add(it.BaseName);
+            foreach (string entry0 in opt.Variants)
+            {
+                if (string.IsNullOrEmpty(entry0)) continue;
+                string entry = entry0.Replace('\\', '/');
+                int ext = entry.ToLowerInvariant().IndexOf(".sldprt");   // "path:config": the colon after the file name
+                int colon = ext < 0 ? -1 : entry.IndexOf(':', ext);
+                string rel = colon < 0 ? entry : entry.Substring(0, colon);
+                string want = colon < 0 ? null : entry.Substring(colon + 1);
+                string full = Path.Combine(opt.RepoRoot, rel.Replace('/', '\\'));
+                if (!File.Exists(full)) { r.Errors.Add("variants: file not found: " + rel); continue; }
+                object o = sw.GetConfigurationNames(full);
+                string[] cfgs = o as string[];
+                if (cfgs == null && o is object[]) cfgs = Array.ConvertAll((object[])o, x => (string)x);
+                if (cfgs == null) { r.Errors.Add("variants: could not read the configurations of " + rel); continue; }
+                if (want != null && Array.IndexOf(cfgs, want) < 0)
+                {
+                    r.Errors.Add("variants: " + rel + " has no configuration '" + want + "' (it has: " + string.Join(", ", cfgs) + ")");
+                    continue;
+                }
+                string relFixed = Rel(opt.RepoRoot, full);
+                foreach (string cfg in cfgs)
+                {
+                    if (want != null && cfg != want) continue;
+                    if (!used.Add(relFixed + ":" + cfg)) continue;   // used in the assembly (already exported) or listed twice
+                    var it = new ExportItem();
+                    it.Path = full; it.RelPath = relFixed; it.Config = cfg; it.Variant = true;
+                    string g;
+                    for (int i = 0; i < opt.GroupOverrideFiles.Length && it.Group == null; i++)
+                        if (Listed(new string[] { opt.GroupOverrideFiles[i] }, relFixed, cfg)) it.Group = opt.GroupOverrideNames[i];
+                    if (it.Group == null) it.Group = groupOf.TryGetValue(relFixed, out g) ? g : opt.DefaultGroup;
+                    it.Kind = "print"; it.Reason = "variants: not used in the assembly";
+                    string b = Safe(it.Group + "_" + Path.GetFileNameWithoutExtension(full) + "-" + cfg);
+                    string u = b; int n = 2;
+                    while (!names.Add(u)) u = b + "_" + (n++);
+                    it.BaseName = u;
+                    r.Items.Add(it);
+                }
             }
         }
 
@@ -332,6 +385,7 @@ namespace MirteExport
         static void Save(ModelDoc2 m, ExportItem it, ExportOptions opt, string sub, string ext)
         {
             string dir = Path.Combine(opt.OutDir, sub);
+            if (it.Variant) dir = Path.Combine(dir, "variants");
             Directory.CreateDirectory(dir);
             string file = Path.Combine(dir, it.BaseName + ext);
             int err = 0, warn = 0;

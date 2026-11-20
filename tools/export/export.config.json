@@ -24,5 +24,11 @@
     "solidworks/Frame/Plate v01.SLDPRT"
   ],
 
-  "print_files": []
+  "print_files": [],
+
+  "variants": [
+    "solidworks/Frame/Left-Sidepanel-Module.SLDPRT",
+    "solidworks/Frame/Right-Sidepanel-Module.SLDPRT",
+    "solidworks/Frame/Camera-Module.SLDPRT"
+  ]
 }
