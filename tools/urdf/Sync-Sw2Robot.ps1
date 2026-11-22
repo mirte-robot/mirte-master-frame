@@ -257,6 +257,28 @@ foreach ($f in (Get-ChildItem -LiteralPath $stage -Recurse -File -Filter '*.3dxm
   } finally { $zip.Dispose() }
 }
 
+# A full extract writes every .3dxml again, and the zip bytes differ each time (compression) even when nothing in it
+# changed. Keep the existing file when every entry is identical, so git only shows the meshes that really changed.
+function Get-ZipContentHash([string]$path) {
+  $zip = [IO.Compression.ZipFile]::OpenRead($path)
+  try {
+    $sha = [Security.Cryptography.SHA256]::Create()
+    $parts = foreach ($e in ($zip.Entries | Sort-Object FullName)) {
+      $s = $e.Open(); try { $h = [BitConverter]::ToString($sha.ComputeHash($s)) } finally { $s.Dispose() }
+      "$($e.FullName)=$h"
+    }
+    return ($parts -join ';')
+  } finally { $zip.Dispose() }
+}
+$keptMeshes = 0
+foreach ($f in (Get-ChildItem -LiteralPath $stage -Recurse -File -Filter '*.3dxml')) {
+  $old = Join-Path $extractDir $f.FullName.Substring($stage.Length + 1)
+  if (-not (Test-Path -LiteralPath $old)) { continue }
+  try { $same = (Get-ZipContentHash $old) -eq (Get-ZipContentHash $f.FullName) } catch { $same = $false }
+  if ($same) { Copy-Item -LiteralPath $old -Destination $f.FullName -Force; $keptMeshes++ }
+}
+if ($keptMeshes) { Write-Host "Kept $keptMeshes unchanged .3dxml file(s) as they were (same contents)." }
+
 # Same graph.json as committed = no new extract (e.g. -FromRepo with only joint edits): keep the recorded CAD hashes,
 # otherwise a CAD change since the last extract would be hidden.
 $oldGraph = Join-Path $extractDir 'graph.json'

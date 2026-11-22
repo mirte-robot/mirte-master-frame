@@ -4,6 +4,11 @@ joint_names:
   arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_non_driven_1__arm_assembly_1__linkages_3: shoulder_lift_joint
   arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_non_driven_1__arm_assembly_1__linkages_4: elbow_joint
   arm_assembly_1__Servo_horn_driven_2__arm_assembly_1__linkages_5: wrist_joint
+  underactuated_girpper_assembly_1__top_bottom_plate_1__underactuated_girpper_assembly_1__geared_actuated_link_1: gripper_gear_follower_joint
+  underactuated_girpper_assembly_1__top_bottom_plate_1__underactuated_girpper_assembly_1__link_2: gripper_rocker_r_joint
+  underactuated_girpper_assembly_1__top_bottom_plate_1__underactuated_girpper_assembly_1__link_1: gripper_rocker_l_joint
+  underactuated_girpper_assembly_1__left_right_actuating_link_2__underactuated_girpper_assembly_1__left_right_tip_1: gripper_tip_r_joint
+  underactuated_girpper_assembly_1__left_right_actuating_link_1__underactuated_girpper_assembly_1__left_right_tip_2: gripper_tip_l_joint
   motor_module_v02_2__Mecanum_Wheel_dia_100_right_7: front_left_wheel_joint
   motor_module_v02_1__Mecanum_Wheel_dia_100_left_5: rear_left_wheel_joint
   motor_module_v02_5__Mecanum_Wheel_dia_100_right_10: rear_right_wheel_joint
@@ -79,9 +84,9 @@ joints:
     type:   fixed # mates: CONCENTRIC, CONCENTRIC, COINCIDENT, CONCENTRIC, CONCENTRIC, COINCIDENT | geo: fully constrained
   - parent: motor_module_v02_1
     child:  Mecanum_Wheel_dia_100_left_5
-    type:   revolute # mates: CONCENTRIC, DISTANCE, CONCENTRIC, DISTANCE | geo: free rotation about mate axis (1 DOF)
-    lower: -3.14159
-    upper: 3.14159
+    type:   continuous # wheel (was revolute)  mates: CONCENTRIC, DISTANCE, CONCENTRIC, DISTANCE | geo: free rotation about mate axis (1 DOF)
+    velocity: 10.0  # rad/s, about 0.5 m/s at r = 0.05 m
+    effort: 10.0
   - parent: Plate_v01_2
     child:  c_4x20mm_f_f_standoff_1
     type:   fixed # mates: CONCENTRIC, CONCENTRIC | geo: free rotation about mate axis (2 DOF)
@@ -124,9 +129,10 @@ joints:
   - parent: arm_assembly_1__Large_bottom_plate_1
     child:  arm_assembly_1__Ring_bearing_1
     type:   revolute # mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC | geo: free rotation about mate axis (1 DOF)
-    lower: -3.14159
-    upper: 3.14159
-    flip_axis: true
+    lower: -1.5010  # -86.0 deg, real robot servo limit (mirte_bringup telemetrix config)
+    upper: 1.5708  # +90.0 deg
+    velocity: 5.2  # rad/s, HX-12H 0.20 s/60 deg
+    effort: 1.18  # Nm, HX-12H stall torque
   - parent: arm_assembly_1__Ring_bearing_1
     child:  arm_assembly_1__Small_bottom_plate_1
     type:   fixed # mates: CONCENTRIC, COINCIDENT, CONCENTRIC, COINCIDENT | geo: free rotation about mate axis (1 DOF); coaxial support bearing of an existing joint -> fixed
@@ -150,8 +156,10 @@ joints:
   - parent: arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_non_driven_1
     child:  arm_assembly_1__linkages_3
     type:   revolute # mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC | geo: free rotation about mate axis (1 DOF)
-    lower: -1.57080
-    upper: 1.57080
+    lower: -1.4923  # -85.5 deg, real robot servo limit (mirte_bringup telemetrix config)
+    upper: 1.5041  # +86.2 deg
+    velocity: 5.2  # rad/s, LX-225 0.20 s/60 deg
+    effort: 2.45  # Nm, LX-225 stall torque
     flip_axis: true
   - parent: arm_assembly_1__linkages_3
     child:  arm_assembly_1__Hiwonder_LX_225_Assembly_2__Hiwonder_LX_225_servo_1
@@ -165,8 +173,10 @@ joints:
   - parent: arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_non_driven_1
     child:  arm_assembly_1__linkages_4
     type:   revolute # mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC | geo: free rotation about mate axis (1 DOF)
-    lower: -1.57080
-    upper: 1.57080
+    lower: -1.6144  # -92.5 deg, real robot servo limit (mirte_bringup telemetrix config)
+    upper: 2.0298  # +116.3 deg
+    velocity: 5.2  # rad/s, LX-225 0.20 s/60 deg
+    effort: 2.45  # Nm, LX-225 stall torque
     flip_axis: true
   - parent: arm_assembly_1__linkages_4
     child:  arm_assembly_1__Hiwonder_HX_12H_1
@@ -180,8 +190,10 @@ joints:
   - parent: arm_assembly_1__Servo_horn_driven_2
     child:  arm_assembly_1__linkages_5
     type:   revolute # mates: COINCIDENT, CONCENTRIC, COINCIDENT, CONCENTRIC | geo: free axis but r=2.0mm = fastener, not bearing -> fixed
-    lower: -1.57080
-    upper: 1.57080
+    lower: -1.5359  # -88.0 deg, real robot servo limit (mirte_bringup telemetrix config)
+    upper: 1.9324  # +110.7 deg
+    velocity: 5.2  # rad/s, HX-12H 0.20 s/60 deg
+    effort: 1.18  # Nm, HX-12H stall torque
     flip_axis: true
   - parent: arm_assembly_1__linkages_5
     child:  Camera_Mount_1
@@ -264,25 +276,25 @@ joints:
     type:   fixed # mates: PARALLEL, PARALLEL | geo: under-constrained (4 DOF) -> fixed; verify
   - parent: motor_module_v02_2
     child:  Mecanum_Wheel_dia_100_right_7
-    type:   revolute # mates: CONCENTRIC, DISTANCE, CONCENTRIC, DISTANCE | geo: free rotation about mate axis (1 DOF)
-    lower: -3.14159
-    upper: 3.14159
+    type:   continuous # wheel (was revolute)  mates: CONCENTRIC, DISTANCE, CONCENTRIC, DISTANCE | geo: free rotation about mate axis (1 DOF)
+    velocity: 10.0  # rad/s, about 0.5 m/s at r = 0.05 m
+    effort: 10.0
   - parent: Plate_v01_1
     child:  motor_module_v02_5
     type:   fixed # mates: PARALLEL, PARALLEL | geo: under-constrained (4 DOF) -> fixed; verify
   - parent: motor_module_v02_5
     child:  Mecanum_Wheel_dia_100_right_10
-    type:   revolute # mates: CONCENTRIC, DISTANCE, CONCENTRIC, DISTANCE | geo: free rotation about mate axis (1 DOF)
-    lower: -3.14159
-    upper: 3.14159
+    type:   continuous # wheel (was revolute)  mates: CONCENTRIC, DISTANCE, CONCENTRIC, DISTANCE | geo: free rotation about mate axis (1 DOF)
+    velocity: 10.0  # rad/s, about 0.5 m/s at r = 0.05 m
+    effort: 10.0
   - parent: Plate_v01_1
     child:  motor_module_v02_6
     type:   fixed # mates: PARALLEL, PARALLEL | geo: under-constrained (4 DOF) -> fixed; verify
   - parent: motor_module_v02_6
     child:  Mecanum_Wheel_dia_100_left_6
-    type:   revolute # mates: DISTANCE, CONCENTRIC, DISTANCE, CONCENTRIC | geo: free rotation about mate axis (1 DOF)
-    lower: -3.14159
-    upper: 3.14159
+    type:   continuous # wheel (was revolute)  mates: DISTANCE, CONCENTRIC, DISTANCE, CONCENTRIC | geo: free rotation about mate axis (1 DOF)
+    velocity: 10.0  # rad/s, about 0.5 m/s at r = 0.05 m
+    effort: 10.0
 
 # --- robot-compiler module interface (optional) ---
 # root_link_name: base_link   # input port; '' keeps the part name
