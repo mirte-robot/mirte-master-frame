@@ -6,6 +6,7 @@ Runs in the GitHub Action, and locally with a Python that has sw2robot + xacro i
 Steps
   1. stale check   the SolidWorks files must match the hashes recorded when the extract was made
                    (sw2robot/<robot>.sources.json, written by Sync-Sw2Robot.ps1)
+     frames check  every frame in required_frames (urdf.config.json) is in the extract, once (also --check-only)
   2. build         sw2robot.exporter.build on a copy of sw2robot/<robot>/ with sw2robot/<robot>.joints.yaml
   3. joint check   every joint in the built model must be in the joint config with the same type, and every
                    joint config entry must match a joint in the model (sw2robot itself only warns and guesses)
@@ -14,7 +15,7 @@ Steps
                    <out>/<robot>/urdf/<robot>.urdf.xacro   (instantiates the macro)
                    <out>/<robot>/meshes/                   (.dae visuals, .stl collisions)
                    <out>/<robot>/build_info.json
-  5. validate      URDF tree, mesh files, and that the expanded xacro equals the URDF
+  5. validate      URDF tree, mesh files, required frames are links, and that the expanded xacro equals the URDF
 
 Exit code: 0 = OK, 1 = a check failed (stale extract, joint config mismatch, invalid output), 2 = could not build.
 
@@ -128,6 +129,47 @@ def stale_check(cfg, extract_dir, joints_yaml, sources_json):
         fail(1, "sw2robot extract is out of date with the SolidWorks model",
              "\n".join(lines) + "\n\n" + REGENERATE_HELP.format(assembly=cfg["assembly"]))
     log(f"Stale check OK: {len(cur)} SolidWorks files match the extract.")
+
+
+# --------------------------------------------------------------------------------------------------------------------
+# 1b. frames check
+
+FRAMES_HELP = """\
+Sensor frames are coordinate systems in SolidWorks. A normal extract only reads the ones in the assembly; the ones
+inside a part need a frames refresh after the extract (SolidWorks open with {assembly}):
+  .\\.venv-urdf\\Scripts\\python -E -m sw2robot.exporter.extract "$env:TEMP\\sw2robot\\output\\{name}" --refresh frames --attach
+  .\\tools\\urdf\\Sync-Sw2Robot.ps1 -ImportOnly
+A frame in a part goes with every instance of that part, so put it in a part used once (or in the assembly).
+See tools/urdf/README.md."""
+
+
+def frames_check(cfg, extract_dir):
+    """Every frame in required_frames must be a coordinate system in the extract, exactly once.
+    Standard library only, so it runs with --check-only (pre-push hook, first step of the Action)."""
+    req = cfg.get("required_frames") or []
+    if not req:
+        return
+    with open(extract_dir / "graph.json", encoding="utf-8") as f:
+        g = json.load(f)
+    norm = lambda p: str(p or "").replace("\\", "/").lower()
+    instances = {}
+    for c in g.get("components") or []:
+        instances[norm(c.get("part_path"))] = instances.get(norm(c.get("part_path")), 0) + 1
+    count = {}
+    for cs in g.get("coordinate_systems") or []:
+        count[cs.get("name")] = count.get(cs.get("name"), 0) + 1
+    for part, css in (g.get("part_coordinate_systems") or {}).items():
+        for cs in css:
+            count[cs.get("name")] = count.get(cs.get("name"), 0) + max(1, instances.get(norm(part), 1))
+    problems = [f"  missing: {n}" for n in req if n not in count]
+    problems += [f"  {n} appears {count[n]} times (in a part used more than once, or defined twice); "
+                 f"the URDF would rename the copies" for n in req if count.get(n, 0) > 1]
+    if problems:
+        fail(1, "Sensor frames missing or duplicated in the sw2robot extract",
+             f"sw2robot/{cfg['robot_name']}/graph.json does not have every frame in required_frames "
+             "(tools/urdf/urdf.config.json):\n" + "\n".join(problems) + "\n\n" +
+             FRAMES_HELP.format(assembly=cfg["assembly"], name=cfg["robot_name"]))
+    log(f"Frames check OK: {len(req)} required frames in the extract.")
 
 
 # --------------------------------------------------------------------------------------------------------------------
@@ -312,6 +354,14 @@ def _shared_name(names, taken):
     return n
 
 
+def deterministic_dae(data: bytes) -> bytes:
+    """trimesh writes the export time and random uuid4 ids into a .dae, so every build changes every file (git churn
+    downstream) even when the geometry is the same. Fix the time and number the ids in order of appearance."""
+    data = re.sub(rb"<(created|modified)>[^<]*</\1>", rb"<\1>1970-01-01T00:00:00</\1>", data)
+    ids = {}
+    return re.sub(rb"\b[0-9a-f]{32}\b", lambda m: ids.setdefault(m.group(0), b"id%d" % len(ids)), data)
+
+
 def combine_meshes(root, desc, mesh_out, dedupe=True, tol=1e-6):
     """Replace each link's visuals / collisions by ONE .dae (every part keeps its own colour) and ONE .stl.
     With dedupe, links whose combined geometry is identical up to a rigid transform (e.g. the same wheel used
@@ -368,7 +418,7 @@ def combine_meshes(root, desc, mesh_out, dedupe=True, tol=1e-6):
             parts = g[0][0][2]
             out = mesh_out / f"{fname}.{ext}"
             if kind == "visual":
-                out.write_bytes(export_collada(parts))
+                out.write_bytes(deterministic_dae(export_collada(parts)))
             else:
                 trimesh.util.concatenate(parts).export(str(out))
             if len(g) > 1:
@@ -487,12 +537,15 @@ def canon(el):
     return ET.canonicalize(ET.tostring(el, encoding="unicode"), strip_text=True)
 
 
-def validate(pkg_out, urdf_path, xacro_path):
+def validate(pkg_out, urdf_path, xacro_path, required_frames=()):
     errs = []
     root = ET.parse(urdf_path).getroot()
     links = [l.get("name") for l in root.findall("link")]
     if len(links) != len(set(links)):
         errs.append("duplicate link names")
+    for n in required_frames:
+        if n not in links:
+            errs.append(f"required frame {n} is not a link in the URDF (required_frames in urdf.config.json)")
     parents = {}
     for j in root.findall("joint"):
         p, c = j.find("parent").get("link"), j.find("child").get("link")
@@ -561,6 +614,7 @@ def main():
 
     if not args.skip_stale_check:
         stale_check(cfg, extract_dir, joints_yaml, sources_json)
+    frames_check(cfg, extract_dir)
     if args.check_only:
         return
 
@@ -603,7 +657,7 @@ def main():
               "mesh_path=\"package://<pkg>/meshes\" parent=\"\" xyz=\"0 0 0\" rpy=\"0 0 0\"/>")
     write_xml(make_wrapper(name, macro, macro_file), xacro_path, gen)
 
-    n_links, n_joints = validate(pkg_out, urdf_path, xacro_path)
+    n_links, n_joints = validate(pkg_out, urdf_path, xacro_path, cfg.get("required_frames") or [])
 
     try:
         commit = os.environ.get("GITHUB_SHA") or subprocess.check_output(

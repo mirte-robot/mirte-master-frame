@@ -2,7 +2,7 @@
   "tool": "mirte-sw2robot-sync",
   "version": 1,
   "note": "SHA-256 of the SolidWorks files the sw2robot extract was made from. Written by tools/urdf/Sync-Sw2Robot.ps1.",
-  "extracted_utc": "2026-11-23T16:05:49.3290415Z",
+  "extracted_utc": "2026-11-23T16:44:46.0873313Z",
   "extractor": "sw2robot 0.4.13",
   "assembly": "solidworks/MM-Minimal.SLDASM",
   "files": {

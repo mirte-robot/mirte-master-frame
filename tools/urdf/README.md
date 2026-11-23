@@ -50,10 +50,17 @@ Then, from the repository root, with your SolidWorks changes **saved**:
 4. **Close the editor's console window.** The script then imports the result into `sw2robot/`:
    - absolute paths become repository-relative and the Windows user name is removed from the meshes (public repo);
    - the CAD hashes are recorded in `MM_Minimal.sources.json`.
-5. Review and commit: `git diff -- sw2robot/MM_Minimal.joints.yaml`, then `git add sw2robot` and commit.
+5. **Refresh the sensor frames** (see [Sensor frames](#sensor-frames)): the extract in the editor only reads the
+   coordinate systems of the assembly, not the ones inside parts, so the import in step 4 stops with
+   *sensor frame ... is missing*. With SolidWorks still open on the assembly:
+   ```powershell
+   .\.venv-urdf\Scripts\python -E -m sw2robot.exporter.extract "$env:TEMP\sw2robot\output\MM_Minimal" --refresh frames --attach
+   .\tools\urdf\Sync-Sw2Robot.ps1 -ImportOnly
+   ```
+6. Review and commit: `git diff -- sw2robot/MM_Minimal.joints.yaml`, then `git add sw2robot` and commit.
 
-The import refuses when the extract is incomplete, is of another assembly, or is older than a SolidWorks file
-(saved after extracting). Use `-Force` only when just the timestamps changed (e.g. after a `git checkout`).
+The import refuses when the extract is incomplete, is of another assembly, misses a sensor frame, or is older than a
+SolidWorks file (saved after extracting). Use `-Force` only when just the timestamps changed (e.g. after a `git checkout`).
 
 | Option | Meaning |
 |---|---|
@@ -68,6 +75,7 @@ The import refuses when the extract is incomplete, is of another assembly, or is
 | Failure | Cause | Fix |
 |---|---|---|
 | *sw2robot extract is out of date with the SolidWorks model* | A SolidWorks file was changed / added / removed after the last extract. The message lists them. | Re-extract (above). |
+| *Sensor frames missing or duplicated in the sw2robot extract* | A frame in `required_frames` is not in `graph.json` (re-extracted without the frames refresh, or the coordinate system was renamed / deleted), or it appears more than once (it is in a part used several times). Also checked by `check_before_push.py`. | Frames refresh (step 5 above), or fix the coordinate system in SolidWorks. |
 | *Joint config does not match the model* | A joint config entry matches no joint (part renamed, removed or re-inserted), a joint in the model is not in the config (sw2robot guessed its type), or a type differs. sw2robot itself only warns, so the Action checks this. | `Sync-Sw2Robot.ps1` (or `-FromRepo`), fix the joints, commit. |
 | *sw2robot build failed* | Usually an incomplete extract (missing meshes). | Re-extract. |
 | *Generated URDF / xacro is invalid* | Broken tree or a bug in `build_urdf.py`. | Look at the log. |
@@ -94,8 +102,7 @@ The joint config describes every part (58 joints, mostly fixed). For the output,
 
 - **`merge_fixed`**: every fixed-joint child is folded into its parent, so only the movable joints remain
   (9: four wheels and five arm joints). Mass and inertia are lumped; the movable joint frames are unchanged.
-  Links **without geometry** are kept, so a sensor frame you want in the URDF (e.g. `lidar_link`, `camera_link`) can
-  be added as a **⊕ Port** in the sw2robot editor. It then survives the merge.
+  Links **without geometry** are kept, so the sensor frames (see below) survive the merge.
 - **`combine_meshes`**: each link gets one `.dae` (every part keeps its own colour) and one `.stl`.
 - **`dedupe_meshes`**: links with the same geometry (the same part used several times, e.g. the four wheels) share
   one mesh file, placed with the `<origin>` of the visual / collision. Only an exact rigid copy (rotation +
@@ -107,6 +114,22 @@ The joint check always runs on the full, unmerged model, so it still catches ren
 
 In a ROS package, include the macro and pass `mesh_path:=package://<your_pkg>/meshes`. With `parent` set it adds a
 fixed joint from `parent` to `${prefix}base_link` at `xyz` / `rpy`.
+
+## Sensor frames
+
+The sensor frames (`lidar_link`, `rgbd_camera_link`, `wrist_camera_link`, `left_sonar_link`, `right_sonar_link`,
+`imu_link`) are **coordinate systems in SolidWorks**, named like the frame. Each becomes a geometry-less link in the
+URDF, fixed to the link of the part (or assembly) it is in. Conventions (REP-103): x forward, y left, z up; for a
+camera x along the view direction (the `_optical_frame`s are added in the ROS description package). In SolidWorks
+red = x, green = y, blue = z.
+
+- A frame inside a **part** goes with every instance of that part: put it in a part that is used once, or in the
+  assembly. A duplicate is renamed `<link>_<name>` in the URDF.
+- The editor's extract only reads the assembly's coordinate systems. After every extract, refresh the frames
+  (step 5 in [Re-extracting](#re-extracting-windows--solidworks)); this re-reads only the coordinate systems.
+- `required_frames` in `urdf.config.json` lists the frames the model must have. The import, `build_urdf.py
+  --check-only` (pre-push hook, first step of the Action) and the URDF validation fail when one is missing or
+  appears more than once. Add a new sensor frame to this list.
 
 ## Running the build locally
 
@@ -129,6 +152,7 @@ python -m venv .venv-urdf; .\.venv-urdf\Scripts\pip install sw2robot==<version i
 | `merge_fixed` | Merge fixed links into their parents; only movable joints (and geometry-less frames) remain. |
 | `combine_meshes` | One visual `.dae` and one collision `.stl` per link. |
 | `dedupe_meshes` | With `combine_meshes`: links with identical geometry share one mesh file (default `true`). |
+| `required_frames` | Frames (CAD coordinate systems) that must be in the extract and the URDF, see [Sensor frames](#sensor-frames). |
 | `build_args` | Extra arguments for `python -m sw2robot.exporter.build` (see its `--help`). Default `["--collision", "hull"]`: a convex hull per part as collision geometry instead of the full mesh. Other examples: `["--ros2"]`, `["--collision", "coacd"]`. |
 
 The Action installs the sw2robot version recorded in `graph.json` (the one that made the extract), so the local

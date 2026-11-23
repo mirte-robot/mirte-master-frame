@@ -177,6 +177,7 @@ if (-not $ImportOnly) {
   Write-Host 'Starting the sw2robot editor.' -ForegroundColor Cyan
   Write-Host "  - CAD changed? Extract again: open $(Join-Path $repo $cfg.assembly) via the file browser / path bar."
   Write-Host '  - Check the joints (t = fixed <-> movable). New parts get a guessed joint type.'
+  Write-Host '  - Extracted again? Then also refresh the sensor frames before importing (see tools\urdf\README.md).'
   Write-Host '  - When done, CLOSE THE EDITOR CONSOLE WINDOW; the result is then imported into sw2robot/.' -ForegroundColor Cyan
   $p = Start-Process -FilePath $editor -ArgumentList $edArgs -PassThru
   $p.WaitForExit()
@@ -205,9 +206,34 @@ if ($newer -and -not $Force) {
   $problems += "these SolidWorks files were saved after the extract ($($graphTime.ToLocalTime())), extract again " +
     "(or use -Force if only their timestamps changed, e.g. after a git checkout): $($newer -join ', ')"
 }
+# Sensor frames (required_frames in urdf.config.json). A normal extract only reads the coordinate systems in the
+# assembly; the ones inside parts need a frames refresh. Same check as build_urdf.py (pre-push hook / Action).
+$framesMissing = $false
+if ($cfg.required_frames) {
+  $instances = @{}
+  foreach ($c in $g.components) { $k = "$($c.part_path)".Replace('\', '/').ToLower(); $instances[$k] = 1 + [int]$instances[$k] }
+  $count = @{}
+  foreach ($cs in $g.coordinate_systems) { $count[$cs.name] = 1 + [int]$count[$cs.name] }
+  if ($g.part_coordinate_systems) {
+    foreach ($p in $g.part_coordinate_systems.PSObject.Properties) {
+      $n = [Math]::Max(1, [int]$instances[$p.Name.Replace('\', '/').ToLower()])
+      foreach ($cs in $p.Value) { $count[$cs.name] = $n + [int]$count[$cs.name] }
+    }
+  }
+  foreach ($f in $cfg.required_frames) {
+    if (-not $count.ContainsKey($f)) { $problems += "sensor frame $f is missing from the extract"; $framesMissing = $true }
+    elseif ($count[$f] -gt 1) { $problems += "sensor frame $f appears $($count[$f]) times (in a part used more than once?)" }
+  }
+}
 if ($problems) {
   Write-Host 'Not imported:' -ForegroundColor Red
   $problems | ForEach-Object { Write-Host "  - $_" -ForegroundColor Red }
+  if ($framesMissing) {
+    Write-Host ''
+    Write-Host 'The frames inside parts need a frames refresh after the extract (SolidWorks open with the assembly):' -ForegroundColor Yellow
+    Write-Host "  .\.venv-urdf\Scripts\python -E -m sw2robot.exporter.extract `"$PackageDir`" --refresh frames --attach"
+    Write-Host '  .\tools\urdf\Sync-Sw2Robot.ps1 -ImportOnly'
+  }
   exit 1
 }
 

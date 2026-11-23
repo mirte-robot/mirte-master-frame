@@ -6815,7 +6815,128 @@
       "owner_component": null
     }
   ],
-  "part_coordinate_systems": {},
+  "part_coordinate_systems": {
+    "solidworks\\Frame\\Camera-Module.SLDPRT": [
+      {
+        "name": "rgbd_camera_link",
+        "document_from_frame": [
+          1.0,
+          0.0,
+          0.0,
+          0.16252362628495146,
+          0.0,
+          -3.552713678800501e-15,
+          1.0,
+          -0.029,
+          0.0,
+          -1.0,
+          -3.552713678800501e-15,
+          -0.0030000000000000027,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "owner_component": null
+      }
+    ],
+    "solidworks\\Frame\\Right-Sonar-Module.SLDPRT": [
+      {
+        "name": "right_sonar_link",
+        "document_from_frame": [
+          -0.8660254037844459,
+          0.4999999999999869,
+          -3.061616997868303e-17,
+          -0.141,
+          1.745740669421521e-15,
+          3.084943876234851e-15,
+          1.0,
+          -0.0345,
+          0.4999999999999869,
+          0.8660254037844461,
+          -3.5445101007793793e-15,
+          0.083,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "owner_component": null
+      }
+    ],
+    "solidworks\\Frame\\Left-Sonar-Module.SLDPRT": [
+      {
+        "name": "left_sonar_link",
+        "document_from_frame": [
+          -0.866025403784437,
+          -0.5000000000000027,
+          3.0616169978683984e-17,
+          -0.141,
+          -1.745740669421576e-15,
+          3.084943876234819e-15,
+          1.0,
+          -0.03450000000000001,
+          -0.5000000000000027,
+          0.8660254037844372,
+          -3.5445101007793785e-15,
+          -0.083,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "owner_component": null
+      }
+    ],
+    "solidworks\\Arm\\Camera-Mount.SLDPRT": [
+      {
+        "name": "wrist_camera_link",
+        "document_from_frame": [
+          -3.552713678800501e-15,
+          1.0,
+          4.978996250514826e-17,
+          0.0,
+          3.4914813388431334e-15,
+          6.12323399573798e-17,
+          1.0,
+          0.05,
+          1.0,
+          3.552713678800501e-15,
+          -3.4914813388431334e-15,
+          1.1017193444759583e-18,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "owner_component": null
+      }
+    ],
+    "solidworks\\Misc Parts\\RP Lidar C1.SLDPRT": [
+      {
+        "name": "lidar_link",
+        "document_from_frame": [
+          -1.0,
+          6.982962677686267e-15,
+          -4.275831445896943e-31,
+          0.0,
+          2.438088387897968e-29,
+          3.552713678800501e-15,
+          1.0,
+          0.03,
+          6.982962677686267e-15,
+          1.0,
+          -3.552713678800501e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "owner_component": null
+      }
+    ]
+  },
   "reference_axes": [],
   "sw2urdf_marker": null,
   "sw2urdf_config_xml": null,

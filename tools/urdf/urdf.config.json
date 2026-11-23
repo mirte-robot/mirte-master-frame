@@ -11,5 +11,8 @@
   "combine_meshes": true,
   "dedupe_meshes": true,
 
-  "build_args": ["--collision", "hull"]
+  "build_args": ["--collision", "hull"],
+
+  "required_frames": ["lidar_link", "rgbd_camera_link", "wrist_camera_link",
+                      "left_sonar_link", "right_sonar_link", "imu_link"]
 }
