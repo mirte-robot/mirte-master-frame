@@ -112,6 +112,15 @@ The joint config describes every part (58 joints, mostly fixed). For the output,
 
 The joint check always runs on the full, unmerged model, so it still catches renamed / new parts.
 
+### Wheel collisions (`collision_cylinders`)
+
+The collision geometry is a convex hull per part (`build_args`), but the four mecanum wheels get a **cylinder**
+instead: the hull of a mecanum wheel follows the rollers, so in simulation the robot rests on tilted faces at slightly
+different heights, and on the frictionless simulated wheels it slowly slides. The cylinder is on the axis of the wheel
+joint (so it does not wobble when the wheel turns), as long as the wheel mesh along the axis, with the nominal radius
+from the config (0.050 for the 100 mm wheels; the hull is 0.052 because of the rollers). The visuals stay the CAD
+meshes. If a wheel link is renamed (re-inserted in SolidWorks), the build fails until `collision_cylinders` is updated.
+
 In a ROS package, include the macro and pass `mesh_path:=package://<your_pkg>/meshes`. With `parent` set it adds a
 fixed joint from `parent` to `${prefix}base_link` at `xyz` / `rpy`.
 
@@ -153,6 +162,7 @@ python -m venv .venv-urdf; .\.venv-urdf\Scripts\pip install sw2robot==<version i
 | `combine_meshes` | One visual `.dae` and one collision `.stl` per link. |
 | `dedupe_meshes` | With `combine_meshes`: links with identical geometry share one mesh file (default `true`). |
 | `required_frames` | Frames (CAD coordinate systems) that must be in the extract and the URDF, see [Sensor frames](#sensor-frames). |
+| `collision_cylinders` | `{link: radius}`: these links get one `<cylinder>` collision instead of the mesh (see below). Used for the four mecanum wheels. |
 | `build_args` | Extra arguments for `python -m sw2robot.exporter.build` (see its `--help`). Default `["--collision", "hull"]`: a convex hull per part as collision geometry instead of the full mesh. Other examples: `["--ros2"]`, `["--collision", "coacd"]`. |
 
 The Action installs the sw2robot version recorded in `graph.json` (the one that made the extract), so the local

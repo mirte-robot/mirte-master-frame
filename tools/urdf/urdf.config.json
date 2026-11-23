@@ -13,6 +13,13 @@
 
   "build_args": ["--collision", "hull"],
 
+  "collision_cylinders": {
+    "Mecanum_Wheel_dia_100_right_7": 0.050,
+    "Mecanum_Wheel_dia_100_left_5": 0.050,
+    "Mecanum_Wheel_dia_100_left_6": 0.050,
+    "Mecanum_Wheel_dia_100_right_10": 0.050
+  },
+
   "required_frames": ["lidar_link", "rgbd_camera_link", "wrist_camera_link",
                       "left_sonar_link", "right_sonar_link", "imu_link"]
 }
