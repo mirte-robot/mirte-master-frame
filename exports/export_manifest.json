@@ -1,10 +1,10 @@
 ﻿{
     "tool":  "mirte-part-export",
     "version":  1,
-    "time_utc":  "2026-11-20T09:09:30.4313446Z",
+    "time_utc":  "2026-11-23T15:59:18.4424215Z",
     "assembly":  "solidworks/MM-Minimal.SLDASM",
     "solidworks_revision":  "33.3.0",
-    "git_commit":  "a5b33314aa285c60b831c446510fdf661caf6459",
+    "git_commit":  "e74cb3b876ac53930ca81668a8790fff9ae9ced0",
     "passed":  true,
     "note":  "Made by tools/export/Export-Parts.ps1. The GitHub Action (tools/export/check_exports.py) fails when an exported part or any assembly changed after this export.",
     "assemblies":  {
@@ -18,8 +18,8 @@
                        "solidworks/Misc Parts/Orange Pi 3B.SLDASM":  "a7f891de7f931fc9b0bc64bb175200e2ce6f29956cf2445e45afde9afd82b8c4",
                        "solidworks/Misc Parts/Orbbec Astra Camera.sldasm":  "4023a12014546df0475fcc03f74548b8d7a1dabba65e241418a71fb27aff8f09",
                        "solidworks/Misc Parts/raspberry pi pico with contacts.SLDASM":  "2c2592441d1930924eb2f465da693a2efd01df7434b2deaf20f1e6eb025a43c4",
-                       "solidworks/MM-Frame-Only.SLDASM":  "b0e9421d2259a1f194d26d9efb2658ed9530ef211b7a291780c162faed492925",
-                       "solidworks/MM-Minimal.SLDASM":  "a89e707f6e159fb4b221aa6941f9bdb81747196e8f9fc83dc8f3ddab364b13ba"
+                       "solidworks/MM-Frame-Only.SLDASM":  "7353fe80bc17bf7c79283fd0261a9b499fe9907c1647b609a4c6bf497c12b32d",
+                       "solidworks/MM-Minimal.SLDASM":  "e612efe654ac13d64b6513fd1b3ca0aa24758e72d5fc9a48e762d0949ae6ebe0"
                    },
     "parts":  [
                   {
@@ -199,7 +199,7 @@
                   },
                   {
                       "source":  "solidworks/Arm/Camera-Mount.SLDPRT",
-                      "source_sha256":  "a704bce248b2d6073180a2e8fd65ea66a6bcb7ed4db25ed703e836837b470c90",
+                      "source_sha256":  "fb47464d7142811d7ecc1ce2293898e9db6a78166f33119af47ea6675f9a65ba",
                       "configuration":  "Default",
                       "group":  "base",
                       "kind":  "print",
@@ -211,7 +211,7 @@
                       "outputs":  [
                                       {
                                           "path":  "exports/step/base_Camera-Mount.STEP",
-                                          "sha256":  "3c16a651b41c28a17ad063231b5fb5bd32fd2f4083912768345d3a944860755e"
+                                          "sha256":  "56ad7366fea8396df46b6afc194a996487a554f246b866570c0a1415d1c301f0"
                                       },
                                       {
                                           "path":  "exports/stl/base_Camera-Mount.STL",
@@ -249,7 +249,7 @@
                   },
                   {
                       "source":  "solidworks/Frame/Camera-Module.SLDPRT",
-                      "source_sha256":  "7c0ebd17ea121f58cffb9b3d5130999792f6717ad915dd53513221dd1a22e97a",
+                      "source_sha256":  "fede2cfa7ff9b0d4d7eb83c7dc76cd2a69647a3fe0d6990e0efa7256b7ec9ec7",
                       "configuration":  "AstraMiniPro",
                       "group":  "base",
                       "kind":  "print",
@@ -261,7 +261,7 @@
                       "outputs":  [
                                       {
                                           "path":  "exports/step/base_Camera-Module.STEP",
-                                          "sha256":  "702e415864a2c9502b39cafbee1c52091a74e6c327ae7e83faf0e5eb769ffb3f"
+                                          "sha256":  "4553bf80f114380ca212fdf6852638a030563c03de1b769d5eae655228abdf99"
                                       },
                                       {
                                           "path":  "exports/stl/base_Camera-Module.STL",
@@ -274,7 +274,7 @@
                   },
                   {
                       "source":  "solidworks/Frame/Camera-Module.SLDPRT",
-                      "source_sha256":  "7c0ebd17ea121f58cffb9b3d5130999792f6717ad915dd53513221dd1a22e97a",
+                      "source_sha256":  "fede2cfa7ff9b0d4d7eb83c7dc76cd2a69647a3fe0d6990e0efa7256b7ec9ec7",
                       "configuration":  "AstraProPlus",
                       "group":  "base",
                       "kind":  "print",
@@ -286,7 +286,7 @@
                       "outputs":  [
                                       {
                                           "path":  "exports/step/variants/base_Camera-Module-AstraProPlus.STEP",
-                                          "sha256":  "087548d40423865f1bf5df23643c8639d25155f01fec811e946ec30c93ac9856"
+                                          "sha256":  "4c855696b03d3e2854e7cbd0a8101b80c3161c024c15388195119d07b399d7ad"
                                       },
                                       {
                                           "path":  "exports/stl/variants/base_Camera-Module-AstraProPlus.STL",
@@ -299,8 +299,8 @@
                   },
                   {
                       "source":  "solidworks/Frame/Left-Sidepanel-Module.SLDPRT",
-                      "source_sha256":  "79969190f2060da62edcd15e238aac3c7a52685a108797cc55eda3667781983b",
-                      "configuration":  "OPI3Bv1.1",
+                      "source_sha256":  "1da554f725a2d84258a1f3f473e89631ed06bfb364bd579d5627bc3e0a2372a7",
+                      "configuration":  "Empty",
                       "group":  "base",
                       "kind":  "print",
                       "variant":  true,
@@ -310,12 +310,12 @@
                                      ],
                       "outputs":  [
                                       {
-                                          "path":  "exports/step/variants/base_Left-Sidepanel-Module-OPI3Bv1.1.STEP",
-                                          "sha256":  "c443cd519414ab91473f29ad179e4001f3aeb39ee22d4e1f6acc9ff62aa0233f"
+                                          "path":  "exports/step/variants/base_Left-Sidepanel-Module-Empty.STEP",
+                                          "sha256":  "734e6c9cf2b37242700911a3421edad74a4ff929daafc88129c5f21cf7c2b8bf"
                                       },
                                       {
-                                          "path":  "exports/stl/variants/base_Left-Sidepanel-Module-OPI3Bv1.1.STL",
-                                          "sha256":  "85c4e941bc23821f000582460394b0d93d4053512ae084d08fbdcfb2bdc8a404"
+                                          "path":  "exports/stl/variants/base_Left-Sidepanel-Module-Empty.STL",
+                                          "sha256":  "1190412d7503de339d8b1623ff01038be507a6533ffd4a5e0750e5738d4f1fe6"
                                       }
                                   ],
                       "errors":  [
@@ -324,8 +324,8 @@
                   },
                   {
                       "source":  "solidworks/Frame/Left-Sidepanel-Module.SLDPRT",
-                      "source_sha256":  "79969190f2060da62edcd15e238aac3c7a52685a108797cc55eda3667781983b",
-                      "configuration":  "OPI3Bv2.1",
+                      "source_sha256":  "1da554f725a2d84258a1f3f473e89631ed06bfb364bd579d5627bc3e0a2372a7",
+                      "configuration":  "Ethernet Connector",
                       "group":  "base",
                       "kind":  "print",
                       "variant":  false,
@@ -336,36 +336,11 @@
                       "outputs":  [
                                       {
                                           "path":  "exports/step/base_Left-Sidepanel-Module.STEP",
-                                          "sha256":  "3f4984b94ed027f7eb887b3a88d52aa5fcc36e4ecee282f7bda89b9e9b606cbe"
+                                          "sha256":  "bcfcd4f0ccf3542db0a112a4856aa6b6f89373ca6e764a3e6b9b07f98c53f963"
                                       },
                                       {
                                           "path":  "exports/stl/base_Left-Sidepanel-Module.STL",
-                                          "sha256":  "85b4999b5fa77020934c9acdd4d6beded0b079e0df009486e1f7123379afccd5"
-                                      }
-                                  ],
-                      "errors":  [
-
-                                 ]
-                  },
-                  {
-                      "source":  "solidworks/Frame/Left-Sidepanel-Module.SLDPRT",
-                      "source_sha256":  "79969190f2060da62edcd15e238aac3c7a52685a108797cc55eda3667781983b",
-                      "configuration":  "RPI4B",
-                      "group":  "base",
-                      "kind":  "print",
-                      "variant":  true,
-                      "reason":  "variants: not used in the assembly",
-                      "components":  [
-
-                                     ],
-                      "outputs":  [
-                                      {
-                                          "path":  "exports/step/variants/base_Left-Sidepanel-Module-RPI4B.STEP",
-                                          "sha256":  "1360dc8d9524c4a12729cc0bc44f43c651b4b48702af52f42a0f7a2b0b09c266"
-                                      },
-                                      {
-                                          "path":  "exports/stl/variants/base_Left-Sidepanel-Module-RPI4B.STL",
-                                          "sha256":  "fbd27f2a68c430b1e476929a5a595540a115b347b01071ffc7bd9b0d62ac9a53"
+                                          "sha256":  "4329d9c25d1769dd064e330f1531320245d3661379583661f54ed43b3a5cd74a"
                                       }
                                   ],
                       "errors":  [
@@ -374,7 +349,7 @@
                   },
                   {
                       "source":  "solidworks/Frame/Left-Sonar-Module.SLDPRT",
-                      "source_sha256":  "0e6b722d6a3b2bdad7a2aac86ff829dfb59dcb3d4ee124e79b93638353a79b37",
+                      "source_sha256":  "76c6e952634df68b44ba964f4d82241682572efa785f72f1a0b85033f47628bc",
                       "configuration":  "Default",
                       "group":  "base",
                       "kind":  "print",
@@ -386,7 +361,7 @@
                       "outputs":  [
                                       {
                                           "path":  "exports/step/base_Left-Sonar-Module.STEP",
-                                          "sha256":  "9f4498b08672b4a2e17bc2a234c4c70a29e71134efe46777291319e0cd407b74"
+                                          "sha256":  "1a2030c1d095885211e2b41917ed95b26a988e5cfcc6b9cc82214f2ebd6896e7"
                                       },
                                       {
                                           "path":  "exports/stl/base_Left-Sonar-Module.STL",
@@ -406,10 +381,10 @@
                       "variant":  false,
                       "reason":  "custom part (default)",
                       "components":  [
-                                         "motor_module v02-2",
-                                         "motor_module v02-6",
+                                         "motor_module v02-1",
                                          "motor_module v02-5",
-                                         "motor_module v02-1"
+                                         "motor_module v02-2",
+                                         "motor_module v02-6"
                                      ],
                       "outputs":  [
                                       {
@@ -427,8 +402,8 @@
                   },
                   {
                       "source":  "solidworks/Frame/Right-Sidepanel-Module.SLDPRT",
-                      "source_sha256":  "e9643aef27283e756386afab91346eb5f12e5f92e9899fb1db1c2e1d8d17d012",
-                      "configuration":  "Empty",
+                      "source_sha256":  "0b3b438841f17fde8fef5987e55275b2bc5dd5a83017984565878656b8712843",
+                      "configuration":  "OPI3Bv1.1",
                       "group":  "base",
                       "kind":  "print",
                       "variant":  true,
@@ -438,12 +413,12 @@
                                      ],
                       "outputs":  [
                                       {
-                                          "path":  "exports/step/variants/base_Right-Sidepanel-Module-Empty.STEP",
-                                          "sha256":  "e1b47b0eaec52036c71a7c985479f81f513ceed8d10e762b42329563e7e43ac4"
+                                          "path":  "exports/step/variants/base_Right-Sidepanel-Module-OPI3Bv1.1.STEP",
+                                          "sha256":  "e2916cea3f3c096771fedb70fc19e8d6316348a239adcf3380f5de24c60dd919"
                                       },
                                       {
-                                          "path":  "exports/stl/variants/base_Right-Sidepanel-Module-Empty.STL",
-                                          "sha256":  "83446b0d91a1c8c0d596fd7363b2b90d62c48bdb448cde542da63fb57e566c5b"
+                                          "path":  "exports/stl/variants/base_Right-Sidepanel-Module-OPI3Bv1.1.STL",
+                                          "sha256":  "502dbce08ce76f5c3fc23eb4a33475f6a9e8963e6e0681d248c7f0a5e408fed5"
                                       }
                                   ],
                       "errors":  [
@@ -452,8 +427,8 @@
                   },
                   {
                       "source":  "solidworks/Frame/Right-Sidepanel-Module.SLDPRT",
-                      "source_sha256":  "e9643aef27283e756386afab91346eb5f12e5f92e9899fb1db1c2e1d8d17d012",
-                      "configuration":  "Ethernet Connector",
+                      "source_sha256":  "0b3b438841f17fde8fef5987e55275b2bc5dd5a83017984565878656b8712843",
+                      "configuration":  "OPI3Bv2.1",
                       "group":  "base",
                       "kind":  "print",
                       "variant":  false,
@@ -464,11 +439,36 @@
                       "outputs":  [
                                       {
                                           "path":  "exports/step/base_Right-Sidepanel-Module.STEP",
-                                          "sha256":  "ea827e052a8f25107f3635d2848b57862635b1df99c1cfbc37bb66fa89cec266"
+                                          "sha256":  "b8e0cb3e0d773b7a7793c903ca70942618da5c3375bf824cfa7b44003dd3fdf8"
                                       },
                                       {
                                           "path":  "exports/stl/base_Right-Sidepanel-Module.STL",
-                                          "sha256":  "2244c22b6485f7600b08884df7a5ce6700702608e54d045d0f40a434ae3c5df0"
+                                          "sha256":  "dfdd250272c91d0b21bee0065b8d488722c7e207e274a2724fd37fd336983ec8"
+                                      }
+                                  ],
+                      "errors":  [
+
+                                 ]
+                  },
+                  {
+                      "source":  "solidworks/Frame/Right-Sidepanel-Module.SLDPRT",
+                      "source_sha256":  "0b3b438841f17fde8fef5987e55275b2bc5dd5a83017984565878656b8712843",
+                      "configuration":  "RPI4B",
+                      "group":  "base",
+                      "kind":  "print",
+                      "variant":  true,
+                      "reason":  "variants: not used in the assembly",
+                      "components":  [
+
+                                     ],
+                      "outputs":  [
+                                      {
+                                          "path":  "exports/step/variants/base_Right-Sidepanel-Module-RPI4B.STEP",
+                                          "sha256":  "171eeffc08d83b69f660a5d01f353488c816e3062c7bcd17b58986868a8016ae"
+                                      },
+                                      {
+                                          "path":  "exports/stl/variants/base_Right-Sidepanel-Module-RPI4B.STL",
+                                          "sha256":  "008bd37f3e2225f17db972e2d8f408ddea23be9f6e624d35f3f597e282ef9301"
                                       }
                                   ],
                       "errors":  [
@@ -477,7 +477,7 @@
                   },
                   {
                       "source":  "solidworks/Frame/Right-Sonar-Module.SLDPRT",
-                      "source_sha256":  "8d52f4c23d2590a17335a4dfaaac1377d5f6663ff02de6af9ef36fa691d6bc2a",
+                      "source_sha256":  "c2440f956813e7fb89b01ced78b41791ada774f987a48d8ea62d6512bfadb4c7",
                       "configuration":  "Default",
                       "group":  "base",
                       "kind":  "print",
@@ -489,7 +489,7 @@
                       "outputs":  [
                                       {
                                           "path":  "exports/step/base_Right-Sonar-Module.STEP",
-                                          "sha256":  "53a180b0df0b0b075c423c613854ce93eef5cf92c559ab2eb64be640cfb2048f"
+                                          "sha256":  "d794d18e294249baadb1d994c9fba54bb536a930133e29ed8ac9d33adc57042d"
                                       },
                                       {
                                           "path":  "exports/stl/base_Right-Sonar-Module.STL",
@@ -534,8 +534,8 @@
                       "variant":  false,
                       "reason":  "custom part (default)",
                       "components":  [
-                                         "Cable-funnel-2",
-                                         "Cable-funnel-1"
+                                         "Cable-funnel-1",
+                                         "Cable-funnel-2"
                                      ],
                       "outputs":  [
                                       {
@@ -553,7 +553,7 @@
                   },
                   {
                       "source":  "solidworks/Internal mounting parts/Lidar-Mount.SLDPRT",
-                      "source_sha256":  "f868754e54dc3fced0be1950b8a800306c70dde724f7cfd67a2f3d3724622a50",
+                      "source_sha256":  "88ed03e944122e2094972abeddeb4c54b9db72d71fc62b15e32146c54a46f738",
                       "configuration":  "Default",
                       "group":  "base",
                       "kind":  "print",
@@ -565,7 +565,7 @@
                       "outputs":  [
                                       {
                                           "path":  "exports/step/base_Lidar-Mount.STEP",
-                                          "sha256":  "e8f0b98333a63b4ca548fa3938e782e2e79e95538206c24e17bfffbafdcb5ab3"
+                                          "sha256":  "886487cd10cca1a7affc551bf8bba64e458cbe916f0b29083b5d09af4c4c0686"
                                       },
                                       {
                                           "path":  "exports/stl/base_Lidar-Mount.STL",
@@ -1012,7 +1012,7 @@
                   },
                   {
                       "source":  "solidworks/Misc Parts/RP Lidar C1.SLDPRT",
-                      "source_sha256":  "af022807ea92b7541ff5b27890147418da3f7fa5d29baff31007b0da6f95aa53",
+                      "source_sha256":  "f23946abe6f4f3fecccf74ba32d8ba0e2931e8850e8a84b20a7d39edd59fd9e4",
                       "configuration":  "Default",
                       "group":  "base",
                       "kind":  "none",
@@ -1055,8 +1055,8 @@
                       "variant":  false,
                       "reason":  "purchased folder solidworks/Misc Parts",
                       "components":  [
-                                         "arm_assembly-1/Hiwonder HX-12H-1",
-                                         "arm_assembly-1/Hiwonder HX-12H-2"
+                                         "arm_assembly-1/Hiwonder HX-12H-2",
+                                         "arm_assembly-1/Hiwonder HX-12H-1"
                                      ],
                       "outputs":  [
 
@@ -1074,8 +1074,8 @@
                       "variant":  false,
                       "reason":  "purchased folder solidworks/Misc Parts",
                       "components":  [
-                                         "arm_assembly-1/Hiwonder LX-225 Assembly-1/Hiwonder LX-225 servo-1",
-                                         "arm_assembly-1/Hiwonder LX-225 Assembly-2/Hiwonder LX-225 servo-1"
+                                         "arm_assembly-1/Hiwonder LX-225 Assembly-2/Hiwonder LX-225 servo-1",
+                                         "arm_assembly-1/Hiwonder LX-225 Assembly-1/Hiwonder LX-225 servo-1"
                                      ],
                       "outputs":  [
 
@@ -1093,10 +1093,10 @@
                       "variant":  false,
                       "reason":  "purchased folder solidworks/Misc Parts",
                       "components":  [
-                                         "arm_assembly-1/Hiwonder LX-225 Assembly-1/Servo-horn (driven)-1",
                                          "arm_assembly-1/Hiwonder LX-225 Assembly-2/Servo-horn (driven)-1",
-                                         "arm_assembly-1/Servo-horn (driven)-1",
-                                         "arm_assembly-1/Servo-horn (driven)-2"
+                                         "arm_assembly-1/Hiwonder LX-225 Assembly-1/Servo-horn (driven)-1",
+                                         "arm_assembly-1/Servo-horn (driven)-2",
+                                         "arm_assembly-1/Servo-horn (driven)-1"
                                      ],
                       "outputs":  [
 
@@ -1114,8 +1114,8 @@
                       "variant":  false,
                       "reason":  "purchased folder solidworks/Misc Parts",
                       "components":  [
-                                         "arm_assembly-1/Hiwonder LX-225 Assembly-1/Servo-horn (non-driven)-1",
-                                         "arm_assembly-1/Hiwonder LX-225 Assembly-2/Servo-horn (non-driven)-1"
+                                         "arm_assembly-1/Hiwonder LX-225 Assembly-2/Servo-horn (non-driven)-1",
+                                         "arm_assembly-1/Hiwonder LX-225 Assembly-1/Servo-horn (non-driven)-1"
                                      ],
                       "outputs":  [
 
@@ -1134,8 +1134,8 @@
                       "reason":  "purchased folder solidworks/Misc Parts",
                       "components":  [
                                          "arm_assembly-1/standoff M3 B-2",
-                                         "arm_assembly-1/standoff M3 B-1",
-                                         "arm_assembly-1/standoff M3 B-3"
+                                         "arm_assembly-1/standoff M3 B-3",
+                                         "arm_assembly-1/standoff M3 B-1"
                                      ],
                       "outputs":  [
 
