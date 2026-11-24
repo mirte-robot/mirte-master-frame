@@ -6,12 +6,27 @@
   The GitHub Action cannot run SolidWorks, so the sw2robot *extract* (kinematic graph + meshes) is made here and
   committed. The Action then builds the URDF / xacro from it (tools/urdf/build_urdf.py).
 
-  Default (no switches):
+  Modes (SolidWorks open on the SAVED assembly for the ones that read the CAD; afterwards close the assembly in
+  SolidWorks WITHOUT saving: the extract marks documents as modified, but changes nothing in them):
+
+    (no switch)   editor (GUI): extract and/or fix the joints there, then the coordinate systems inside parts are
+                  re-read automatically (frames refresh) when the editor made a new extract, then the import.
+    -Extract      full extract without the editor: the editor's own steps (tools/urdf/sw2robot_extract.py), then
+                  the frames refresh and the import. The joints are not shown; a new or renamed part fails the joint
+                  check of build_urdf.py (fix it with -FromRepo).
+    -FramesOnly   re-read only the coordinate systems (frames refresh), then the import. Only for a change of
+                  coordinate systems: other CAD changes are NOT read, but the import does record the new CAD hashes.
+    -ImportOnly   only the import (e.g. after running sw2robot yourself).
+    -FromRepo     editor on the committed extract, to change only joints (no SolidWorks needed).
+    -Check        only check whether the committed extract matches the SolidWorks files.
+
+  Editor (no switch):
     1. Puts the repository's joint config (sw2robot/<robot>.joints.yaml) into the editor's package folder
        (%TEMP%\sw2robot\output\<robot>), so you start from the committed joint settings.
     2. Starts the sw2robot editor (sw2robot-web.exe). Extract the assembly there again if the CAD changed
        (file browser / path bar), fix the joints, then CLOSE THE EDITOR'S CONSOLE WINDOW.
-    3. Imports the result into sw2robot/ (same as -ImportOnly).
+    3. If the editor made a new extract, re-reads the coordinate systems (frames refresh, in the running SolidWorks).
+    4. Imports the result into sw2robot/ (same as -ImportOnly).
 
   Import:
     - copies graph.json + meshes into sw2robot/<robot>/ and the joint config to sw2robot/<robot>.joints.yaml
@@ -21,6 +36,14 @@
       detect a CAD change without a new extract
 
   Exit code: 0 = OK, 1 = check failed / nothing imported, 2 = could not run.
+
+.PARAMETER Extract
+  Full extract without the editor GUI, the same steps as the editor (extract + build, mesh previews) in the running
+  SolidWorks, then the coordinate systems, into the editor's package folder, then import.
+
+.PARAMETER FramesOnly
+  Only re-read the coordinate systems into the editor's package folder (it must hold the latest full extract),
+  then import. Use it only when nothing but coordinate systems changed in the CAD.
 
 .PARAMETER ImportOnly
   Do not start the editor; only import the editor's package folder.
@@ -39,6 +62,8 @@
   Import even when SolidWorks files are newer than the extract.
 #>
 param(
+  [switch]$Extract,
+  [switch]$FramesOnly,
   [switch]$ImportOnly,
   [switch]$FromRepo,
   [switch]$Check,
@@ -127,8 +152,90 @@ if ($Check) {
   exit 0
 }
 
+# The Python with sw2robot: the repository's .venv-urdf (see tools/urdf/README.md), else python on the PATH.
+# -E ignores PYTHONPATH etc., which other environments (pixi / ROS) set to their own packages.
+function Find-Python {
+  $p = Join-Path $repo '.venv-urdf\Scripts\python.exe'
+  if (Test-Path -LiteralPath $p) { return $p }
+  $c = Get-Command python -ErrorAction SilentlyContinue | Select-Object -First 1
+  if ($c) { return $c.Source }
+  return $null
+}
+
+# Runs sw2robot in the user's running SolidWorks (--attach); stops the script when that fails.
+function Invoke-Sw2Robot([string]$what, [string[]]$pyArgs) {
+  $py = Find-Python
+  if (-not $py) {
+    Write-Host "No Python with sw2robot found (expected $(Join-Path $repo '.venv-urdf\Scripts\python.exe'), see tools\urdf\README.md)." -ForegroundColor Red
+    exit 2
+  }
+  Write-Host ''
+  Write-Host "Running the $what in the open SolidWorks ..." -ForegroundColor Cyan
+  & $py -E @pyArgs
+  if ($LASTEXITCODE -ne 0) {
+    Write-Host ''
+    Write-Host "The $what failed (exit code $LASTEXITCODE), nothing imported." -ForegroundColor Red
+    Write-Host "  Is SolidWorks running, with $(Join-Path $repo $cfg.assembly) open and saved?"
+    exit 1
+  }
+}
+
+function Invoke-FramesRefresh {
+  Invoke-Sw2Robot 'frames refresh (coordinate systems)' @('-m', 'sw2robot.exporter.extract', $PackageDir,
+    '--refresh', 'frames', '--attach')
+}
+
+# Start from the repository's joint config (the source of truth); keep the editor's old one as a backup.
+function Set-PackageJoints {
+  New-Item -ItemType Directory -Force $PackageDir | Out-Null
+  $pkgJoints = Join-Path $PackageDir "$name.joints.yaml"
+  if (Test-Path -LiteralPath $jointsRepo) {
+    if ((Test-Path -LiteralPath $pkgJoints) -and ((Get-YamlContent $pkgJoints) -ne (Get-YamlContent $jointsRepo))) {
+      Copy-Item -LiteralPath $pkgJoints -Destination "$pkgJoints.bak" -Force
+      Write-Host "The editor's joint config differed from the repository's; saved it as $pkgJoints.bak" -ForegroundColor Yellow
+    }
+    Copy-Item -LiteralPath $jointsRepo -Destination $pkgJoints -Force
+  }
+}
+
+$modes = @($Extract, $FramesOnly, $ImportOnly, $FromRepo | Where-Object { $_.IsPresent })
+if ($modes.Count -gt 1) {
+  Write-Host 'Use only one of -Extract, -FramesOnly, -ImportOnly, -FromRepo.' -ForegroundColor Red
+  exit 2
+}
+$closeHint = 'Then close the assembly in SolidWorks WITHOUT saving (the extract marks documents as modified, but changes nothing).'
+
+# ---- -Extract (full extract without the editor) -----------------------------------------------------------------------
+if ($Extract) {
+  if ((Split-Path $PackageDir -Leaf) -ne $name) {
+    Write-Host "-Extract writes to <folder>\$name; -PackageDir must end in \$name." -ForegroundColor Red
+    exit 2
+  }
+  Set-PackageJoints
+  # Start from an empty package (joint config kept), so meshes of removed parts do not linger.
+  Get-ChildItem -LiteralPath $PackageDir -Force | Where-Object { $_.Name -notlike '*.joints.yaml*' } |
+    Remove-Item -Recurse -Force
+  # The editor's own steps (extract + build, .glb previews), then the frames refresh, see sw2robot_extract.py.
+  Invoke-Sw2Robot 'full extract (the editor''s steps, then the coordinate systems)' @(
+    (Join-Path $here 'sw2robot_extract.py'), [IO.Path]::GetFullPath((Join-Path $repo $cfg.assembly)),
+    (Split-Path $PackageDir), $name)
+  Write-Host $closeHint -ForegroundColor Yellow
+}
+
+# ---- -FramesOnly (re-read only the coordinate systems) ----------------------------------------------------------------
+if ($FramesOnly) {
+  if (-not (Test-Path -LiteralPath (Join-Path $PackageDir 'graph.json'))) {
+    Write-Host "No extract in $PackageDir to refresh: run a full extract first (-Extract, or the editor)." -ForegroundColor Red
+    exit 1
+  }
+  Write-Host 'Only the coordinate systems are read. Any other CAD change since the last full extract is NOT picked up,' -ForegroundColor Yellow
+  Write-Host 'but the import records the new CAD hashes. Use -Extract (or the editor) when more than frames changed.' -ForegroundColor Yellow
+  Invoke-FramesRefresh
+  Write-Host $closeHint -ForegroundColor Yellow
+}
+
 # ---- editor ---------------------------------------------------------------------------------------------------------
-if (-not $ImportOnly) {
+if (-not ($ImportOnly -or $Extract -or $FramesOnly)) {
   $editor = Find-Editor
   if (-not $editor) {
     Write-Host 'sw2robot editor (sw2robot-web.exe) not found. Install it:' -ForegroundColor Red
@@ -149,9 +256,10 @@ if (-not $ImportOnly) {
     $t = [regex]::Replace($t, '"(' + $cadName + '\\\\[^"]*)"', { param($m) '"' + $jsonRepo + $m.Groups[1].Value + '"' })
     [IO.File]::WriteAllText($g, $t, $utf8)
     if (-not (Test-Path -LiteralPath (Join-Path $PackageDir "urdf\$name.urdf"))) {
-      # older imports left urdf/ out; the editor refuses a package without it, so build it if sw2robot is installed
-      $py = Get-Command python -ErrorAction SilentlyContinue | Select-Object -First 1
-      if ($py) { & $py.Source -m sw2robot.exporter.build $PackageDir --config $jointsRepo 2>&1 | Select-Object -Last 3 }
+      # an extract without the editor (-Extract, or older imports) has no urdf/; the editor refuses a package without
+      # it, so build it with sw2robot
+      $py = Find-Python
+      if ($py) { & $py -E -m sw2robot.exporter.build $PackageDir --config $jointsRepo 2>&1 | Select-Object -Last 3 }
       if (-not (Test-Path -LiteralPath (Join-Path $PackageDir "urdf\$name.urdf"))) {
         Write-Host "No urdf\$name.urdf in the committed extract, and it could not be built (pip install sw2robot)." -ForegroundColor Red
         Write-Host 'Extract the assembly again in the editor instead (run this script without -FromRepo).'
@@ -159,29 +267,29 @@ if (-not $ImportOnly) {
       }
     }
   }
-  New-Item -ItemType Directory -Force $PackageDir | Out-Null
+  Set-PackageJoints
 
-  # Start from the repository's joint config (the source of truth); keep the editor's old one as a backup.
-  $pkgJoints = Join-Path $PackageDir "$name.joints.yaml"
-  if (Test-Path -LiteralPath $jointsRepo) {
-    if ((Test-Path -LiteralPath $pkgJoints) -and ((Get-YamlContent $pkgJoints) -ne (Get-YamlContent $jointsRepo))) {
-      Copy-Item -LiteralPath $pkgJoints -Destination "$pkgJoints.bak" -Force
-      Write-Host "The editor's joint config differed from the repository's; saved it as $pkgJoints.bak" -ForegroundColor Yellow
-    }
-    Copy-Item -LiteralPath $jointsRepo -Destination $pkgJoints -Force
-  }
-
+  $graphFile = Join-Path $PackageDir 'graph.json'
+  $graphBefore = if (Test-Path -LiteralPath $graphFile) { Get-Sha256 $graphFile } else { '' }
   $edArgs = @('--root', "`"$(Split-Path $PackageDir)`"")
-  if (Test-Path -LiteralPath (Join-Path $PackageDir 'graph.json')) { $edArgs += "`"$PackageDir`"" }
+  if ($graphBefore) { $edArgs += "`"$PackageDir`"" }
   Write-Host ''
   Write-Host 'Starting the sw2robot editor.' -ForegroundColor Cyan
   Write-Host "  - CAD changed? Extract again: open $(Join-Path $repo $cfg.assembly) via the file browser / path bar."
+  Write-Host '    (Keep SolidWorks open: after a new extract the coordinate systems are re-read in it.)'
   Write-Host '  - Check the joints (t = fixed <-> movable). New parts get a guessed joint type.'
-  Write-Host '  - Extracted again? Then also refresh the sensor frames before importing (see tools\urdf\README.md).'
   Write-Host '  - When done, CLOSE THE EDITOR CONSOLE WINDOW; the result is then imported into sw2robot/.' -ForegroundColor Cyan
   $p = Start-Process -FilePath $editor -ArgumentList $edArgs -PassThru
   $p.WaitForExit()
   Write-Host 'Editor closed.'
+
+  # A new extract in the editor does not read the coordinate systems inside parts (sw2robot skips that slow scan),
+  # so re-read the frames now. Not after only joint edits (same graph.json), e.g. with -FromRepo.
+  $graphAfter = if (Test-Path -LiteralPath $graphFile) { Get-Sha256 $graphFile } else { '' }
+  if ($graphAfter -and $graphAfter -ne $graphBefore) {
+    Invoke-FramesRefresh
+    Write-Host $closeHint -ForegroundColor Yellow
+  }
 }
 
 # ---- import ---------------------------------------------------------------------------------------------------------
@@ -220,6 +328,13 @@ if ($cfg.required_frames) {
       foreach ($cs in $p.Value) { $count[$cs.name] = $n + [int]$count[$cs.name] }
     }
   }
+  # coordinate systems in sub-assemblies (e.g. the gripper); a sub-assembly used several times is caught by the
+  # URDF check of build_urdf.py (the copies are renamed there)
+  if ($g.subassemblies) {
+    foreach ($s in $g.subassemblies.PSObject.Properties) {
+      foreach ($cs in $s.Value.coordinate_systems) { $count[$cs.name] = 1 + [int]$count[$cs.name] }
+    }
+  }
   foreach ($f in $cfg.required_frames) {
     if (-not $count.ContainsKey($f)) { $problems += "sensor frame $f is missing from the extract"; $framesMissing = $true }
     elseif ($count[$f] -gt 1) { $problems += "sensor frame $f appears $($count[$f]) times (in a part used more than once?)" }
@@ -230,9 +345,9 @@ if ($problems) {
   $problems | ForEach-Object { Write-Host "  - $_" -ForegroundColor Red }
   if ($framesMissing) {
     Write-Host ''
-    Write-Host 'The frames inside parts need a frames refresh after the extract (SolidWorks open with the assembly):' -ForegroundColor Yellow
-    Write-Host "  .\.venv-urdf\Scripts\python -E -m sw2robot.exporter.extract `"$PackageDir`" --refresh frames --attach"
-    Write-Host '  .\tools\urdf\Sync-Sw2Robot.ps1 -ImportOnly'
+    Write-Host 'Re-read the coordinate systems and import (SolidWorks open with the saved assembly):' -ForegroundColor Yellow
+    Write-Host '  .\tools\urdf\Sync-Sw2Robot.ps1 -FramesOnly'
+    Write-Host 'If the frame is really missing in the CAD, add the coordinate system there (or update required_frames).'
   }
   exit 1
 }

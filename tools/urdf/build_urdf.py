@@ -135,10 +135,9 @@ def stale_check(cfg, extract_dir, joints_yaml, sources_json):
 # 1b. frames check
 
 FRAMES_HELP = """\
-Sensor frames are coordinate systems in SolidWorks. A normal extract only reads the ones in the assembly; the ones
-inside a part need a frames refresh after the extract (SolidWorks open with {assembly}):
-  .\\.venv-urdf\\Scripts\\python -E -m sw2robot.exporter.extract "$env:TEMP\\sw2robot\\output\\{name}" --refresh frames --attach
-  .\\tools\\urdf\\Sync-Sw2Robot.ps1 -ImportOnly
+Sensor frames are coordinate systems in SolidWorks. An extract in the sw2robot editor does not read the ones inside
+parts; Sync-Sw2Robot.ps1 re-reads them afterwards. To re-read them and import (SolidWorks open with {assembly}):
+  .\\tools\\urdf\\Sync-Sw2Robot.ps1 -FramesOnly
 A frame in a part goes with every instance of that part, so put it in a part used once (or in the assembly).
 See tools/urdf/README.md."""
 
@@ -161,6 +160,11 @@ def frames_check(cfg, extract_dir):
     for part, css in (g.get("part_coordinate_systems") or {}).items():
         for cs in css:
             count[cs.get("name")] = count.get(cs.get("name"), 0) + max(1, instances.get(norm(part), 1))
+    # coordinate systems in sub-assemblies (e.g. the gripper); a sub-assembly used several times is caught by the
+    # URDF check in validate() (the copies are renamed there)
+    for sub in (g.get("subassemblies") or {}).values():
+        for cs in sub.get("coordinate_systems") or []:
+            count[cs.get("name")] = count.get(cs.get("name"), 0) + 1
     problems = [f"  missing: {n}" for n in req if n not in count]
     problems += [f"  {n} appears {count[n]} times (in a part used more than once, or defined twice); "
                  f"the URDF would rename the copies" for n in req if count.get(n, 0) > 1]

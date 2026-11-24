@@ -1,16 +1,16 @@
 ﻿{
     "tool":  "mirte-part-export",
     "version":  1,
-    "time_utc":  "2026-11-23T15:59:18.4424215Z",
+    "time_utc":  "2026-11-24T19:37:35.4828239Z",
     "assembly":  "solidworks/MM-Minimal.SLDASM",
     "solidworks_revision":  "33.3.0",
-    "git_commit":  "e74cb3b876ac53930ca81668a8790fff9ae9ced0",
+    "git_commit":  "b199939c2b0fbf66032b8ba6cbdf6ef09785c955",
     "passed":  true,
     "note":  "Made by tools/export/Export-Parts.ps1. The GitHub Action (tools/export/check_exports.py) fails when an exported part or any assembly changed after this export.",
     "assemblies":  {
                        "solidworks/Arm/Arm concept 2 assembly.SLDASM":  "3e0127370282ed241eab04a8b0344bb987828c7763d82525e216fd565e842101",
                        "solidworks/Arm/arm_assembly.SLDASM":  "3cab61725f3c6ec7402c77005af0a186c36f50409e1d8e2cea42c4770ed427e7",
-                       "solidworks/Gripper/underactuated_girpper_assembly.SLDASM":  "565dc0a01e9c6bf06cdd4cba9af114736276f89b570aa599e4375a9c8bd0e1cf",
+                       "solidworks/Gripper/underactuated_girpper_assembly.SLDASM":  "bd834d1e608467300ce424320a2a8b4d324e720085fe7296b79c87eb2f3cc8fc",
                        "solidworks/Gripper/underactuated_Torque_limited_girpper_assembly.SLDASM":  "0be1393acf334b102fc4de015872f755bf1c7c68463618987f639ea9f77872b0",
                        "solidworks/Mirte_Master_Assem v02.SLDASM":  "9f40da053255a0f561c1041a5e13c95fcfbc2ecfee084e8ebc84a061471a144d",
                        "solidworks/Misc Parts/Concept 4 Assembly.SLDASM":  "5a18cefe32d40aa4128d825040d0e2299faa85d74ca00d73d4c7463e9a5d6506",
@@ -19,7 +19,7 @@
                        "solidworks/Misc Parts/Orbbec Astra Camera.sldasm":  "4023a12014546df0475fcc03f74548b8d7a1dabba65e241418a71fb27aff8f09",
                        "solidworks/Misc Parts/raspberry pi pico with contacts.SLDASM":  "2c2592441d1930924eb2f465da693a2efd01df7434b2deaf20f1e6eb025a43c4",
                        "solidworks/MM-Frame-Only.SLDASM":  "7353fe80bc17bf7c79283fd0261a9b499fe9907c1647b609a4c6bf497c12b32d",
-                       "solidworks/MM-Minimal.SLDASM":  "e612efe654ac13d64b6513fd1b3ca0aa24758e72d5fc9a48e762d0949ae6ebe0"
+                       "solidworks/MM-Minimal.SLDASM":  "866e8f0ccb1acc42b908734a6fdd595ba81402f16edb77d0be055922c2a76254"
                    },
     "parts":  [
                   {
@@ -381,10 +381,10 @@
                       "variant":  false,
                       "reason":  "custom part (default)",
                       "components":  [
-                                         "motor_module v02-1",
-                                         "motor_module v02-5",
                                          "motor_module v02-2",
-                                         "motor_module v02-6"
+                                         "motor_module v02-5",
+                                         "motor_module v02-6",
+                                         "motor_module v02-1"
                                      ],
                       "outputs":  [
                                       {
@@ -534,8 +534,8 @@
                       "variant":  false,
                       "reason":  "custom part (default)",
                       "components":  [
-                                         "Cable-funnel-1",
-                                         "Cable-funnel-2"
+                                         "Cable-funnel-2",
+                                         "Cable-funnel-1"
                                      ],
                       "outputs":  [
                                       {
@@ -710,8 +710,8 @@
                       "variant":  false,
                       "reason":  "custom part (default)",
                       "components":  [
-                                         "underactuated_girpper_assembly-1/front_spacer-1",
-                                         "underactuated_girpper_assembly-1/front_spacer-2"
+                                         "underactuated_girpper_assembly-1/front_spacer-2",
+                                         "underactuated_girpper_assembly-1/front_spacer-1"
                                      ],
                       "outputs":  [
                                       {
@@ -1055,8 +1055,8 @@
                       "variant":  false,
                       "reason":  "purchased folder solidworks/Misc Parts",
                       "components":  [
-                                         "arm_assembly-1/Hiwonder HX-12H-2",
-                                         "arm_assembly-1/Hiwonder HX-12H-1"
+                                         "arm_assembly-1/Hiwonder HX-12H-1",
+                                         "arm_assembly-1/Hiwonder HX-12H-2"
                                      ],
                       "outputs":  [
 
@@ -1074,8 +1074,8 @@
                       "variant":  false,
                       "reason":  "purchased folder solidworks/Misc Parts",
                       "components":  [
-                                         "arm_assembly-1/Hiwonder LX-225 Assembly-2/Hiwonder LX-225 servo-1",
-                                         "arm_assembly-1/Hiwonder LX-225 Assembly-1/Hiwonder LX-225 servo-1"
+                                         "arm_assembly-1/Hiwonder LX-225 Assembly-1/Hiwonder LX-225 servo-1",
+                                         "arm_assembly-1/Hiwonder LX-225 Assembly-2/Hiwonder LX-225 servo-1"
                                      ],
                       "outputs":  [
 
@@ -1093,10 +1093,10 @@
                       "variant":  false,
                       "reason":  "purchased folder solidworks/Misc Parts",
                       "components":  [
-                                         "arm_assembly-1/Hiwonder LX-225 Assembly-2/Servo-horn (driven)-1",
                                          "arm_assembly-1/Hiwonder LX-225 Assembly-1/Servo-horn (driven)-1",
-                                         "arm_assembly-1/Servo-horn (driven)-2",
-                                         "arm_assembly-1/Servo-horn (driven)-1"
+                                         "arm_assembly-1/Hiwonder LX-225 Assembly-2/Servo-horn (driven)-1",
+                                         "arm_assembly-1/Servo-horn (driven)-1",
+                                         "arm_assembly-1/Servo-horn (driven)-2"
                                      ],
                       "outputs":  [
 
@@ -1114,8 +1114,8 @@
                       "variant":  false,
                       "reason":  "purchased folder solidworks/Misc Parts",
                       "components":  [
-                                         "arm_assembly-1/Hiwonder LX-225 Assembly-2/Servo-horn (non-driven)-1",
-                                         "arm_assembly-1/Hiwonder LX-225 Assembly-1/Servo-horn (non-driven)-1"
+                                         "arm_assembly-1/Hiwonder LX-225 Assembly-1/Servo-horn (non-driven)-1",
+                                         "arm_assembly-1/Hiwonder LX-225 Assembly-2/Servo-horn (non-driven)-1"
                                      ],
                       "outputs":  [
 
@@ -1134,8 +1134,8 @@
                       "reason":  "purchased folder solidworks/Misc Parts",
                       "components":  [
                                          "arm_assembly-1/standoff M3 B-2",
-                                         "arm_assembly-1/standoff M3 B-3",
-                                         "arm_assembly-1/standoff M3 B-1"
+                                         "arm_assembly-1/standoff M3 B-1",
+                                         "arm_assembly-1/standoff M3 B-3"
                                      ],
                       "outputs":  [
 

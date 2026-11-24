@@ -201,7 +201,7 @@
     </inertial>
   </link>
   <link name="Mecanum_Wheel_dia_100_left_5">
-    <!-- sw2robot appearance="metal/steel/brushed steel" density="1000" inertia="solidworks" -->
+    <!-- sw2robot appearance="metal/steel/satin finish stainless steel" density="1000" inertia="solidworks" -->
     <visual>
       <origin xyz="0.04567555893 0.02989553386 -0.1470600291" rpy="0 0 1.729590139"/>
       <geometry>
@@ -221,7 +221,7 @@
     </inertial>
   </link>
   <link name="Mecanum_Wheel_dia_100_left_6">
-    <!-- sw2robot appearance="metal/steel/brushed steel" density="1000" inertia="solidworks" -->
+    <!-- sw2robot appearance="metal/steel/satin finish stainless steel" density="1000" inertia="solidworks" -->
     <visual>
       <origin xyz="0.02561617917 0.0482059228 -0.02705902909" rpy="0 0 2.232397128"/>
       <geometry>
@@ -241,7 +241,7 @@
     </inertial>
   </link>
   <link name="Mecanum_Wheel_dia_100_right_10">
-    <!-- sw2robot appearance="metal/steel/brushed steel" density="1000" inertia="solidworks" -->
+    <!-- sw2robot appearance="metal/steel/satin finish stainless steel" density="1000" inertia="solidworks" -->
     <visual>
       <origin xyz="-0.04538931655 0.003974769558 -0.06502433324" rpy="0 0 -0.9364092044"/>
       <geometry>
@@ -261,7 +261,7 @@
     </inertial>
   </link>
   <link name="Mecanum_Wheel_dia_100_right_7">
-    <!-- sw2robot appearance="metal/steel/brushed steel" density="1000" inertia="solidworks" -->
+    <!-- sw2robot appearance="metal/steel/satin finish stainless steel" density="1000" inertia="solidworks" -->
     <visual>
       <origin xyz="0.04471849144 -0.008731859679 -0.1300253332" rpy="0 0 2.099694745"/>
       <geometry>
@@ -515,7 +515,7 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-2.300278914e-11 0.01150450804 -2.51808903e-05" rpy="0 0 0"/>
+      <origin xyz="-2.300278934e-11 0.01150450804 -2.51808903e-05" rpy="0 0 0"/>
       <mass value="0.0232406"/>
       <inertia ixx="3.62073e-06" ixy="-5.18743e-15" ixz="1.98039e-15" iyy="3.65209e-06" iyz="-4.61318e-09" izz="2.53827e-06"/>
     </inertial>
@@ -535,7 +535,7 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-2.300278914e-11 0.01150450804 -2.51808903e-05" rpy="0 0 0"/>
+      <origin xyz="-2.300278934e-11 0.01150450804 -2.51808903e-05" rpy="0 0 0"/>
       <mass value="0.0232406"/>
       <inertia ixx="3.62073e-06" ixy="-5.18743e-15" ixz="1.98039e-15" iyy="3.65209e-06" iyz="-4.61318e-09" izz="2.53827e-06"/>
     </inertial>
@@ -615,9 +615,9 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-1.448269304e-18 0.002290248909 -3.366066907e-18" rpy="0 0 0"/>
+      <origin xyz="-1.3793041e-18 0.002290248909 -3.26951562e-18" rpy="0 0 0"/>
       <mass value="0.000937045"/>
-      <inertia ixx="2.55569e-08" ixy="1.41626e-24" ixz="8.07794e-24" iyy="4.78952e-08" iyz="3.85539e-24" izz="2.55569e-08"/>
+      <inertia ixx="2.55569e-08" ixy="1.42275e-24" ixz="7.97696e-24" iyy="4.78952e-08" iyz="3.8102e-24" izz="2.55569e-08"/>
     </inertial>
   </link>
   <link name="arm_assembly_1__Servo_horn_driven_2">
@@ -635,9 +635,9 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-1.448269304e-18 0.002290248909 -3.366066907e-18" rpy="0 0 0"/>
+      <origin xyz="-1.3793041e-18 0.002290248909 -3.26951562e-18" rpy="0 0 0"/>
       <mass value="0.000937045"/>
-      <inertia ixx="2.55569e-08" ixy="1.41626e-24" ixz="8.07794e-24" iyy="4.78952e-08" iyz="3.85539e-24" izz="2.55569e-08"/>
+      <inertia ixx="2.55569e-08" ixy="1.42275e-24" ixz="7.97696e-24" iyy="4.78952e-08" iyz="3.8102e-24" izz="2.55569e-08"/>
     </inertial>
   </link>
   <link name="arm_assembly_1__Small_bottom_plate_1">
@@ -775,9 +775,9 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="5.75261205e-19 0.01890450471 -1.439059127e-18" rpy="0 0 0"/>
+      <origin xyz="5.595174716e-19 0.01890450471 -1.460126281e-18" rpy="0 0 0"/>
       <mass value="0.00686449"/>
-      <inertia ixx="1.05023e-06" ixy="-1.56637e-23" ixz="-6.88058e-24" iyy="3.29465e-08" iyz="-1.66449e-23" izz="1.05023e-06"/>
+      <inertia ixx="1.05023e-06" ixy="-1.54944e-23" ixz="-6.80162e-24" iyy="3.29465e-08" iyz="-1.6248e-23" izz="1.05023e-06"/>
     </inertial>
   </link>
   <link name="arm_assembly_1__standoff_M3_B_2">
@@ -795,9 +795,9 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="5.75261205e-19 0.01890450471 -1.439059127e-18" rpy="0 0 0"/>
+      <origin xyz="5.595174716e-19 0.01890450471 -1.460126281e-18" rpy="0 0 0"/>
       <mass value="0.00686449"/>
-      <inertia ixx="1.05023e-06" ixy="-1.56637e-23" ixz="-6.88058e-24" iyy="3.29465e-08" iyz="-1.66449e-23" izz="1.05023e-06"/>
+      <inertia ixx="1.05023e-06" ixy="-1.54944e-23" ixz="-6.80162e-24" iyy="3.29465e-08" iyz="-1.6248e-23" izz="1.05023e-06"/>
     </inertial>
   </link>
   <link name="arm_assembly_1__standoff_M3_B_3">
@@ -815,9 +815,9 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="5.75261205e-19 0.01890450471 -1.439059127e-18" rpy="0 0 0"/>
+      <origin xyz="5.595174716e-19 0.01890450471 -1.460126281e-18" rpy="0 0 0"/>
       <mass value="0.00686449"/>
-      <inertia ixx="1.05023e-06" ixy="-1.56637e-23" ixz="-6.88058e-24" iyy="3.29465e-08" iyz="-1.66449e-23" izz="1.05023e-06"/>
+      <inertia ixx="1.05023e-06" ixy="-1.54944e-23" ixz="-6.80162e-24" iyy="3.29465e-08" iyz="-1.6248e-23" izz="1.05023e-06"/>
     </inertial>
   </link>
   <link name="underactuated_girpper_assembly_1__front_spacer_1">
@@ -863,41 +863,41 @@
   <link name="underactuated_girpper_assembly_1__geared_actuated_link_1">
     <!-- sw2robot density="1000" inertia="solidworks" -->
     <visual>
-      <origin xyz="0 0 0" rpy="-3.484038556e-05 0.1604559822 1.57079076"/>
+      <origin xyz="0 0 0" rpy="-3.548890569e-05 -0.2491782949 1.570805079"/>
       <geometry>
         <mesh filename="../meshes/underactuated_girpper_assembly__geared_actuated_link_1.3dxml"/>
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="-3.484038556e-05 0.1604559822 1.57079076"/>
+      <origin xyz="0 0 0" rpy="-3.548890569e-05 -0.2491782949 1.570805079"/>
       <geometry>
         <mesh filename="../meshes/underactuated_girpper_assembly__geared_actuated_link_1.3dxml"/>
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-0.004018462499 -0.001631750059 -0.009740939266" rpy="0 0 0"/>
+      <origin xyz="-0.004018467864 0.002382756988 -0.009584932553" rpy="0 0 0"/>
       <mass value="0.00563513"/>
-      <inertia ixx="1.55721e-06" ixy="-1.28566e-08" ixz="-7.65815e-08" iyy="1.42926e-06" iyz="-2.03163e-07" izz="2.08926e-07"/>
+      <inertia ixx="1.55721e-06" ixy="1.87089e-08" ixz="-7.53666e-08" iyy="1.38413e-06" iyz="3.07105e-07" izz="2.54057e-07"/>
     </inertial>
   </link>
   <link name="underactuated_girpper_assembly_1__geared_actuator_link_1">
     <!-- sw2robot density="1000" inertia="solidworks" -->
     <visual>
-      <origin xyz="0 0 0" rpy="-3.14155775 0.1713606162 -1.570790375"/>
+      <origin xyz="0 0 0" rpy="-3.141557261 -0.2382736609 -1.57080468"/>
       <geometry>
         <mesh filename="../meshes/underactuated_girpper_assembly__geared_actuator_link_1.3dxml"/>
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="-3.14155775 0.1713606162 -1.570790375"/>
+      <origin xyz="0 0 0" rpy="-3.141557261 -0.2382736609 -1.57080468"/>
       <geometry>
         <mesh filename="../meshes/underactuated_girpper_assembly__geared_actuator_link_1.3dxml"/>
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-0.005908637468 -0.001316529383 0.007607242408" rpy="0 0 0"/>
+      <origin xyz="-0.005908633855 0.001822238601 0.007502191403" rpy="0 0 0"/>
       <mass value="0.00735126"/>
-      <inertia ixx="1.77786e-06" ixy="-3.074e-08" ixz="1.77629e-07" iyy="1.68608e-06" iyz="2.36937e-07" izz="3.57968e-07"/>
+      <inertia ixx="1.77786e-06" ixy="4.25475e-08" ixz="1.75176e-07" iyy="1.64853e-06" iyz="-3.23422e-07" izz="3.95519e-07"/>
     </inertial>
   </link>
   <link name="underactuated_girpper_assembly_1__left_right_actuating_link_1">
@@ -943,81 +943,81 @@
   <link name="underactuated_girpper_assembly_1__left_right_tip_1">
     <!-- sw2robot density="1000" inertia="solidworks" -->
     <visual>
-      <origin xyz="0.00500051574 0.0003612525966 -0.01499547728" rpy="-3.140164588 -1.546710467 -1.572223978"/>
+      <origin xyz="0.005000456248 -0.00700120138 -0.01326569322" rpy="-7.368630612e-05 -1.085187644 1.570861494"/>
       <geometry>
         <mesh filename="../meshes/underactuated_girpper_assembly__left_right_tip_1.3dxml"/>
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0.00500051574 0.0003612525966 -0.01499547728" rpy="-3.140164588 -1.546710467 -1.572223978"/>
+      <origin xyz="0.005000456248 -0.00700120138 -0.01326569322" rpy="-7.368630612e-05 -1.085187644 1.570861494"/>
       <geometry>
         <mesh filename="../meshes/underactuated_girpper_assembly__left_right_tip_1.3dxml"/>
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="0.0004166645371 0.01490190761 -0.009285514215" rpy="0 0 0"/>
+      <origin xyz="0.0004168740084 0.008477271784 -0.01537606299" rpy="0 0 0"/>
       <mass value="0.00529539"/>
-      <inertia ixx="7.62913e-07" ixy="-3.34793e-08" ixz="4.14159e-09" iyy="2.02521e-07" iyz="-1.34064e-07" izz="6.46255e-07"/>
+      <inertia ixx="7.62912e-07" ixy="-2.72132e-08" ixz="1.99526e-08" iyy="1.93962e-07" iyz="1.18749e-07" izz="6.54815e-07"/>
     </inertial>
   </link>
   <link name="underactuated_girpper_assembly_1__left_right_tip_2">
     <!-- sw2robot density="1000" inertia="solidworks" -->
     <visual>
-      <origin xyz="-0.005000515831 0.0002272483818 0.01499810653" rpy="0.002270167025 1.555645816 -1.56852642"/>
+      <origin xyz="-0.005000451833 -0.007239204083 0.01313732871" rpy="3.14152139 1.067159923 1.570733912"/>
       <geometry>
         <mesh filename="../meshes/underactuated_girpper_assembly__left_right_tip_2.3dxml"/>
       </geometry>
     </visual>
     <collision>
-      <origin xyz="-0.005000515831 0.0002272483818 0.01499810653" rpy="0.002270167025 1.555645816 -1.56852642"/>
+      <origin xyz="-0.005000451833 -0.007239204083 0.01313732871" rpy="3.14152139 1.067159923 1.570733912"/>
       <geometry>
         <mesh filename="../meshes/underactuated_girpper_assembly__left_right_tip_2.3dxml"/>
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="0.0004160212589 0.01481834425 0.009418324363" rpy="0 0 0"/>
+      <origin xyz="0.0004158111844 0.008198713653 0.01552641071" rpy="0 0 0"/>
       <mass value="0.00529539"/>
-      <inertia ixx="7.62913e-07" ixy="-3.34501e-08" ixz="-4.43267e-09" iyy="2.00161e-07" iyz="1.30076e-07" izz="6.48614e-07"/>
+      <inertia ixx="7.62915e-07" ixy="-2.68408e-08" ixz="-2.04322e-08" iyy="1.98392e-07" iyz="-1.2698e-07" izz="6.50382e-07"/>
     </inertial>
   </link>
   <link name="underactuated_girpper_assembly_1__link_1">
     <!-- sw2robot density="1000" inertia="solidworks" -->
     <visual>
-      <origin xyz="-0.009999999994 0 -3.439284459e-07" rpy="6.315477756e-05 0.9949077641 -1.570743358"/>
+      <origin xyz="-0.009999999994 0 -3.439284459e-07" rpy="3.139605423 1.553488527 1.568809394"/>
       <geometry>
         <mesh filename="../meshes/underactuated_girpper_assembly__link_1.3dxml"/>
       </geometry>
     </visual>
     <collision>
-      <origin xyz="-0.009999999994 0 -3.439284459e-07" rpy="6.315477756e-05 0.9949077641 -1.570743358"/>
+      <origin xyz="-0.009999999994 0 -3.439284459e-07" rpy="3.139605423 1.553488527 1.568809394"/>
       <geometry>
         <mesh filename="../meshes/underactuated_girpper_assembly__link_1.3dxml"/>
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-0.006704441952 0.01309480107 -0.008502796345" rpy="0 0 0"/>
+      <origin xyz="-0.006704743673 0.01561071515 0.000269976816" rpy="0 0 0"/>
       <mass value="0.00256436"/>
-      <inertia ixx="4.81751e-07" ixy="-2.51672e-08" ixz="1.63414e-08" iyy="1.6455e-07" iyz="2.01189e-07" izz="3.43769e-07"/>
+      <inertia ixx="4.81752e-07" ixy="-2.9994e-08" ixz="-5.19053e-10" iyy="3.40481e-08" iyz="-7.62309e-09" izz="4.74271e-07"/>
     </inertial>
   </link>
   <link name="underactuated_girpper_assembly_1__link_2">
     <!-- sw2robot density="1000" inertia="solidworks" -->
     <visual>
-      <origin xyz="-0.009999999994 0 -3.439284466e-07" rpy="3.141531092 0.9780150189 1.570745268"/>
+      <origin xyz="-0.009999999994 0 -3.439284467e-07" rpy="0.01244459162 1.568032574 -1.558351783"/>
       <geometry>
         <mesh filename="../meshes/underactuated_girpper_assembly__link_1.3dxml"/>
       </geometry>
     </visual>
     <collision>
-      <origin xyz="-0.009999999994 0 -3.439284466e-07" rpy="3.141531092 0.9780150189 1.570745268"/>
+      <origin xyz="-0.009999999994 0 -3.439284467e-07" rpy="0.01244459162 1.568032574 -1.558351783"/>
       <geometry>
         <mesh filename="../meshes/underactuated_girpper_assembly__link_1.3dxml"/>
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-0.006705034372 0.01294931477 0.008722308395" rpy="0 0 0"/>
+      <origin xyz="-0.006704732895 0.01561299386 -4.338399329e-05" rpy="0 0 0"/>
       <mass value="0.00256436"/>
-      <inertia ixx="4.81754e-07" ixy="-2.48736e-08" ixz="-1.67545e-08" iyy="1.71397e-07" iyz="-2.04102e-07" izz="3.3692e-07"/>
+      <inertia ixx="4.81752e-07" ixy="-2.99987e-08" ixz="8.30305e-11" iyy="3.39196e-08" iyz="1.21652e-09" izz="4.74399e-07"/>
     </inertial>
   </link>
   <link name="underactuated_girpper_assembly_1__top_bottom_plate_1">
@@ -1075,9 +1075,9 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-0.01011860317 0.02024454813 5.695357966e-18" rpy="0 0 0"/>
+      <origin xyz="-0.01011860317 0.02024454813 5.643725303e-18" rpy="0 0 0"/>
       <mass value="0.0328702"/>
-      <inertia ixx="5.70492e-06" ixy="-3.76902e-09" ixz="-3.8197e-13" iyy="5.47637e-06" iyz="1.03772e-21" izz="9.00788e-06"/>
+      <inertia ixx="5.70492e-06" ixy="-3.76902e-09" ixz="-3.8197e-13" iyy="5.47637e-06" iyz="1.02307e-21" izz="9.00788e-06"/>
     </inertial>
   </link>
   <link name="arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_driven_1">
@@ -1095,9 +1095,9 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-1.448269304e-18 0.002290248909 -3.366066907e-18" rpy="0 0 0"/>
+      <origin xyz="-1.3793041e-18 0.002290248909 -3.26951562e-18" rpy="0 0 0"/>
       <mass value="0.000937045"/>
-      <inertia ixx="2.55569e-08" ixy="1.41626e-24" ixz="8.07794e-24" iyy="4.78952e-08" iyz="3.85539e-24" izz="2.55569e-08"/>
+      <inertia ixx="2.55569e-08" ixy="1.42275e-24" ixz="7.97696e-24" iyy="4.78952e-08" iyz="3.8102e-24" izz="2.55569e-08"/>
     </inertial>
   </link>
   <link name="arm_assembly_1__Hiwonder_LX_225_Assembly_1__Servo_horn_non_driven_1">
@@ -1115,9 +1115,9 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-2.882615358e-19 0.00248435388 -1.124840004e-18" rpy="0 0 0"/>
+      <origin xyz="-1.260596557e-19 0.00248435388 -1.17142983e-18" rpy="0 0 0"/>
       <mass value="0.000666435"/>
-      <inertia ixx="2.10955e-08" ixy="6.31595e-26" ixz="-2.19874e-25" iyy="3.99976e-08" iyz="5.47062e-25" izz="2.10955e-08"/>
+      <inertia ixx="2.10955e-08" ixy="3.96558e-26" ixz="6.54521e-25" iyy="3.99976e-08" iyz="5.46485e-25" izz="2.10955e-08"/>
     </inertial>
   </link>
   <link name="arm_assembly_1__Hiwonder_LX_225_Assembly_2__Hiwonder_LX_225_servo_1">
@@ -1135,9 +1135,9 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-0.01011860317 0.02024454813 5.695357966e-18" rpy="0 0 0"/>
+      <origin xyz="-0.01011860317 0.02024454813 5.643725303e-18" rpy="0 0 0"/>
       <mass value="0.0328702"/>
-      <inertia ixx="5.70492e-06" ixy="-3.76902e-09" ixz="-3.8197e-13" iyy="5.47637e-06" iyz="1.03772e-21" izz="9.00788e-06"/>
+      <inertia ixx="5.70492e-06" ixy="-3.76902e-09" ixz="-3.8197e-13" iyy="5.47637e-06" iyz="1.02307e-21" izz="9.00788e-06"/>
     </inertial>
   </link>
   <link name="arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_driven_1">
@@ -1155,9 +1155,9 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-1.448269304e-18 0.002290248909 -3.366066907e-18" rpy="0 0 0"/>
+      <origin xyz="-1.3793041e-18 0.002290248909 -3.26951562e-18" rpy="0 0 0"/>
       <mass value="0.000937045"/>
-      <inertia ixx="2.55569e-08" ixy="1.41626e-24" ixz="8.07794e-24" iyy="4.78952e-08" iyz="3.85539e-24" izz="2.55569e-08"/>
+      <inertia ixx="2.55569e-08" ixy="1.42275e-24" ixz="7.97696e-24" iyy="4.78952e-08" iyz="3.8102e-24" izz="2.55569e-08"/>
     </inertial>
   </link>
   <link name="arm_assembly_1__Hiwonder_LX_225_Assembly_2__Servo_horn_non_driven_1">
@@ -1175,9 +1175,9 @@
       </geometry>
     </collision>
     <inertial>
-      <origin xyz="-2.882615358e-19 0.00248435388 -1.124840004e-18" rpy="0 0 0"/>
+      <origin xyz="-1.260596557e-19 0.00248435388 -1.17142983e-18" rpy="0 0 0"/>
       <mass value="0.000666435"/>
-      <inertia ixx="2.10955e-08" ixy="6.31595e-26" ixz="-2.19874e-25" iyy="3.99976e-08" iyz="5.47062e-25" izz="2.10955e-08"/>
+      <inertia ixx="2.10955e-08" ixy="3.96558e-26" ixz="6.54521e-25" iyy="3.99976e-08" iyz="5.46485e-25" izz="2.10955e-08"/>
     </inertial>
   </link>
   <joint name="Plate_v01_1__motor_module_v02_1" type="fixed">
@@ -1561,7 +1561,7 @@
     <!-- sw2robot-note: geo: free axis but r=1.7mm = fastener, not bearing -> fixed; config sets revolute (inference said fixed) -->
   </joint>
   <joint name="underactuated_girpper_assembly_1__geared_actuator_link_1__underactuated_girpper_assembly_1__left_right_actuating_link_2" type="fixed">
-    <origin xyz="-0.010001525 -0.007673543765 0.04434057085" rpy="0.01084117474 1.567623831 -1.559955207"/>
+    <origin xyz="-0.01000150395 0.01062114365 0.04372826576" rpy="8.572883973e-05 1.157989739 -1.570717799"/>
     <parent link="underactuated_girpper_assembly_1__geared_actuator_link_1"/>
     <child link="underactuated_girpper_assembly_1__left_right_actuating_link_2"/>
     <axis xyz="0 1 0"/>
@@ -1569,7 +1569,7 @@
     <!-- sw2robot-note: geo: fully constrained -->
   </joint>
   <joint name="underactuated_girpper_assembly_1__geared_actuated_link_1__underactuated_girpper_assembly_1__left_right_actuating_link_1" type="fixed">
-    <origin xyz="-0.009998472197 -0.007189575669 -0.04442229795" rpy="3.139149374 1.556719342 1.568353289"/>
+    <origin xyz="-0.009998500116 0.0110973472 -0.04361053635" rpy="3.141509002 1.147085105 1.570720073"/>
     <parent link="underactuated_girpper_assembly_1__geared_actuated_link_1"/>
     <child link="underactuated_girpper_assembly_1__left_right_actuating_link_1"/>
     <axis xyz="0 1 0"/>
@@ -1577,7 +1577,7 @@
     <!-- sw2robot-note: geo: fully constrained -->
   </joint>
   <joint name="gripper_tip_r_joint" type="revolute">
-    <origin xyz="0 0.005 -0.055" rpy="-1.567624018 1.091045407e-07 1.570761934"/>
+    <origin xyz="0 0.005 -0.055" rpy="-1.157989741 1.3797781e-05 1.570764823"/>
     <parent link="underactuated_girpper_assembly_1__left_right_actuating_link_2"/>
     <child link="underactuated_girpper_assembly_1__left_right_tip_1"/>
     <axis xyz="-1 0 -3.439e-05"/>
@@ -1587,7 +1587,7 @@
     <!-- sw2robot-note: geo: free axis but r=1.6mm = fastener, not bearing -> fixed; config sets revolute (inference said fixed) -->
   </joint>
   <joint name="gripper_tip_l_joint" type="revolute">
-    <origin xyz="0 0.005 -0.055" rpy="-1.58487327 -4.8413012e-07 1.570761937"/>
+    <origin xyz="0 0.005 -0.055" rpy="-1.994507547 -1.414049119e-05 1.570764975"/>
     <parent link="underactuated_girpper_assembly_1__left_right_actuating_link_1"/>
     <child link="underactuated_girpper_assembly_1__left_right_tip_2"/>
     <axis xyz="1 0 3.439e-05"/>
@@ -1668,5 +1668,11 @@
     <origin xyz="0.06000591046 0.02999929453 -0.0515001898" rpy="-6.3267949e-06 -4.002830268e-11 -6.32679e-06"/>
     <parent link="base_link"/>
     <child link="imu_link"/>
+  </joint>
+  <link name="gripper_tcp"/>
+  <joint name="dummy_joint_gripper_tcp" type="fixed">
+    <origin xyz="0.01257111688 0.01032082888 -0.08666497853" rpy="2.347502113 1.570796327 -2.364886867"/>
+    <parent link="underactuated_girpper_assembly_1__top_bottom_plate_1"/>
+    <child link="gripper_tcp"/>
   </joint>
 </robot>

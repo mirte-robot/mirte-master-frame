@@ -23,7 +23,8 @@ The joint config is the source of truth for the kinematics. Never hand-edit a ge
 | You changed | What to do |
 |---|---|
 | Nothing in `solidworks/` | Nothing. The Action builds the URDF. |
-| Anything in `solidworks/` (any `.SLDPRT` / `.SLDASM`) | Re-extract: run `Sync-Sw2Robot.ps1`, extract in the editor, commit `sw2robot/`. Otherwise the Action fails with *"sw2robot extract is out of date"*. |
+| Anything in `solidworks/` (any `.SLDPRT` / `.SLDASM`) | Re-extract: run `Sync-Sw2Robot.ps1` and extract in the editor (or `-Extract`, without the editor GUI), commit `sw2robot/`. Otherwise the Action fails with *"sw2robot extract is out of date"*. |
+| Only coordinate systems (sensor frames) in `solidworks/` | `Sync-Sw2Robot.ps1 -FramesOnly` (seconds), commit `sw2robot/`. |
 | Only joints (fixed / revolute, limits, ...) | `Sync-Sw2Robot.ps1 -FromRepo` (no SolidWorks needed), or edit the YAML directly. Commit `sw2robot/`. |
 
 Check before pushing: `.\tools\urdf\Sync-Sw2Robot.ps1 -Check` (does the same stale check as the Action).
@@ -36,7 +37,10 @@ Requirements: SolidWorks, and the sw2robot editor (`sw2robot-web.exe`), installe
 powershell -ExecutionPolicy ByPass -c "irm https://jsk-ros-pkg.github.io/solidworks_urdf_exporter2/install.ps1 | iex"
 ```
 
-Then, from the repository root, with your SolidWorks changes **saved**:
+The script also needs the Python environment with sw2robot (`.venv-urdf`, see
+[Running the build locally](#running-the-build-locally)) for the frames refresh and `-Extract`.
+
+Then, from the repository root, with your SolidWorks changes **saved** and the assembly **open** in SolidWorks:
 
 ```powershell
 .\tools\urdf\Sync-Sw2Robot.ps1
@@ -47,16 +51,13 @@ Then, from the repository root, with your SolidWorks changes **saved**:
 2. In the browser: open `solidworks\MM-Minimal.SLDASM` (🗄 file browser or 📋 path bar) to extract it again.
 3. Check the joints. A new or re-inserted part gets a **guessed** joint type, so check it. Keys: `t` fixed ↔ movable,
    `f` flip axis, `r` make root.
-4. **Close the editor's console window.** The script then imports the result into `sw2robot/`:
+4. **Close the editor's console window.** If the editor made a new extract, the script re-reads the sensor frames in
+   the running SolidWorks (see [Sensor frames](#sensor-frames)), then imports the result into `sw2robot/`:
    - absolute paths become repository-relative and the Windows user name is removed from the meshes (public repo);
    - the CAD hashes are recorded in `MM_Minimal.sources.json`.
-5. **Refresh the sensor frames** (see [Sensor frames](#sensor-frames)): the extract in the editor only reads the
-   coordinate systems of the assembly, not the ones inside parts, so the import in step 4 stops with
-   *sensor frame ... is missing*. With SolidWorks still open on the assembly:
-   ```powershell
-   .\.venv-urdf\Scripts\python -E -m sw2robot.exporter.extract "$env:TEMP\sw2robot\output\MM_Minimal" --refresh frames --attach
-   .\tools\urdf\Sync-Sw2Robot.ps1 -ImportOnly
-   ```
+5. **Close the assembly in SolidWorks without saving.** The extract resolves lightweight components and switches
+   configurations, which marks documents as modified, but it changes nothing in them. Saving them would make the
+   SolidWorks files newer than the extract (the import refuses, and the Action's stale check fails).
 6. Review and commit: `git diff -- sw2robot/MM_Minimal.joints.yaml`, then `git add sw2robot` and commit.
 
 The import refuses when the extract is incomplete, is of another assembly, misses a sensor frame, or is older than a
@@ -64,8 +65,11 @@ SolidWorks file (saved after extracting). Use `-Force` only when just the timest
 
 | Option | Meaning |
 |---|---|
+| (none) | Editor (GUI): extract and/or fix the joints, then frames refresh (after a new extract) and import. |
+| `-Extract` | Full extract **without the editor GUI**: the editor's own steps (`tools/urdf/sw2robot_extract.py`: extract + build, mesh previews) in the running SolidWorks, then the frames refresh and the import. Needs the assembly open in SolidWorks. The joints are not shown; a new or renamed part then fails the joint check of the build (fix it with `-FromRepo`). |
+| `-FramesOnly` | Only re-read the coordinate systems (seconds), then import. Needs the assembly open in SolidWorks and the latest full extract in the editor's folder. **Only when nothing but coordinate systems changed:** other CAD changes are not read, but the import records the new CAD hashes, so the stale check would not notice them. |
 | `-FromRepo` | Open the editor on the committed extract (change only joints; no SolidWorks needed). |
-| `-ImportOnly` | Do not start the editor; import what is in the editor's folder (if you used the editor yourself). |
+| `-ImportOnly` | Do not start the editor; import what is in the editor's folder (if you used sw2robot yourself). |
 | `-Check` | Only check whether the committed extract matches the SolidWorks files. |
 | `-PackageDir <dir>` | Another editor package folder. |
 | `-Force` | Import even when SolidWorks files are newer than the extract. |
@@ -75,7 +79,7 @@ SolidWorks file (saved after extracting). Use `-Force` only when just the timest
 | Failure | Cause | Fix |
 |---|---|---|
 | *sw2robot extract is out of date with the SolidWorks model* | A SolidWorks file was changed / added / removed after the last extract. The message lists them. | Re-extract (above). |
-| *Sensor frames missing or duplicated in the sw2robot extract* | A frame in `required_frames` is not in `graph.json` (re-extracted without the frames refresh, or the coordinate system was renamed / deleted), or it appears more than once (it is in a part used several times). Also checked by `check_before_push.py`. | Frames refresh (step 5 above), or fix the coordinate system in SolidWorks. |
+| *Sensor frames missing or duplicated in the sw2robot extract* | A frame in `required_frames` is not in `graph.json` (re-extracted without the frames refresh, or the coordinate system was renamed / deleted), or it appears more than once (it is in a part used several times). Also checked by `check_before_push.py`. | `Sync-Sw2Robot.ps1 -FramesOnly`, or fix the coordinate system in SolidWorks. |
 | *Joint config does not match the model* | A joint config entry matches no joint (part renamed, removed or re-inserted), a joint in the model is not in the config (sw2robot guessed its type), or a type differs. sw2robot itself only warns, so the Action checks this. | `Sync-Sw2Robot.ps1` (or `-FromRepo`), fix the joints, commit. |
 | *sw2robot build failed* | Usually an incomplete extract (missing meshes). | Re-extract. |
 | *Generated URDF / xacro is invalid* | Broken tree or a bug in `build_urdf.py`. | Look at the log. |
@@ -127,15 +131,17 @@ fixed joint from `parent` to `${prefix}base_link` at `xyz` / `rpy`.
 ## Sensor frames
 
 The sensor frames (`lidar_link`, `rgbd_camera_link`, `wrist_camera_link`, `left_sonar_link`, `right_sonar_link`,
-`imu_link`) are **coordinate systems in SolidWorks**, named like the frame. Each becomes a geometry-less link in the
-URDF, fixed to the link of the part (or assembly) it is in. Conventions (REP-103): x forward, y left, z up; for a
-camera x along the view direction (the `_optical_frame`s are added in the ROS description package). In SolidWorks
-red = x, green = y, blue = z.
+`imu_link`) and the gripper's tool frame (`gripper_tcp`, between the fingertips, in the gripper sub-assembly) are
+**coordinate systems in SolidWorks**, named like the frame. Each becomes a geometry-less link in the URDF, fixed to
+the link of the part (or assembly) it is in. Conventions (REP-103): x forward, y left, z up; for a camera and the
+gripper x along the view / approach direction (the camera `_optical_frame`s are added in the ROS description
+package). In SolidWorks red = x, green = y, blue = z.
 
 - A frame inside a **part** goes with every instance of that part: put it in a part that is used once, or in the
   assembly. A duplicate is renamed `<link>_<name>` in the URDF.
-- The editor's extract only reads the assembly's coordinate systems. After every extract, refresh the frames
-  (step 5 in [Re-extracting](#re-extracting-windows--solidworks)); this re-reads only the coordinate systems.
+- The coordinate systems inside parts are a slow scan, which the editor's extract skips. `Sync-Sw2Robot.ps1`
+  therefore re-reads all coordinate systems after a new extract (in the editor, or with `-Extract`); `-FramesOnly`
+  only re-reads them.
 - `required_frames` in `urdf.config.json` lists the frames the model must have. The import, `build_urdf.py
   --check-only` (pre-push hook, first step of the Action) and the URDF validation fail when one is missing or
   appears more than once. Add a new sensor frame to this list.

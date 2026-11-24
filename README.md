@@ -15,15 +15,17 @@ Run all commands from the repository root (PowerShell).
 1. Save everything in SolidWorks and keep `MM-Minimal.SLDASM` open.
 2. Export the parts (STEP / STL / DXF):
    `.\tools\export\Export-Parts.ps1`
-3. Update the URDF extract:
+3. Update the URDF extract, with SolidWorks still open:
    `.\tools\urdf\Sync-Sw2Robot.ps1`
    - In the editor, extract `solidworks/MM-Minimal.SLDASM` again, and check the joints (new parts get a guessed joint type).
    - Press F5 in the editor's browser tab if a changed part still looks old.
-   - Close the editor's console window; the script then copies the result into `sw2robot/`.
-4. Refresh the sensor frames (the extract in step 3 drops the coordinate systems inside parts, e.g. `lidar_link`;
-   the import then stops with *sensor frame ... is missing*). With SolidWorks still open:
-   `.\.venv-urdf\Scripts\python -E -m sw2robot.exporter.extract "$env:TEMP\sw2robot\output\MM_Minimal" --refresh frames --attach`
-   `.\tools\urdf\Sync-Sw2Robot.ps1 -ImportOnly`
+   - Close the editor's console window; the script then re-reads the sensor frames in SolidWorks and copies the result
+     into `sw2robot/`.
+
+   Without the editor GUI: `.\tools\urdf\Sync-Sw2Robot.ps1 -Extract` (the same steps as the editor). Only added or
+   moved a coordinate system (sensor frame)? `.\tools\urdf\Sync-Sw2Robot.ps1 -FramesOnly` (seconds).
+4. Close the assembly in SolidWorks **without saving**: the extract marks documents as modified, but changes nothing.
+   Saving would make the SolidWorks files newer than the extract.
 5. Stage and check:
    `git add solidworks exports sw2robot`
    `python tools/check_before_push.py --staged`

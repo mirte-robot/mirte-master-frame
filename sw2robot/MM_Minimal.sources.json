@@ -2,7 +2,7 @@
   "tool": "mirte-sw2robot-sync",
   "version": 1,
   "note": "SHA-256 of the SolidWorks files the sw2robot extract was made from. Written by tools/urdf/Sync-Sw2Robot.ps1.",
-  "extracted_utc": "2026-11-23T16:44:46.0873313Z",
+  "extracted_utc": "2026-11-24T19:57:03.7432529Z",
   "extractor": "sw2robot 0.4.13",
   "assembly": "solidworks/MM-Minimal.SLDASM",
   "files": {
@@ -40,7 +40,7 @@
     "solidworks/Gripper/spacer.SLDPRT": "3ddcfcb9ac05ae9a60eea6ed3fd78af941639d143d18acb5fb8f5f6c4645158b",
     "solidworks/Gripper/spring plunger.SLDPRT": "96422b18aaa6acdb5e933a4db85ad3b9d3ffb320b801e6c83434b705bea67cdb",
     "solidworks/Gripper/top_bottom plate.SLDPRT": "e0e059de02a9a17b5850674644da2697ca07ff126f58c6f7db52f12dc6465af4",
-    "solidworks/Gripper/underactuated_girpper_assembly.SLDASM": "565dc0a01e9c6bf06cdd4cba9af114736276f89b570aa599e4375a9c8bd0e1cf",
+    "solidworks/Gripper/underactuated_girpper_assembly.SLDASM": "bd834d1e608467300ce424320a2a8b4d324e720085fe7296b79c87eb2f3cc8fc",
     "solidworks/Gripper/underactuated_Torque_limited_girpper_assembly.SLDASM": "0be1393acf334b102fc4de015872f755bf1c7c68463618987f639ea9f77872b0",
     "solidworks/Internal mounting parts/battery_mount V2.SLDPRT": "c41c422b1f477c9bd631ff540400e4d5c88738118b98749122b8a1bc2df0e0f9",
     "solidworks/Internal mounting parts/battery_mount.SLDPRT": "0c19efd71acb9bc42c31d3b70c0f4f0985a855d359c8919a38eb0c7f1921bf1c",
@@ -80,6 +80,6 @@
     "solidworks/Misc Parts/USB C basic.SLDPRT": "586b26f5d5a31ce38e5429a88985adebcc2609a588335359f7657aaadb3ad22b",
     "solidworks/Misc Parts/usb.SLDPRT": "1111925d95aad28175948689a606e4af5dc4961bfc02b744759808d7f5545174",
     "solidworks/MM-Frame-Only.SLDASM": "7353fe80bc17bf7c79283fd0261a9b499fe9907c1647b609a4c6bf497c12b32d",
-    "solidworks/MM-Minimal.SLDASM": "e612efe654ac13d64b6513fd1b3ca0aa24758e72d5fc9a48e762d0949ae6ebe0"
+    "solidworks/MM-Minimal.SLDASM": "866e8f0ccb1acc42b908734a6fdd595ba81402f16edb77d0be055922c2a76254"
   }
 }

@@ -1,4 +1,4 @@
-﻿MIRTE part export - 2026-11-23T15:59:18.4250368Z
+﻿MIRTE part export - 2026-11-24T19:37:35.4653596Z
 Assembly : solidworks/MM-Minimal.SLDASM   SolidWorks 33.3.0
 Parts    : 30 print (STEP+STL), 7 laser (STEP+DXF), 10 not exported
 Result   : OK
